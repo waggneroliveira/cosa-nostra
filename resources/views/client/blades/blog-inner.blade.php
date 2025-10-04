@@ -204,6 +204,9 @@
                             color: #10131C;
                         }
                         @media (max-width: 576px) {
+                            .mb-3.title-blue.rethink-sans-bold.font-28.text-uppercase{
+                                font-size: 1.25rem;
+                            }
                             .cat-mt {
                                 margin-top: 15px;
                             }
