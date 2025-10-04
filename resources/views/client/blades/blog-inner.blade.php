@@ -205,7 +205,7 @@
                         }
                         @media (max-width: 576px) {
                             .mb-3.title-blue.rethink-sans-bold.font-28.text-uppercase{
-                                font-size: 1.25rem;
+                                font-size: 1.25rem !important;
                             }
                             .cat-mt {
                                 margin-top: 15px;
