@@ -198,15 +198,7 @@
             filter: brightness(1.05);
             box-shadow: 0 14px 32px rgba(0,0,0,.2);
         }
-        /* Ajuste em telas menores */
-        @media (max-width: 768px){
-            .whatsapp-float{
-            right: 12px;
-            width: 52px;
-            height: 52px;
-            }
-            .whatsapp-float svg{ width: 35px; height: 35px; }
-        }
+
         /* Não mostrar na impressão */
         @media print{
             .whatsapp-float{ display: none; }
