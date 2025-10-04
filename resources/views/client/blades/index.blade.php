@@ -351,13 +351,6 @@
                     </div>
                     <div class=swiper-slide>
                         <picture>
-                            <source srcset="{{asset('build/client/images/mckup/depyl-mobile.webp')}}" media="(max-width: 600px)" type=image/webp>
-                            <source srcset="{{asset('build/client/images/mckup/depyl.webp')}}" type=image/webp>
-                            <img src="{{asset('build/client/images/mckup/depyl.webp')}}" alt=DepylCare title=DepylCare loading=lazy style=width:100%;max-width:300px;height:auto;object-fit:cover;border-radius:35px>
-                        </picture>
-                    </div>
-                    <div class=swiper-slide>
-                        <picture>
                             <source srcset="{{asset('build/client/images/mckup/viva-ervas-mobile.webp')}}" media="(max-width: 600px)" type=image/webp>
                             <source srcset="{{asset('build/client/images/mckup/viva-ervas.webp')}}" type=image/webp>
                             <img src="{{asset('build/client/images//mckup/viva-ervas.webp')}}" alt="Viva ervas" title="Viva ervas" loading=lazy style=width:100%;max-width:300px;height:auto;object-fit:cover;border-radius:35px>
