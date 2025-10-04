@@ -81,7 +81,7 @@ Route::post('blog/search', [BlogPageController::class, 'index'])->name('blog-sea
 Route::post('send-newsletter', [NewsletterController::class, 'store'])->name('send-newsletter');
 
 Route::post('cliente/cadastro', [ClientController::class, 'store'])->name('register-client');
-Route::get('home', [HomePageController::class, 'index'])->name('index');
+Route::get('/', [HomePageController::class, 'index'])->name('index');
 // Route::get('sobre', [AboutPageController::class, 'index'])->name('about');
 // Route::get('servicos-aos-sindicalizados', [BenefitPageController::class, 'index'])->name('unionized');
 // Route::get('juridico', [JuridicoPageController::class, 'index'])->name('juridico');
@@ -92,7 +92,7 @@ Route::get('home', [HomePageController::class, 'index'])->name('index');
 
 
 // Route::get('agenda', [EventPageController::class, 'index'])->name('client.event');
-Route::get('home/blog/filter/{category?}', [HomePageController::class, 'filterByCategory'])
+Route::get('blog/filter/{category?}', [HomePageController::class, 'filterByCategory'])
     ->name('blog.filter');
 
 
