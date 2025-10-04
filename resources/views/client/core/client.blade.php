@@ -46,8 +46,7 @@
     <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
     </noscript>
-    <link rel="preload" as="image" href="{{asset('build/client/images/banner.webp')}}">
-    <link rel="preload" as="image" href="{{asset('build/client/images/banner-mob.webp')}}">
+    <link rel="preload" as="image" href="{{asset('build/client/images/bann-1.webp')}}">
 
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
@@ -135,7 +134,7 @@
                 "Tráfego pago",
                 "SEO",
                 "Agência de Desenvolvimento Web em Salvador",
-                "WHI",
+                "WHI"
             ]
         }
     </script>

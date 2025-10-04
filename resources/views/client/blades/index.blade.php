@@ -976,15 +976,14 @@ Quais os benefícios de trabalhar com a WHI em vez de outras agências?
         .card-img-container {
             position: relative;
             overflow: hidden;
-            height: 180px;
+            max-height: 180px;
         }
         
         .blog-card img {
             width: 100%;
             height: 100%;
             transition: var(--transition);
-            max-width: 269.33px;
-            aspect-ratio: 1.91 / 1
+            object-fit: cover;
         }
         
         .blog-card:hover img {
