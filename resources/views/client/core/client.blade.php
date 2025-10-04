@@ -38,6 +38,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="copyright" content="Direitos reservados WHI">
     <meta name="author" content="WHI">
+    <meta name="google-site-verification" content="kpN-gFJ5IGqEAXcdrwnTxAcJXZF-LsaP3bPwONwcvsY" />
     <link rel="shortcut icon" href="{{ asset('build/admin/images/favicon.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
