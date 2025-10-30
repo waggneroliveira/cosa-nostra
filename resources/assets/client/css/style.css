@@ -2686,9 +2686,27 @@ Section Title
 	margin-bottom: 30px;
 }
 
-.pq-section-title-style-1 p {
+.pq-section-title-style-1 p, .pq-section-title-style-1 ul li {
 	margin-bottom: 0;
 	color: var(--black-color);
+	list-style: none;
+}
+.pq-section-title-style-1 ul li::before{
+	content:'';
+	background-image: url('../images/ok.png');
+	
+}
+.pq-section-title-style-1 p strong{
+	font-family: var(--title-fonts);
+    color: var(--black-color);
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 400;
+	font-size: 20px;
+    line-height: 26px;
+    margin: 0;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /*===== Sub Title Left =====*/

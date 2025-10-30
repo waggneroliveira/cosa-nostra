@@ -6,95 +6,39 @@
 <rs-module-wrap id="rev_slider_16_1_wrapper" data-alias="home-1-11" data-source="gallery" style="visibility:hidden;background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
     <rs-module id="rev_slider_16_1" data-version="6.6.8">
         <rs-slides style="overflow: hidden; position: absolute;">
-            <rs-slide style="position: absolute;" data-key="rs-43" data-title="Slide" data-thumb="{{ asset('build/client/rev/assets/1-3-50x100.jpg') }}" data-anim="adpr:false;ms:100;" data-in="o:0;" data-out="a:false;">
-                <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="1" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('build/client/rev/assets/1-3.jpg') }}" data-no-retina>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-43-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:100;sp:1000;sR:100;" data-frame_999="o:0;st:w;sR:7900;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">make a order 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-43-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:1px,0,0,0;y:m;yo:-96px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:864px,680px,516px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:300;sp:1000;sR:300;" data-frame_999="o:0;st:w;sR:7700;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">Homestyle Italian cooking enjoyed with family 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-43-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;sR:600;" data-frame_999="o:0;st:w;sR:7400;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">Mistaken Idea of Denouncing Pleasure and Praising Pain </rs-layer>
-                <!--
-                    -->
-                <a id="slider-16-slide-43-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="about-us.html" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
-                    <div class="pq-button-block">
-                        <br/>
-                        <span class="pq-button-line-left"></span>
-                        <br/>
-                        <span class="pq-button-text">Read More</span>
-                        <br/>
-                        <span class="pq-button-line-right"></span>
-                        <br/>
-                    </div>
-                </a>
-                <!--
-                    -->
-            </rs-slide>
-            <rs-slide style="position: absolute;" data-key="rs-46" data-title="Slide" data-thumb="{{ asset('build/client/rev/assets/2-3-50x100.jpg') }}" data-anim="adpr:false;ms:600;" data-in="o:0;" data-out="a:false;">
-                <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="2" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('build/client/rev/assets/2-3.jpg') }}" data-no-retina>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-46-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;" data-frame_999="o:0;st:w;sR:8000;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">make a order 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-46-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;y:m;yo:-94px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:810px,638px,484px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;" data-frame_999="o:0;st:w;sR:7660;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">Enjoy the real fresh food from our Cuisines 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-46-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:1200;sp:1000;" data-frame_999="o:0;st:w;sR:7310;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">Mistaken Idea of Denouncing Pleasure and Praising Pain 
-                </rs-layer>
-                <!--
-                    -->
-                <a id="slider-16-slide-46-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="about-us.html" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:1500;sp:1000;" data-frame_999="o:0;st:w;sR:6950;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
-                    <div class="pq-button-block">
-                        <br/>
-                        <span class="pq-button-line-left"></span>
-                        <br/>
-                        <span class="pq-button-text">Read More</span>
-                        <br/>
-                        <span class="pq-button-line-right"></span>
-                        <br/>
-                    </div>
-                </a>
-                <!--
-                    -->
-            </rs-slide>
-            <rs-slide style="position: absolute;" data-key="rs-47" data-title="Slide" data-thumb="{{ asset('build/client/rev/assets/3-3-50x100.jpg') }}" data-anim="adpr:false;ms:600;" data-in="o:0;" data-out="a:false;">
-                <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="3" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('build/client/rev/assets/3-3.jpg') }}" data-no-retina>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-47-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;" data-frame_999="o:0;st:w;sR:8000;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">make a order 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-47-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;y:m;yo:-94px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:810px,638px,484px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;" data-frame_999="o:0;st:w;sR:7660;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">The Best Food For The Best Moments 
-                </rs-layer>
-                <!--
-                    -->
-                <rs-layer id="slider-16-slide-47-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:1200;sp:1000;" data-frame_999="o:0;st:w;sR:7310;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">Mistaken Idea of Denouncing Pleasure and Praising Pain 
-                </rs-layer>
-                <!--
-                    -->
-                <a id="slider-16-slide-47-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="about-us.html" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:1500;sp:1000;" data-frame_999="o:0;st:w;sR:6950;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
-                    <div class="pq-button-block">
-                        <br/>
-                        <span class="pq-button-line-left"></span>
-                        <br/>
-                        <span class="pq-button-text">Read More</span>
-                        <br/>
-                        <span class="pq-button-line-right"></span>
-                        <br/>
-                    </div>
-                </a>
-                <!--
-                    -->
-            </rs-slide>
+            @foreach ($slides as $slide)
+                <rs-slide style="position: absolute;" data-key="rs-{{$slide->id}}" data-title="Slide" data-thumb="{{ asset('storage/' .$slide->path_image_mobile) }}" data-anim="adpr:false;ms:100;" data-in="o:0;" data-out="a:false;">
+                    <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="1" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('storage/' .$slide->path_image) }}" data-no-retina>
+
+                    @if($slide->subtitle)
+                        <rs-layer id="slider-16-slide-{{$slide->id}}-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:100;sp:1000;sR:100;" data-frame_999="o:0;st:w;sR:7900;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">{{$slide->subtitle}}
+                        </rs-layer>
+                    @endif
+                    
+                    @if($slide->title)
+                        <rs-layer id="slider-16-slide-{{$slide->id}}-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:1px,0,0,0;y:m;yo:-96px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:1440px,680px,516px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:300;sp:1000;sR:300;" data-frame_999="o:0;st:w;sR:7700;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">{{$slide->title}}
+                        </rs-layer>
+                    @endif
+
+                    @if($slide->description)
+                    <rs-layer id="slider-16-slide-{{$slide->id}}-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;sR:600;" data-frame_999="o:0;st:w;sR:7400;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">{!!$slide->description!!} </rs-layer>
+                    @endif
+              
+                    @if($slide->link && $slide->btn_title)
+                        <a id="slider-16-slide-{{$slide->id}}-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="about-us.html" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
+                            <div class="pq-button-block">
+                                <br/>
+                                <span class="pq-button-line-left"></span>
+                                <br/>
+                                <span class="pq-button-text">{{$slide->btn_title}}</span>
+                                <br/>
+                                <span class="pq-button-line-right"></span>
+                                <br/>
+                            </div>
+                        </a>
+                    @endif
+                </rs-slide>
+            @endforeach
         </rs-slides>
     </rs-module>
 </rs-module-wrap>
@@ -104,179 +48,167 @@
 <section class="portfolio p-0 pq-mt-60">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-12">
-                <div class="pq-main-portfolio-box p-0">
-                    <div class="pq-portfolio-box-img mb-0 position-relative">
-                        <img src="{{ asset('build/client/images/portfolio/1-2.png') }}" class="img-fluid animation-bob" alt="portfoilo">
-                        <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
-                            <h5 class="pq-portfolio-image-box-title text-white">
-                                <a href="booking-table.html">Booking Table</a>
-                            </h5>
+            @foreach($topics as $topic)
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="pq-main-portfolio-box p-0">
+                        <div class="pq-portfolio-box-img mb-0 position-relative">
+                            <img src="{{ asset('storage/' .$topic->path_image) }}" class="img-fluid animation-bob" alt="{{$topic->title}}">
+                            <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
+                                @if($topic->link <> null)
+                                    <h5 class="pq-portfolio-image-box-title text-white">
+                                        <a href="{{$topic->link}}">{{$topic->title}}</a>
+                                    </h5>
+                                    @else
+                                    <h5 class="pq-portfolio-image-box-title text-white">
+                                        {{$topic->title}}
+                                    </h5>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12">
-                <div class="pq-main-portfolio-box p-0">
-                    <div class="pq-portfolio-box-img mb-0 position-relative">
-                        <img src="{{ asset('build/client/images/portfolio/2-2.png') }}" class="img-fluid animation-bob" alt="portfoilo">
-                        <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
-                            <h5 class="pq-portfolio-image-box-title text-white">
-                                <a href="our-menu.html">Our Menu</a>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12">
-                <div class="pq-main-portfolio-box p-0">
-                    <div class="pq-portfolio-box-img mb-0 position-relative">
-                        <img src="{{ asset('build/client/images/portfolio/3-1.png') }}" class="img-fluid animation-bob" alt="portfoilo">
-                        <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
-                            <h5 class="pq-portfolio-image-box-title text-white">
-                                <a href="our-kitchen.html">Our kitchen</a>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 <!-- <portfolio-end> -->
 <!-- <about-start> -->
-<section class="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-12 col-md-12 pe-xl-5">
-                <div class="pq-about-img3">
-                    <img src="{{ asset('build/client/images/about/about1.png') }}" alt="about">
+@if(isset($about))
+    <section class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-12 col-md-12 pe-xl-5">
+                    <div class="pq-about-img3">
+                        <img src="{{ asset('storage/' . $about->path_image) }}" alt="about">
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-12 col-md-12">
-                <div class="pq-section-title-style-1 ">
-                    <span class="pq-section-sub-title">Sobre</span>
-                    <h5 class="pq-section-title mb-2">O sabor da Itália mora aqui</h5>
-                    <p>Desde 1987, a Cantina Cosa Nostra carrega consigo uma tradição familiar que atravessa décadas. Fundada por descendentes de italianos com receitas das nonnas e mammas de bairros como Pari e Belenzinho (SP), trazemos à Pituba, em Salvador, o aconchego, o sabor e a autenticidade da cozinha italiana. Massas caseiras, forno a lenha, vinhos escolhidos com carinho e um atendimento que faz você se sentir em casa.</p>
-                    <div class="pq-section-svg"></div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
-                        <div class="about-icon-container">
-                            <div class="about-icon-box-main d-flex">
-                                <div class="about-icon-box-icon">
-                                    <span class="about-icon">
-                                    <i aria-hidden="true" class=" flaticon-cutlery"></i>
-                                    </span>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="pq-section-title-style-1 ">
+                        <span class="pq-section-sub-title">{{$about->subtitle}}</span>
+                        <h5 class="pq-section-title mb-2">{{$about->title}}</h5>
+                        <p>
+                            {!! $about->text !!}
+                        </p>
+                        <div class="pq-section-svg"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="about-icon-container">
+                                <div class="about-icon-box-main d-flex">
+                                    <div class="about-icon-box-icon">
+                                        <span class="about-icon">
+                                        <i aria-hidden="true" class=" flaticon-cutlery"></i>
+                                        </span>
+                                    </div>
+                                    <div class="about-icon-box-content">
+                                        <h5 class="about-icon-box-title">
+                                            <span>Speciallst</span>
+                                        </h5>
+                                    </div>
                                 </div>
-                                <div class="about-icon-box-content">
-                                    <h5 class="about-icon-box-title">
-                                        <span>Speciallst</span>
-                                    </h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="about-icon-container mb-0">
+                                <div class="about-icon-box-main d-flex">
+                                    <div class="about-icon-box-icon">
+                                        <span class="about-icon">
+                                        <i aria-hidden="true" class=" flaticon-tray"></i>
+                                        </span>
+                                    </div>
+                                    <div class="about-icon-box-content">
+                                        <h5 class="about-icon-box-title">
+                                            <span>Restaurant</span>
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="about-icon-container mb-0">
-                            <div class="about-icon-box-main d-flex">
-                                <div class="about-icon-box-icon">
-                                    <span class="about-icon">
-                                    <i aria-hidden="true" class=" flaticon-tray"></i>
-                                    </span>
+                    <div class="pq-about-list-container">
+                        <ul class="pq-about-icon-list-items">
+                            <li class="pq-about-icon-list-item">
+                                <span class="pq-icon-list-icon">
+                                <i aria-hidden="true" class="fas fa-check"></i>
+                                </span>
+                                <span class="pq-about-icon-list-text">chunks as necessary, making this the first true generator on the Internet.</span>
+                            </li>
+                            <li class="pq-about-icon-list-item">
+                                <span class="pq-icon-list-icon">
+                                <i aria-hidden="true" class="fas fa-check"></i>
+                                </span>
+                                <span class="pq-about-icon-list-text">There are many variations of passages of Lorem Ipsum available</span>
+                            </li>
+                            <li class="pq-about-icon-list-item">
+                                <span class="pq-icon-list-icon">
+                                <i aria-hidden="true" class="fas fa-check"></i>
+                                </span>
+                                <span class="pq-about-icon-list-text">chunks as necessary, making this the first true generator.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pq-about-btn">
+                        <div class="pq-btn-container">
+                            <a class="pq-button pq-button-flat" href="our-menu.html">
+                                <div class="pq-button-block">
+                                    <span class="pq-button-line-left"></span>
+                                    <span class="pq-button-text text-white">Confira nosso cardápio</span>
+                                    <span class="pq-button-line-right"></span>
                                 </div>
-                                <div class="about-icon-box-content">
-                                    <h5 class="about-icon-box-title">
-                                        <span>Restaurant</span>
-                                    </h5>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="pq-about-list-container">
-                    <ul class="pq-about-icon-list-items">
-                        <li class="pq-about-icon-list-item">
-                            <span class="pq-icon-list-icon">
-                            <i aria-hidden="true" class="fas fa-check"></i>
-                            </span>
-                            <span class="pq-about-icon-list-text">chunks as necessary, making this the first true generator on the Internet.</span>
-                        </li>
-                        <li class="pq-about-icon-list-item">
-                            <span class="pq-icon-list-icon">
-                            <i aria-hidden="true" class="fas fa-check"></i>
-                            </span>
-                            <span class="pq-about-icon-list-text">There are many variations of passages of Lorem Ipsum available</span>
-                        </li>
-                        <li class="pq-about-icon-list-item">
-                            <span class="pq-icon-list-icon">
-                            <i aria-hidden="true" class="fas fa-check"></i>
-                            </span>
-                            <span class="pq-about-icon-list-text">chunks as necessary, making this the first true generator.</span>
-                        </li>
-                    </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="pq-counter pq-counter-style-2 active m-0 ">
+                    <div class="pq-counter-info">
+                        <div class="pq-counter-num-prefix">
+                            <h5 class="timer" data-to="59" data-speed="5000">59</h5>
+                            <span class="pq-counter-prefix">+</span>
+                        </div>
+                        <p class="pq-counter-description">Breakfast Option</p>
+                    </div>
                 </div>
-                <div class="pq-about-btn">
-                    <div class="pq-btn-container">
-                        <a class="pq-button pq-button-flat" href="our-menu.html">
-                            <div class="pq-button-block">
-                                <span class="pq-button-line-left"></span>
-                                <span class="pq-button-text text-white">Confira nosso cardápio</span>
-                                <span class="pq-button-line-right"></span>
-                            </div>
-                        </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-md-0">
+                <div class="pq-counter pq-counter-style-2 active  ">
+                    <div class="pq-counter-info">
+                        <div class="pq-counter-num-prefix">
+                            <h5 class="timer" data-to="100" data-speed="5000">100</h5>
+                            <span class="pq-counter-prefix">+</span>
+                        </div>
+                        <p class="pq-counter-description">Dinner Option</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
+                <div class="pq-counter pq-counter-style-2 active  ">
+                    <div class="pq-counter-info">
+                        <div class="pq-counter-num-prefix">
+                            <h5 class="timer" data-to="50" data-speed="5000">50</h5>
+                            <span class="pq-counter-prefix">+</span>
+                        </div>
+                        <p class="pq-counter-description">Table Available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
+                <div class="pq-counter pq-counter-style-2 active  ">
+                    <div class="pq-counter-info">
+                        <div class="pq-counter-num-prefix">
+                            <h5 class="timer" data-to="25" data-speed="5000">25</h5>
+                            <span class="pq-counter-prefix">+</span>
+                        </div>
+                        <p class="pq-counter-description">Year Of Experience</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-lg-3 col-md-6 col-12">
-            <div class="pq-counter pq-counter-style-2 active m-0 ">
-                <div class="pq-counter-info">
-                    <div class="pq-counter-num-prefix">
-                        <h5 class="timer" data-to="59" data-speed="5000">59</h5>
-                        <span class="pq-counter-prefix">+</span>
-                    </div>
-                    <p class="pq-counter-description">Breakfast Option</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 mt-4 mt-md-0">
-            <div class="pq-counter pq-counter-style-2 active  ">
-                <div class="pq-counter-info">
-                    <div class="pq-counter-num-prefix">
-                        <h5 class="timer" data-to="100" data-speed="5000">100</h5>
-                        <span class="pq-counter-prefix">+</span>
-                    </div>
-                    <p class="pq-counter-description">Dinner Option</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
-            <div class="pq-counter pq-counter-style-2 active  ">
-                <div class="pq-counter-info">
-                    <div class="pq-counter-num-prefix">
-                        <h5 class="timer" data-to="50" data-speed="5000">50</h5>
-                        <span class="pq-counter-prefix">+</span>
-                    </div>
-                    <p class="pq-counter-description">Table Available</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
-            <div class="pq-counter pq-counter-style-2 active  ">
-                <div class="pq-counter-info">
-                    <div class="pq-counter-num-prefix">
-                        <h5 class="timer" data-to="25" data-speed="5000">25</h5>
-                        <span class="pq-counter-prefix">+</span>
-                    </div>
-                    <p class="pq-counter-description">Year Of Experience</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+@endif
 <!-- <about-end> -->
 <!-- <service-start> -->
 <section class="section pq-service-bg-dark-color pb-0">

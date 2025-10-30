@@ -39,7 +39,9 @@
                                             Auth::user()->hasPermissionTo('sobre nos.criar') ||
                                             Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
-                                                <a href="{{route('admin.dashboard.about.create')}}" class="mdi mdi-plus-circle me-1 btn btn-primary text-black waves-effect waves-light">{{__('dashboard.btn_create')}}</a>
+                                                @if(isset($slides) && $slides->count() < 1)
+                                                    <a href="{{route('admin.dashboard.about.create')}}" class="mdi mdi-plus-circle me-1 btn btn-primary text-black waves-effect waves-light">{{__('dashboard.btn_create')}}</a>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>

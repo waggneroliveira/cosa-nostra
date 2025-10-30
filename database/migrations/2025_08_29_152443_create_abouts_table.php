@@ -11,6 +11,9 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->string('btn_link')->nullable();
+            $table->string('title_button')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('active')->default(0);
             $table->integer('sorting')->default(0);

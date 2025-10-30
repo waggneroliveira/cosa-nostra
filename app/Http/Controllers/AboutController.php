@@ -128,7 +128,7 @@ class AboutController extends Controller
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
-                    ->toWebp(quality: 95)
+                    ->toWebp(quality: 100)
                     ->toString();
 
                 Storage::disk('public')->put($pathUpload . $filename, $image);

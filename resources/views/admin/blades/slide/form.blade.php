@@ -1,21 +1,25 @@
 @php
     $textareaId = $textareaId ?? 'description' . (isset($slide->id) ? $slide->id : '');
-    $titleInputId = 'title' . (isset($slide->id) ? $slide->id : '');
 @endphp
 
 <div class="d-flex justify-content-between">
     <div class="row col-lg-6">
         <div class="mb-3">
             <label for="title" class="form-label">Título </label>
-            <input type="text" name="title" class="form-control" id="{{$titleInputId}}" value="{{isset($slide)?$slide->title:''}}" placeholder="Título">
-            {{-- <div class="mt-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="boldSelectionTitle()"><b>B</b></button>
-            </div> --}}
+            <input type="text" name="title" class="form-control" value="{{isset($slide)?$slide->title:''}}" placeholder="Título">
+        </div>
+        <div class="mb-3">
+            <label for="subtitle" class="form-label">Subtítulo </label>
+            <input type="text" name="subtitle" class="form-control" value="{{isset($slide)?$slide->subtitle:''}}" placeholder="Subtítulo">
         </div>
         
         <div class="mb-3">
             <label for="link" class="form-label">Link </label>
             <input type="text" name="link" class="form-control" id="link{{isset($slide->id)?$slide->id:''}}" value="{{isset($slide)?$slide->link:''}}" placeholder="Link">
+        </div>
+        <div class="mb-3">
+            <label for="btn_title" class="form-label">Título do botão </label>
+            <input type="text" name="btn_title" class="form-control" value="{{isset($slide)?$slide->btn_title:''}}" placeholder="Título do botão">
         </div>
         
         <div class="row">    
@@ -57,26 +61,6 @@
 </div>
 
 <script>
-    function boldSelectionTitle() {
-        var input = document.getElementById("{{$titleInputId}}")
-        if (!input) return;
-        var start = input.selectionStart;
-        var end = input.selectionEnd;
-        if (start === end) return; // nada selecionado
-        var selected = input.value.substring(start, end);
-        var before = input.value.substring(0, start);
-        var after = input.value.substring(end);
-        // Se já está em bold, remove
-        if (selected.startsWith('<b>') && selected.endsWith('</b>')) {
-            selected = selected.replace(/^<b>(.*)<\/b>$/i, '$1');
-        } else {
-            selected = '<b>' + selected + '</b>';
-        }
-        input.value = before + selected + after;
-        // Ajusta seleção para o novo texto
-        input.setSelectionRange(before.length, before.length + selected.length);
-        input.focus();
-    }
     document.addEventListener("DOMContentLoaded", function() {
         if (document.getElementById("{{$textareaId}}")) {
             CKEDITOR.replace("{{$textareaId}}");

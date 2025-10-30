@@ -6,7 +6,7 @@
     <label for="link" class="form-label">Link</label>
     <input type="text" name="link" class="form-control" id="link{{isset($topic->id)?$topic->id:''}}" value="{{isset($topic)?$topic->link:''}}" placeholder="Informe o link">
 </div>
-<div class="mb-3 col-12 d-flex align-items-start flex-column">
+{{-- <div class="mb-3 col-12 d-flex align-items-start flex-column">
     <label for="category-select" class="form-label">Cor de fundo <span class="text-danger">*</span></label>
     @php
         $currentCategory = isset($topic) ? $topic->color : null;
@@ -23,7 +23,7 @@
         </option>
 
     </select>
-</div>
+</div> --}}
 <div class="col-lg-12">
     <div class="mb-3">
         <label for="title" class="form-label">Imagem desktop </label>

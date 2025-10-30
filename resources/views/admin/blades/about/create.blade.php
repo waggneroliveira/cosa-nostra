@@ -25,9 +25,21 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 col-lg-6">        
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label for="title" class="form-label">Título</label>
-                                <input type="text" name="title" class="form-control" id="title" placeholder="Digite seu nome">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Digite o título">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="subtitle" class="form-label">Subtítulo</label>
+                                <input type="text" name="subtitle" class="form-control" id="subtitle" placeholder="Digite o Subtítulo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="btn_link" class="form-label">Link </label>
+                                <input type="text" name="btn_link" class="form-control" id="btn_link" placeholder="Link">
+                            </div>
+                            <div class="mb-3">
+                                <label for="title_button" class="form-label">Título do botão </label>
+                                <input type="text" name="title_button" class="form-control" placeholder="Título do botão">
                             </div>
                             
                             <div class="mb-3 col-12 d-flex align-items-start flex-column">

@@ -1,9 +1,20 @@
 <div class="col-12 col-lg-6">    
     <div class="mb-3 col-12">
         <label for="title" class="form-label">Título</label>
-        <input type="text" name="title" class="form-control" id="title{{isset($about->id)?$about->id:''}}" value="{{isset($about)?$about->title:''}}" placeholder="Digite seu nome">
+        <input type="text" name="title" class="form-control" id="title{{isset($about->id)?$about->id:''}}" value="{{isset($about)?$about->title:''}}" placeholder="Digite o título">
     </div>
-    
+    <div class="mb-3 col-12">
+        <label for="subtitle" class="form-label">Subtítulo</label>
+        <input type="text" name="subtitle" class="form-control" id="subtitle{{isset($about->id)?$about->id:''}}" value="{{isset($about)?$about->subtitle:''}}" placeholder="Digite o Subtítulo">
+    </div>
+    <div class="mb-3">
+        <label for="btn_link" class="form-label">Link </label>
+        <input type="text" name="btn_link" class="form-control" id="btn_link{{isset($slide->id)?$slide->id:''}}" value="{{isset($slide)?$slide->btn_link:''}}" placeholder="Link">
+    </div>
+    <div class="mb-3">
+        <label for="title_button" class="form-label">Título do botão </label>
+        <input type="text" name="title_button" class="form-control" value="{{isset($slide)?$slide->title_button:''}}" placeholder="Título do botão">
+    </div>
     <div class="mb-3 col-12 d-flex align-items-start flex-column">
         <label for="textarea-edit" class="form-label">Texto</label>
         <textarea name="text" class="form-control col-12" id="textarea-edit" rows="5">
