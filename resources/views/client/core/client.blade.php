@@ -41,29 +41,31 @@
     <meta name="google-site-verification" content="kpN-gFJ5IGqEAXcdrwnTxAcJXZF-LsaP3bPwONwcvsY" />
     <link rel="shortcut icon" href="{{ asset('build/admin/images/favicon.png') }}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" onload="this.onload=null,this.rel='stylesheet'">
-    <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    </noscript>
     <link rel="preload" as="image" href="{{asset('build/client/images/bann-1.webp')}}">
 
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"></noscript>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    <!-- LOADING FONTS AND ICONS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/client/rev/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/client/rev/fonts/font-awesome/css/font-awesome.css') }}">
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/client/rev/css/rs6.css') }}">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="{{ asset('build/client/fonts/font-awesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/client/fonts/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/client/fonts/ionicons/ionicons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/client/fonts/flaticons/flaticon.css') }}">
+
     <link rel="preload" href="{{ asset('build/admin/js/libs/sweetalert2/sweetalert2.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="{{ asset('build/admin/js/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"></noscript>
-    <link rel="preload" href="{{ asset('build/admin/js/libs/dropzone/min/dropzone.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('build/admin/js/libs/dropzone/min/dropzone.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">  
     <noscript><link href="{{ asset('build/admin/js/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css"></noscript>
     <link rel="preload" href="{{ asset('build/admin/js/libs/dropify/css/dropify.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="{{ asset('build/admin/js/libs/dropify/css/dropify.min.css') }}" rel="stylesheet" type="text/css"></noscript>
     <link href="{{ asset('build/client/css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="preload" href="{{ asset('build/client/css/bootstrap-icons/bootstrap-icons.css') }}" as="style" onload="this.rel='stylesheet'">
+    <link href="{{ asset('build/client/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('build/client/css/magnific-popup.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('build/client/css/animations.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('build/client/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('build/client/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('build/client/lgpd/style.css') }}" rel="stylesheet" type="text/css" />
 
         
@@ -142,18 +144,162 @@
 </head>
 <body>
     <div id="organization" hidden></div>
-    <header id="header" class="py-4 py-sm-5 position w-100 d-flex align-items-center justify-content-between flex-row max-width m-auto">
-        <div class="logo-img">
-            <a href="{{route('index')}}">
-                <img src="{{asset('build/client/images/logo.png')}}" alt="WHI -Web de Alta Inovação" title="WHI -Web de Alta Inovação" class="img-fluid" loading="lazy">
-            </a>
+    <!--Loading-->
+    <div id="pq-loading">
+        <div id="pq-loading-center">
+            <img src="{{ asset('build/client/images/header-logo/logo_header.svg') }}" alt="loading">
         </div>
-        <div class="social-links superior d-flex justify-content-center gap-4 text-center">
-            <a href="https://www.linkedin.com/company/106948313/admin/dashboard/" aria-label="Visite nosso LinkedIn" target="_blank" class="linkedin rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.instagram.com/agenciawhi" aria-label="Visite nosso Instagram" target="_blank" class="instagram rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-instagram"></i></a>
-            <a href="https://wa.me/5571992768360" aria-label="Converse no WhatsApp" target="_blank" class="whatsapp rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-whatsapp"></i></a>
+    </div>
+    <!--Loading-->
+    <!-- <header-start> -->
+    <header id="pq-header" class="pq-header-default">
+        <div class="pq-top-header">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-md-6 text-right">
+                        <div class="pq-header-social text-right">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pq-header-contact ">
+                            <ul class="d-flex gap-5 justify-content-start align-items-center">
+                                <li>
+                                    <a href="tel:+1800001658">
+                                        <i class="fas fa-phone"></i>
+                                        <span>+1800-001-658</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:peacefulqode@gmail.com">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>peacefulqode@gmail.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pq-bottom-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <a class="navbar-brand p-0" href="index.html">
+                                <img class="img-fluid logo" src="{{ asset('build/client/images/header-logo/logo_header.svg') }}" alt="millennium">
+                            </a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div id="pq-menu-contain" class="pq-menu-contain">
+                                    <ul id="pq-main-menu" class="navbar-nav ml-auto">
+                                        <li class="menu-item current-menu-item">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Quem Somos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Galeria</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Blog</a>
+                                            <i class="ion-chevron-down pq-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Grid Style</a>
+                                                    <i class="ion-chevron-down pq-submenu-icon"></i>
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item">
+                                                            <a href="1-column-blog.html">1 Column Blog</a>
+                                                        </li>
+                                                        <li class="menu-item">
+                                                            <a href="2-column-blog.html">2 Column Blog</a>
+                                                        </li>
+                                                        <li class="menu-item">
+                                                            <a href="3-column-blog.html">3 Column Blog</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Blog Sidebar</a>
+                                                    <i class="ion-chevron-down pq-submenu-icon"></i>
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item">
+                                                            <a href="left-sidebar.html">Left Sidebar</a>
+                                                        </li>
+                                                        <li class="menu-item">
+                                                            <a href="right-sidebar.html">Right Sidebar</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="blog-single.html">Blog Single</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="contact-us.html">Contact us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pq-menu-search-block">
+                                <a href="javascript:void(0)" id="pq-seacrh-btn">
+                                    <i class="ti-search"></i>
+                                </a>
+                                <div class="pq-search-form">
+                                    <form role="search" method="get" class="search-form">
+                                        <label>
+                                            <span class="screen-reader-text">Search for:</span>
+                                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                                        </label>
+                                        <button class="search-submit">
+                                            <span class="screen-reader-text">Search</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="pq-btn-container">
+                                <a href="booking-table.html" class="pq-button">
+                                    <div class="pq-button-block">
+                                        <span class="pq-button-line-left"></span>
+                                        <span class="pq-button-text text-white">Book a table</span>
+                                        <span class="pq-button-line-right"></span>
+                                    </div>
+                                </a>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
+    <!-- <header-end> -->
 
     @include('client/includes/lgpd/lgpd')
 
@@ -386,7 +532,6 @@
                 </div>
 
                 <div class="modal-body">
-                    {{-- {{ route('client.password.email') }} --}}
                     <form action="{{ route('client.password.email') }}" method="POST">
                         @csrf
 
@@ -411,82 +556,247 @@
         @yield('content') 
     </main>
 
-    <footer id="footer" class="footer position-relative dark-background" data-aos="fade-up" data-aos-delay="150">
-        <div class="container py-5">
-            <div class="sitemap mt-2 mb-5 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-3 justify-content-between align-items-center">
-                <div class="logo logo-footer">
-                    <a href="{{route('index')}}">
-                        <img src="{{asset('build/client/images/logo.png')}}" alt="WHI - Web de Alta Inovação" title="WHI - Web de Alta Inovação" loading="lazy">
-                    </a>
-                </div>
-                <ul class="list-unstyled text-center">
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#transformed' : route('index') . '#transformed' }}">
-                            Quem Somos
-                        </a>
-                    </li>
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#what-we-do' : route('index') . '#what-we-do' }}">
-                            O que fazemos
-                        </a>
-                    </li>
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#portfolio' : route('index') . '#portfolio' }}">
-                            Cases
-                        </a>
-                    </li>
-                </ul>
-
-                <ul class="list-unstyled text-center">
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#proccess' : route('index') . '#proccess' }}">
-                            Etapas
-                        </a>
-                    </li>
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#trust-whi' : route('index') . '#trust-whi' }}">
-                            Depoimentos
-                        </a>
-                    </li>
-                    <li class="rethink-sans-semiBold mb-2">
-                        <a href="{{ request()->routeIs('index') ? '#faq' : route('index') . '#faq' }}">
-                            Perguntas Frequentes
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="d-flex justify-content-end flex-column w-auto">
-                    <div class="social-links d-flex justify-content-end gap-4 text-center">
-                        <a href="https://www.linkedin.com/company/106948313/admin/dashboard/" aria-label="Visite nosso LinkedIn" target="_blank" class="linkedin rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://www.instagram.com/agenciawhi" aria-label="Visite nosso Instagram" target="_blank" class="instagram rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-instagram"></i></a>
-                        <a href="https://wa.me/5571992768360" target="_blank" aria-label="Converse no WhatsApp" class="whatsapp rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-whatsapp"></i></a>
+    <!-- <footer-start> -->
+    <footer id="pq-footer">
+        <div class="pq-footer-style-1">
+            <div class="pq-footer-top pb-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <img src="{{ asset('build/client/images/footer-logo/logo_header.svg') }}" class="pq-footer-logo" alt="Millennium-footer-logo">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget rhoncus consectetur enim.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="pq-footer-social">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="footer">
+                                <h4 class="footer-title">Use Full Link</h4>
+                                <div class="menu-use-full-link-container">
+                                    <ul id="menu-use-full-link" class="menu">
+                                        <li class="menu-item">
+                                            <a href="team-single.html">Team Signal</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="team-single.html">Contact Us</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="booking-table.html">Booking Table</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="our-kitchen.html">Our Kitchen</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="our-menu.html">Our Menu</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="our-team.html">Our team</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="about-us.html">About Us</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="faq.html">FAQ</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="footer footer-port-1">
+                                <h4 class="footer-title">Contact Us</h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pq-contact">
+                                            <li>
+                                                <a href="tel:+1800001658">
+                                                    <i class="fa fa-phone"></i>
+                                                    <span>+1800-001-658</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="mailto:peacefulqode@gmail.com">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <span>peacefulqode@gmail.com</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-map-marker"></i>
+                                                <span>Themeforest, Envato HQ 24 Fifth st., Los Angeles, USA</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="footer opening-hours">
+                                <h4 class="footer-title">Opening Hours</h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pq-time">
+                                            <li>
+                                                <span class="day">Mon - Tue</span>
+                                                <span class="time">09.00 am - 10.00 pm</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer opening-hours">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pq-time">
+                                            <li>
+                                                <span class="day">Wed - Thu</span>
+                                                <span class="time">10.00am - 11.00pm</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer opening-hours">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pq-time">
+                                            <li>
+                                                <span class="day">Sat</span>
+                                                <span class="time">07.00am - 08.00pm</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer opening-hours">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pq-time">
+                                            <li>
+                                                <span class="day">Sun</span>
+                                                <span class="time">9:00 am - 8 Pm</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://wa.me/5571992768360" target="_blank" rel="noopener noreferrer" class="mt-4 rethink-sans-regular ps-4 pe-0 text-p call-to-action d-flex justify-content-between align-items-center">
-                    Fale com a gente!
-                    <i class="bi bi-whatsapp rounded-circle d-flex justify-content-center text-white align-items-center"></i>
-                    </a>
                 </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center mt-5">
-                <div class="privacy-politic">
-                    <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener noreferrer" class="text-white">Política de Privacidade</a>
-                </div>
-                <div class="copyright text-center">
-                    <p id="footer-text"></p>
-                    <script defer>
-                        const currentYear = (new Date).getFullYear();
-                        document.getElementById("footer-text").innerHTML = `WHI© ${currentYear} <span> todos os direitos reservados.</span>`
-                    </script>
-                </div>
-                <div class="credits">
-                    <a href="https://whi.dev.br/">
-                    <img src="{{asset('build/client/images/developed.svg')}}"  alt="WHI - Web de Alta Inovação" title="WHI - Web de Alta Inovação" loading="lazy">
-                    </a>
+            <div class="pq-copyright-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 align-self-center">
+                            <span class="pq-copyright">Copyright 2022 Millennium All Rights Reserved.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- <footer-end> -->
+    <!--Back To Top start-->
+    <div id="back-to-top">
+        <div class="top" id="top">
+            <a id="pq-back-to-top" href="#" class="on">
+                <span class="pq-icon-up">
+                    <i class="ion-ios-arrow-up"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+
+{{-- <p id="footer-text"></p>
+                    <script defer>
+                        const currentYear = (new Date).getFullYear();
+                        document.getElementById("footer-text").innerHTML = `WHI© ${currentYear} <span> todos os direitos reservados.</span>`
+                    </script> --}}
+        <!--jquery js-->
+        <script src="{{ asset('build/client/js/jquery.min.js') }}"></script>
+        <!--bootstrap js-->
+        <script src="{{ asset('build/client/js/bootstrap.min.js') }}"></script>
+        <!--owl-carousal-->
+        <script src="{{ asset('build/client/js/owl.carousel.min.js') }}"></script>
+        <!--countTo js-->
+        <script src="{{ asset('build/client/js/jquery.countTo.min.js') }}"></script>
+        <!--Maginfic-Popup js-->
+        <script src="{{ asset('build/client/js/jquery.magnific-popup.min.js') }}"></script>
+        <!-- Rev-Slider -->
+        <script src="{{ asset('build/client/rev/js/rbtools.min.js') }}"></script>
+        <script src="{{ asset('build/client/rev/js/rs6.min.js') }}"></script>
+        <script src="{{ asset('build/client/js/rev-custom.js') }}"></script>
+        <!--Map-chart js-->
+        <script src="{{ asset('build/client/js/am-charts-core.js') }}"></script>
+        <script src="{{ asset('build/client/js/am-charts-maps.js') }}"></script>
+        <script src="{{ asset('build/client/js/am-charts-worldlow.js') }}"></script>
+        <script src="{{ asset('build/client/js/am-charts-animated.js') }}"></script>
+        <script src="{{ asset('build/client/js/map-chart.js') }}"></script>
+        <!--custom js-->
+        <script src="{{ asset('build/client/js/custom.js') }}"></script>
+        <script>
+        $(document).ready(function() {
+            $('.gallery').magnificPopup({
+                delegate: 'a', // pega apenas os links dentro do .gallery
+                type: 'image',
+                gallery: {
+                    enabled: true, // ativa navegação entre as imagens
+                    preload: [0,1] // pré-carrega anterior e próxima
+                }
+            });
+        });
+        </script>
+
+    </body>
+    <script>
+        'undefined' === typeof _trfq || (window._trfq = []);
+        'undefined' === typeof _trfd && (window._trfd = []),
+        _trfd.push({
+            'tccl.baseHost': 'secureserver.net'
+        }, {
+            'ap': 'cpbh-mt'
+        }, {
+            'server': 'sg2plmcpnl492384'
+        }, {
+            'dcenter': 'sg2'
+        }, {
+            'cp_id': '9858662'
+        }, {
+            'cp_cache': ''
+        }, {
+            'cp_cl': '8'
+        })
+        // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
+    </script>
+    <script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script>
 
     <script src="https://cdn.ckeditor.com/4.22.1/basic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -502,13 +812,11 @@
             });
         </script>
     @endif
-    <script src="{{ asset('build/client/css/bootstrap/js/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('build/client/css/typed.js/typed.umd.js') }}"></script>
     <script src="{{ asset('build/client/lgpd/script.js') }}"></script>
     <script>
         const starUrl = "{{ asset('build/client/images/star.svg') }}";
     </script>
-    <script src="{{ asset('build/client/js/default.js') }}"></script>
+    {{-- <script src="{{ asset('build/client/js/default.js') }}"></script> --}}
 
 
     {{-- Modais alert --}}
