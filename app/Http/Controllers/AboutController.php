@@ -158,7 +158,7 @@ class AboutController extends Controller
         $request->validate([
             'path_image' => ['nullable', 'file', 'image', 'max:2048', 'mimes:jpg,jpeg,png,gif']
         ]);
-
+        // dd($data);
         // about desktop
         if ($request->hasFile('path_image')) {
             $file = $request->file('path_image');

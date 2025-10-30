@@ -15,6 +15,7 @@ class About extends Model
     
     protected $fillable = [
         'title',
+        'subtitle',
         'text',
         'btn_link',
         'title_button',

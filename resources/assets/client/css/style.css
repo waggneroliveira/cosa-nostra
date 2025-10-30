@@ -2691,10 +2691,21 @@ Section Title
 	color: var(--black-color);
 	list-style: none;
 }
+.pq-section-title-style-1 ul{
+	line-height: 38px;
+	padding: 0;
+}
 .pq-section-title-style-1 ul li::before{
-	content:'';
-	background-image: url('../images/ok.png');
-	
+	content: '';
+    background-image: url(../images/ok.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 12px;
+    height: 100%;
+    display: inline-block;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    margin-right: 10px;
 }
 .pq-section-title-style-1 p strong{
 	font-family: var(--title-fonts);
