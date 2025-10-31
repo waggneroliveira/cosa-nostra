@@ -11,10 +11,10 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Sindicalize-se</li>
+                                    <li class="breadcrumb-item active">Estatística do sobre</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Sindicalize-se</h4>
+                            <h4 class="page-title">Estatística do sobre</h4>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                                             Auth::user()->can('sindicalize-se.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
-                                                @if (!isset($unionized))                                                
+                                                @if (isset($unionizeds) && $unionizeds->count() < 4)                                                
                                                     <button type="button" class="btn btn-primary text-black waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#unionized-create"><i class="mdi mdi-plus-circle me-1"></i> {{__('dashboard.btn_create')}}</button>
                                                 @endif
                                                 <!-- Modal -->
@@ -59,25 +59,25 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                @if (isset($unionized))                                    
-                                    <div class="table-responsive">
-                                        <table class="table-sortable table table-centered table-nowrap table-striped">
-                                            <thead>
-                                                <tr>
-                                                    {{-- <th></th> --}}
-                                                    <th class="bs-checkbox">
-                                                        <label><input name="btnSelectAll" type="checkbox"></label>
-                                                    </th>
-                                                    {{-- <th>Link</th> --}}
-                                                    <th>Título</th>
-                                                    <th>Arquivo</th>
-                                                    <th>Status</th>
-                                                    <th style="width: 85px;">Ações</th>
-                                                </tr>
-                                            </thead>
-        
-                                            <tbody>
+                                </div>                                  
+                                <div class="table-responsive">
+                                    <table class="table-sortable table table-centered table-nowrap table-striped">
+                                        <thead>
+                                            <tr>
+                                                {{-- <th></th> --}}
+                                                <th class="bs-checkbox">
+                                                    <label><input name="btnSelectAll" type="checkbox"></label>
+                                                </th>
+                                                {{-- <th>Link</th> --}}
+                                                <th>Título</th>
+                                                <th>Arquivo</th>
+                                                <th>Status</th>
+                                                <th style="width: 85px;">Ações</th>
+                                            </tr>
+                                        </thead>
+    
+                                        <tbody>
+                                            @foreach ($unionizeds as $unionized)                                                
                                                 <tr>
                                                     {{-- <td><span class="btnDrag mdi mdi-drag-horizontal font-22"></span></td> --}}
                                                     <td class="bs-checkbox">
@@ -138,10 +138,10 @@
                                                         @endif
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 {{-- PAGINATION --}}
                                 <div class="mt-3 float-end">

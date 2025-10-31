@@ -13,13 +13,15 @@ use App\Models\Video;
 use App\Models\Report;
 use App\Models\Contact;
 use App\Models\Partner;
+use App\Models\Statute;
+use App\Models\Direction;
 use App\Models\Unionized;
 use App\Models\Announcement;
 use App\Models\BenefitTopic;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\StackSessionTitle;
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 
 class HomePageController extends Controller
 {
@@ -105,6 +107,10 @@ class HomePageController extends Controller
         ->limit(6)
         ->get();
 
+        $directions = Direction::active()->sorting()->get();
+        $statute = Statute::active()->first();
+        $unionizeds = Unionized::get();
+        
         return view('client.blades.index', compact(
             'featuredNews',
             'trendingCategories',
@@ -122,6 +128,9 @@ class HomePageController extends Controller
             'blogSuperHighlights', 
             'blogHighlights', 
             'announcements', 
+            'directions', 
+            'statute', 
+            'unionizeds', 
             'topics')
         );
     }

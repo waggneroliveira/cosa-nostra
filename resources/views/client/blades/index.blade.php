@@ -107,51 +107,20 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-lg-3 col-md-6 col-12">
-                <div class="pq-counter pq-counter-style-2 active m-0 ">
-                    <div class="pq-counter-info">
-                        <div class="pq-counter-num-prefix">
-                            <h5 class="timer" data-to="59" data-speed="5000">59</h5>
-                            <span class="pq-counter-prefix">+</span>
+        <div class="row m-auto mt-5 container-fluid">
+            @foreach ($unionizeds as $unionized)                
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="pq-counter pq-counter-style-2 active m-0">
+                        <div class="pq-counter-info">
+                            <div class="pq-counter-num-prefix">
+                                <h5 class="timer" data-to="{{$unionized->title}}" data-speed="5000">{{$unionized->title}}</h5>
+                                <span class="pq-counter-prefix">+</span>
+                            </div>
+                            <p class="pq-counter-description">{{$unionized->description}}</p>
                         </div>
-                        <p class="pq-counter-description">Breakfast Option</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-md-0">
-                <div class="pq-counter pq-counter-style-2 active  ">
-                    <div class="pq-counter-info">
-                        <div class="pq-counter-num-prefix">
-                            <h5 class="timer" data-to="100" data-speed="5000">100</h5>
-                            <span class="pq-counter-prefix">+</span>
-                        </div>
-                        <p class="pq-counter-description">Dinner Option</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
-                <div class="pq-counter pq-counter-style-2 active  ">
-                    <div class="pq-counter-info">
-                        <div class="pq-counter-num-prefix">
-                            <h5 class="timer" data-to="50" data-speed="5000">50</h5>
-                            <span class="pq-counter-prefix">+</span>
-                        </div>
-                        <p class="pq-counter-description">Table Available</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0">
-                <div class="pq-counter pq-counter-style-2 active  ">
-                    <div class="pq-counter-info">
-                        <div class="pq-counter-num-prefix">
-                            <h5 class="timer" data-to="25" data-speed="5000">25</h5>
-                            <span class="pq-counter-prefix">+</span>
-                        </div>
-                        <p class="pq-counter-description">Year Of Experience</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach            
         </div>
     </section>
 @endif
@@ -161,90 +130,50 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="pq-section-title-style-1 ">
-                    <span class="pq-section-sub-title">service</span>
-                    <h5 class="pq-section-title text-white">
-                        Choose Your Best Food<br>From Categories
-                    </h5>
-                    <div class="col-lg-3 col-md-12 mt-4">
-                        <div class="pq-btn-container">
-                            <a class="pq-button pq-button-flat" href="booking-table.html">
-                                <div class="pq-button-block">
-                                    <span class="pq-button-line-left"></span>
-                                    <span class="pq-button-text text-white">Reserve agora</span>
-                                    <span class="pq-button-line-right"></span>
-                                </div>
-                            </a>
+                @if ($statute)                    
+                    <div class="pq-section-title-style-1 ">
+                        <span class="pq-section-sub-title">{{$statute->description}}</span>
+                        <h5 class="pq-section-title text-white col-lg-5 col-12">
+                            {{$statute->title}}
+                        </h5>
+                        <div class="col-lg-3 col-md-12 mt-4">
+                            <div class="pq-btn-container">
+                                <a class="pq-button pq-button-flat" href="#reservation">
+                                    <div class="pq-button-block">
+                                        <span class="pq-button-line-left"></span>
+                                        <span class="pq-button-text text-white">Reserve agora</span>
+                                        <span class="pq-button-line-right"></span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
+
                 <div class="pq-secondary-dark-color">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-md-6">
-                            <div class="pq-fancybox-style-2 text-center">
-                                <div class="pq-service-icon-main">
-                                    <div class="pq-service-icon">
-                                        <i aria-hidden="true" class=" flaticon-dish"></i>
+                        @foreach ($directions as $direction)                            
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="pq-fancybox-style-2 text-center">
+                                    <div class="pq-service-icon-main">
+                                        <div class="pq-service-icon">
+                                            <img src="{{asset('storage/' .$direction->path_image)}}" alt="{{$direction->title}}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="pq-fancy-box-info">
-                                    <h5 class="pq-fancy-box-title text-white">Fresh Product</h5>
-                                    <div class="pq-fancy-box-content">
-                                        <p class="pq-fancybox-description m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6">
-                            <div class="pq-fancybox-style-2 text-center">
-                                <div class="pq-service-icon-main">
-                                    <div class="pq-service-icon">
-                                        <i aria-hidden="true" class=" flaticon-poinsettia"></i>
-                                    </div>
-                                </div>
-                                <div class="pq-fancy-box-info">
-                                    <h5 class="pq-fancy-box-title text-white">Skilled Chefs</h5>
-                                    <div class="pq-fancy-box-content">
-                                        <p class="pq-fancybox-description m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                    <div class="pq-fancy-box-info">
+                                        <h5 class="pq-fancy-box-title text-white">{{$direction->title}}</h5>
+                                        <div class="pq-fancy-box-content">
+                                            <p class="pq-fancybox-description m-0">{{$direction->description}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6">
-                            <div class="pq-fancybox-style-2 text-center">
-                                <div class="pq-service-icon-main">
-                                    <div class="pq-service-icon">
-                                        <i aria-hidden="true" class=" flaticon-noodles"></i>
-                                    </div>
-                                </div>
-                                <div class="pq-fancy-box-info">
-                                    <h5 class="pq-fancy-box-title text-white">Vegan Cuisine</h5>
-                                    <div class="pq-fancy-box-content">
-                                        <p class="pq-fancybox-description m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6">
-                            <div class="pq-fancybox-style-2 text-center">
-                                <div class="pq-service-icon-main">
-                                    <div class="pq-service-icon">
-                                        <i aria-hidden="true" class=" flaticon-food"></i>
-                                    </div>
-                                </div>
-                                <div class="pq-fancy-box-info">
-                                    <h5 class="pq-fancy-box-title text-white">Salmon Lox</h5>
-                                    <div class="pq-fancy-box-content">
-                                        <p class="pq-fancybox-description m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="pq-service-bg-img">
-                <img src="{{ asset('build/client/images/service/bg-service.jpg') }}" alt="service">
+                <img src="{{ asset('storage/' .$statute->path_file) }}" alt="Service">
             </div>
         </div>
     </div>
@@ -254,31 +183,13 @@
 <section class="portfolio py-0">
     <div class="container-fluid p-0">
         <div class="row g-0 gallery">
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="{{ asset('build/client/images/beer/1.jpg') }}">
-                <img src="{{ asset('build/client/images/beer/1.jpg') }}" class="img-fluid w-100" alt="">
-                </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="{{ asset('build/client/images/beer/2.jpg') }}">
-                <img src="{{ asset('build/client/images/beer/2.jpg') }}" class="img-fluid w-100" alt="">
-                </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="{{ asset('build/client/images/beer/3.jpg') }}">
-                <img src="{{ asset('build/client/images/beer/3.jpg') }}" class="img-fluid w-100" alt="">
-                </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="{{ asset('build/client/images/beer/4.jpg') }}">
-                <img src="{{ asset('build/client/images/beer/4.jpg') }}" class="img-fluid w-100" alt="">
-                </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="{{ asset('build/client/images/beer/5.jpg') }}">
-                <img src="{{ asset('build/client/images/beer/5.jpg') }}" class="img-fluid w-100" alt="">
-                </a>
-            </div>
+            @foreach ($benefitTopics as $benefitTopics)
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="{{ asset('storage/' .$benefitTopics->path_image) }}">
+                    <img src="{{ asset('storage/' .$benefitTopics->path_image) }}" class="img-fluid w-100" alt="">
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -631,7 +542,7 @@
 </section>
 <!-- <blog-end> -->
 <!-- <reservation-start> -->
-<section class="reservation p-0 pb-5 pt-0 pq-bg-dark-color">
+<section id="reservation" class="reservation p-0 pb-5 pt-0 pq-bg-dark-color">
     <div class="container">
         <div class="row align-items-baseline padding-top">
             <div class="col-lg-9 col-md-12 align-self-start mt-4 mt-lg-0">

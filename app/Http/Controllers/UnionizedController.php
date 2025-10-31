@@ -23,9 +23,9 @@ class UnionizedController extends Controller
             return view('admin.error.403', compact('settingTheme'));
         }
 
-        $unionized = Unionized::first();
+        $unionizeds = Unionized::get();
 
-        return view('admin.blades.unionized.index', compact('unionized'));
+        return view('admin.blades.unionized.index', compact('unionizeds'));
     }
 
     

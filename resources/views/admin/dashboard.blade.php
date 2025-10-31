@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 col-12 text-center">
-                                    <h5 class="text-uppercase text-muted">A Direção</h5>
+                                    <h5 class="text-uppercase text-muted">Serviços</h5>
                                 </div>
                             </a>
                         </div>
@@ -195,7 +195,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 col-12 text-center">
-                                    <h5 class="text-uppercase text-muted">Estatuto</h5>
+                                    <h5 class="text-uppercase text-muted">Seção Serviços</h5>
                                 </div>
                             </a>
                         </div>
@@ -205,7 +205,7 @@
         </div>
     @endif
 
-    {{-- @if (Auth::user()->hasRole('Super') || 
+    @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
     Auth::user()->hasPermissionTo('sindicalize-se.visualizar') || 
     Auth::user()->hasPermissionTo('beneficios.visualizar') || 
@@ -256,7 +256,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 col-12 text-center">
-                                    <h5 class="text-uppercase text-muted">Sindicalize-se</h5>
+                                    <h5 class="text-uppercase text-muted">Estatística do sobre</h5>
                                 </div>
                             </a>
                         </div>
@@ -279,7 +279,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 col-12 text-center">
-                                    <h5 class="text-uppercase text-muted">Benefícios</h5>
+                                    <h5 class="text-uppercase text-muted">Galeria</h5>
                                 </div>
                             </a>
                         </div>
@@ -310,7 +310,7 @@
                 </div> <!-- end col -->
             @endif
         </div>
-    @endif --}}
+    @endif
 
     {{-- @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 

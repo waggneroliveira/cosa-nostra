@@ -1,13 +1,13 @@
 <div class="row g-3">
     <div class="mb-3 col-12">
-        <label for="title" class="form-label">Título</label>
+        <label for="title" class="form-label">Indice númerico</label>
         <input 
-            type="text" 
+            type="number" 
             name="title" 
             class="form-control" 
             id="title{{ isset($unionized->id) ? $unionized->id : '' }}" 
             value="{{ isset($unionized) ? $unionized->title : '' }}" 
-            placeholder="Digite seu nome"
+            placeholder="Indice númerico"
         >
     </div>
 </div>
@@ -20,12 +20,12 @@
             class="form-control" 
             id="description{{ isset($unionized->id) ? $unionized->id : '' }}" 
             value="{{ isset($unionized) ? $unionized->description : '' }}" 
-            placeholder="Digite seu nome"
+            placeholder="Texto"
         >
     </div>
 </div>
 
-<div class="mb-3 col-12">
+{{-- <div class="mb-3 col-12">
     <label for="path_file" class="form-label">Arquivo</label>
     <input 
         type="file" 
@@ -38,7 +38,7 @@
     <p class="text-muted text-center mt-2 mb-0">
         {{ __('dashboard.text_img_size') }} <b class="text-danger">3 MB</b>.
     </p>
-</div>
+</div> --}}
 
 <div class="mb-3 col-12">
     <div class="form-check">

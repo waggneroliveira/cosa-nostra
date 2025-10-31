@@ -7,30 +7,30 @@
             class="form-control" 
             id="title{{ isset($statute->id) ? $statute->id : '' }}" 
             value="{{ isset($statute) ? $statute->title : '' }}" 
-            placeholder="Digite seu nome"
+            placeholder="Título"
         >
     </div>
 </div>
 <div class="row g-3">
     <div class="mb-3 col-12">
-        <label for="description" class="form-label">Descrição</label>
+        <label for="description" class="form-label">Subtitulo</label>
         <input 
             type="text" 
             name="description" 
             class="form-control" 
             id="description{{ isset($statute->id) ? $statute->id : '' }}" 
             value="{{ isset($statute) ? $statute->description : '' }}" 
-            placeholder="Digite seu nome"
+            placeholder="Subtítulo"
         >
     </div>
 </div>
 
 <div class="mb-3 col-12">
-    <label for="path_file" class="form-label">Arquivo</label>
+    <label for="path_file" class="form-label">Imagem</label>
     <input 
         type="file" 
         name="path_file" 
-        accept="application/pdf" 
+        accept="image/*" 
         data-plugins="dropify" 
         data-default-file="{{ isset($statute) && $statute->path_file != '' ? url('storage/'.$statute->path_file) : '' }}" 
         class="form-control"

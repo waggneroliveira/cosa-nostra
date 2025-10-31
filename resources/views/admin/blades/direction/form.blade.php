@@ -3,8 +3,8 @@
     <input type="text" name="title" class="form-control" id="title{{isset($direction->id)?$direction->id:''}}" value="{{isset($direction)?$direction->title:''}}" placeholder="Digite seu nome">
 </div>
 <div class="mb-3">
-    <label for="description" class="form-label">Função</label>
-    <input type="text" name="description" class="form-control" id="description{{isset($direction->id)?$direction->id:''}}" value="{{isset($direction)?$direction->description:''}}" placeholder="Função">
+    <label for="description" class="form-label">Descrição</label>
+    <input type="text" name="description" class="form-control" id="description{{isset($direction->id)?$direction->id:''}}" value="{{isset($direction)?$direction->description:''}}" placeholder="Breve descrição">
 </div>
 <div class="col-12">
     <div class="mt-3">

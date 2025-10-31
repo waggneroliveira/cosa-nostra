@@ -11,10 +11,10 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Estatuto</li>
+                                    <li class="breadcrumb-item active">Seção Serviços</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Estatuto</h4>
+                            <h4 class="page-title">Seção Serviços</h4>
                         </div>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
                                 <div class="row mb-2">
                                     <div class="col-12 d-flex justify-end">
                                         <div class="col-12 d-flex justify-content-end">
-                                            @if (Auth::user()->can('estatuto.visualizar') &&
-                                            Auth::user()->can('estatuto.criar') ||
+                                            @if (Auth::user()->can('Seção Serviços.visualizar') &&
+                                            Auth::user()->can('Seção Serviços.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 @if (!isset($statute))                                                
@@ -71,7 +71,7 @@
                                                     </th>
                                                     {{-- <th>Link</th> --}}
                                                     <th>Título</th>
-                                                    <th>Arquivo</th>
+                                                    <th>Imagem</th>
                                                     <th>Status</th>
                                                     <th style="width: 85px;">Ações</th>
                                                 </tr>
@@ -98,8 +98,8 @@
                                                         @endswitch
                                                     </td>
                                                     <td class="d-flex gap-lg-1 justify-center">
-                                                        @if (Auth::user()->can('estatuto.visualizar') &&
-                                                        Auth::user()->can('estatuto.editar') ||
+                                                        @if (Auth::user()->can('Seção Serviços.visualizar') &&
+                                                        Auth::user()->can('Seção Serviços.editar') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <button class="table-edit-button btn btn-primary text-black" data-bs-toggle="modal" data-bs-target="#modal-group-edit-{{$statute->id}}" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-pencil"></span></button>
@@ -107,7 +107,7 @@
                                                                 <div class="modal-dialog modal-dialog-centered" style="max-width: 980px;">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header bg-light">
-                                                                            <h4 class="modal-title" id="myCenterModalLabel">Estatuto</h4>
+                                                                            <h4 class="modal-title" id="myCenterModalLabel">Seção Serviços</h4>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                                                                         </div>
                                                                         <div class="modal-body  p-2 px-3 px-md-4">
@@ -126,8 +126,8 @@
                                                             </div><!-- /.modal -->                                                        
                                                         @endif
 
-                                                        @if (Auth::user()->can('estatuto.visualizar') &&
-                                                        Auth::user()->can('estatuto.remover') ||
+                                                        @if (Auth::user()->can('Seção Serviços.visualizar') &&
+                                                        Auth::user()->can('Seção Serviços.remover') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <form action="{{route('admin.dashboard.statute.destroy',['statute' => $statute->id])}}" style="width: 30px" method="POST">
