@@ -43,6 +43,7 @@ use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\SettingEmailController;
 use App\Http\Controllers\SettingThemeController;
 use App\Http\Controllers\AuditActivityController;
+use App\Http\Controllers\ReservationHereController;
 use App\Http\Controllers\StackSessionTitleController;
 use App\Http\Controllers\Auth\PasswordEmailController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -194,6 +195,10 @@ Route::prefix('painel/')->group(function () {
         Route::resource('depoimentos', DepoimentController::class)
         ->names('admin.dashboard.depoiment')
         ->parameters(['depoimentos'=>'depoiment']);
+        //RESERVATIONHERE
+        Route::resource('secao-reserva-aqui', ReservationHereController::class)
+        ->names('admin.dashboard.reservationHere')
+        ->parameters(['secao-reserva-aqui'=>'reservationHere']);
         //Agreement
         Route::resource('convenios', AgreementController::class)
         ->names('admin.dashboard.agreement')

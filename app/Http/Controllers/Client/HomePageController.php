@@ -14,15 +14,16 @@ use App\Models\Report;
 use App\Models\Contact;
 use App\Models\Partner;
 use App\Models\Statute;
+use App\Models\Depoiment;
 use App\Models\Direction;
 use App\Models\Unionized;
 use App\Models\Announcement;
 use App\Models\BenefitTopic;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use App\Models\ReservationHere;
 use App\Models\StackSessionTitle;
 use App\Http\Controllers\Controller;
-use App\Models\Depoiment;
 
 class HomePageController extends Controller
 {
@@ -112,6 +113,7 @@ class HomePageController extends Controller
         $statute = Statute::active()->first();
         $unionizeds = Unionized::get();
         $depoiments = Depoiment::active()->sorting()->get();
+        $reservationHere = ReservationHere::active()->first();
         
         return view('client.blades.index', compact(
             'featuredNews',
@@ -134,6 +136,7 @@ class HomePageController extends Controller
             'statute', 
             'unionizeds', 
             'depoiments', 
+            'reservationHere', 
             'topics')
         );
     }

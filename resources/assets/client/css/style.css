@@ -2686,16 +2686,21 @@ Section Title
 	margin-bottom: 30px;
 }
 
-.pq-section-title-style-1 p, .pq-section-title-style-1 ul li {
+.pq-section-title-style-1 p, .pq-section-title-style-1 ul li, .advance-list ul li {
 	margin-bottom: 0;
 	color: var(--black-color);
 	list-style: none;
 }
-.pq-section-title-style-1 ul{
+.advance-list ul li{
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}
+.pq-section-title-style-1 ul, .advance-list ul{
 	line-height: 38px;
 	padding: 0;
 }
-.pq-section-title-style-1 ul li::before{
+.pq-section-title-style-1 ul li::before, .advance-list ul li::before{
 	content: '';
     background-image: url(../images/ok.png);
     background-repeat: no-repeat;
@@ -2706,6 +2711,11 @@ Section Title
     object-fit: contain;
     aspect-ratio: 1 / 1;
     margin-right: 10px;
+}
+.advance-list ul li::before{
+	content: '';
+    background-image: url(../images/ok-1.png);
+	width: 20px;
 }
 .pq-section-title-style-1 p strong{
 	font-family: var(--title-fonts);
@@ -4375,7 +4385,9 @@ Advance Tab
 /*================================================
 Video Popup
 ================================================*/
-
+.popup .pq-section-sub-title{
+	color: var(--black-color) !important;
+}
 .popup p, .popup span{
 	color: var(--black-color);
 }

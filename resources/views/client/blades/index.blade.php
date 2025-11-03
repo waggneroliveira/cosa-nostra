@@ -200,55 +200,36 @@
         <div class="row pq-bg-dark-color pq-ms-30">
             <div class="col-xl-5 pq-popup-video-bg-img pq-popup-video-bg-img-dark-layer">
                 <div class="pq-popup-video-block">
-                    <div class="pq-video-icon">
-                        <a href="youtube.com/xPPLbEFbCAo?si=KuR7pHZVfKSx4fvT" class="pq-video default popup-youtube">
-                        <i aria-hidden="true" class="ion ion-play"></i>
-                        </a>
-                    </div>
+                    @if ($reservationHere->link <> null)
+                        <div class="pq-video-icon">
+                            <a href="{{$reservationHere->link}}" class="pq-video default popup-youtube">
+                            <i aria-hidden="true" class="ion ion-play"></i>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-xl-7 pq-tab-padding">
                 <div class="pq-dark-section-side-right">
                 </div>
                 <div class="pq-section-title-style-1">
-                    <span class="pq-section-sub-title">About Us</span>
-                    <h5 class="pq-section-title">Enjoy An Exceptional Drink of Wine</h5>
+                    <span class="pq-section-sub-title">{{$reservationHere->subtitle}}</span>
+                    <h5 class="pq-section-title">{{$reservationHere->title}}</h5>
                 </div>
                 <div class="pq-advance-tab pq-about-tab">
                     <div class="nav nav-tabs nav-fill pq-mb-30" id="advance-nav-tab" role="tablist">
-                        <a class="pq-tabs nav-item nav-link active" id="advance-nav-home-0" data-bs-toggle="tab" href="#advance-nav-0" role="tab" aria-controls="advance-nav-home-0" aria-selected="true">
-                        Romantique
+                        <a class="pq-tabs nav-item nav-link active" id="{{$reservationHere->event}}" data-bs-toggle="tab" href="#advance-nav-0" role="tab" aria-controls="{{$reservationHere->event}}" aria-selected="true">
+                        Eventos
                         </a>
-                        <a class="pq-tabs nav-item nav-link " id="advance-nav-home-1" data-bs-toggle="tab" href="#advance-nav-1" role="tab" aria-controls="advance-nav-home-1" aria-selected="false" tabindex="-1">
-                        Reserve
-                        </a>
-                        <a class="pq-tabs nav-item nav-link " id="advance-nav-home-2" data-bs-toggle="tab" href="#advance-nav-2" role="tab" aria-controls="advance-nav-home-2" aria-selected="false" tabindex="-1">
-                        Albarino
+                        <a class="pq-tabs nav-item nav-link " id="{{$reservationHere->benefit}}" data-bs-toggle="tab" href="#advance-nav-1" role="tab" aria-controls="{{$reservationHere->benefit}}" aria-selected="false" tabindex="-1">
+                        Benefícios
                         </a>
                     </div>
                     <div class="tab-content" id="advance-nav-tabContent">
-                        <div class="pq-advance-tab-content tab-pane fade show active" id="advance-nav-0" role="tabpanel" aria-labelledby="advance-nav-home-0">
+                        <div class="pq-advance-tab-content tab-pane fade show active" id="advance-nav-0" role="tabpanel" aria-labelledby="{{$reservationHere->event}}">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    <ul class="pq-list-check">
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Lorem is dummy text of the printing and typesettiry</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>There are many variations of passages</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>It is a long established fact that a reader will be distracted</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Various versions have evolved over the years</span>
-                                        </li>
-                                    </ul>
+                                <div class="col-lg-12 advance-list">
+                                    {!!$reservationHere->event!!}
                                     <a class="pq-button pq-button-flat pq-mt-30" href="about-us.html">
                                         <div class="pq-button-block">
                                             <span class="pq-button-line-left"></span>
@@ -259,60 +240,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pq-advance-tab-content tab-pane fade " id="advance-nav-1" role="tabpanel" aria-labelledby="advance-nav-home-1">
+                        <div class="pq-advance-tab-content tab-pane fade " id="advance-nav-1" role="tabpanel" aria-labelledby="{{$reservationHere->benefit}}">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    <ul class="pq-list-check">
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Various versions have evolved over the years</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>It is a long established fact that a reader will be distracted</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>There are many variations of passages</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Lorem is dummy text of the printing and typesettiry</span>
-                                        </li>
-                                    </ul>
-                                    <a class="pq-button pq-button-flat pq-mt-30" href="about-us.html">
-                                        <div class="pq-button-block">
-                                            <span class="pq-button-line-left"></span>
-                                            <span class="pq-button-text text-white">Read More</span>
-                                            <span class="pq-button-line-right"></span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pq-advance-tab-content tab-pane fade " id="advance-nav-2" role="tabpanel" aria-labelledby="advance-nav-home-2">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    <ul class="pq-list-check">
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Lorem is dummy text of the printing and typesettiry</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>There are many variations of passages</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>It is a long established fact that a reader will be distracted</span>
-                                        </li>
-                                        <li>
-                                            <i class="ion ion-ios-checkmark-outline"></i>
-                                            <span>Various versions have evolved over the years</span>
-                                        </li>
-                                    </ul>
+                                <div class="col-lg-12 advance-list">
+                                    {!!$reservationHere->benefit!!}
                                     <a class="pq-button pq-button-flat pq-mt-30" href="about-us.html">
                                         <div class="pq-button-block">
                                             <span class="pq-button-line-left"></span>
