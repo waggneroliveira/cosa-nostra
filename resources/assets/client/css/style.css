@@ -2721,7 +2721,7 @@ Section Title
 }
 
 /*===== Sub Title Left =====*/
-.pq-section-title-style-1 .pq-section-sub-title {
+.pq-section-title-style-1 .pq-section-sub-title, .testimonial .pq-section-sub-title{
 	font-family: var(--sub-title-fonts);
 	font-weight: 300;
 	font-size: 18px;
@@ -3772,7 +3772,7 @@ Testimonialbox
 	right: 0;
 	width: 50%;
 	height: 100%;
-	background-image: url(../images/testimonal/bg-img-2.jpg);
+	background-image: var(--bg-image);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;

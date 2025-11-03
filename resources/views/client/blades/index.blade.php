@@ -335,7 +335,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 pq-testimonial-padding">
-                <h4 class="text-white">o que falam sobre nós </h4>
+                <h4 class="pq-section-sub-title">{{$report->description}}</h4>
+                <h5 class="text-white">{{$report->title}} </h5>
                 <div class="owl-carousel" data-dots="true" data-nav="false" data-desk_num="1" data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="true" data-margin="30">
                     <div class="item">
                         <div class="pq-testimonial-box pq-testimonialbox-2 mt-4 col-12 col-lg-11">
@@ -377,7 +378,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2"></div>
+            <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2" style="--bg-image: url('{{ asset('storage/' . $report->path_image) }}')"></div>
         </div>
     </div>
 </section>

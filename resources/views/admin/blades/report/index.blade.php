@@ -11,10 +11,10 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Denuncie</li>
+                                    <li class="breadcrumb-item active">Informações Seção Depoimento</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Denuncie</h4>
+                            <h4 class="page-title">Informações Seção Depoimento</h4>
                         </div>
                     </div>
                 </div>
@@ -69,9 +69,7 @@
                                                     <th class="bs-checkbox">
                                                         <label><input name="btnSelectAll" type="checkbox"></label>
                                                     </th>
-                                                    {{-- <th>Link</th> --}}
                                                     <th>Título</th>
-                                                    <th>Arquivo</th>
                                                     <th>Status</th>
                                                     <th style="width: 85px;">Ações</th>
                                                 </tr>
@@ -84,13 +82,6 @@
                                                         <label><input data-index="" name="btnSelectItem" class="btnSelectItem" type="checkbox" value=""></label>
                                                     </td>
                                                     <td>{{$report->title}}</td>
-                                                    <td class="table-user">
-                                                        @if ($report->path_file)                                                            
-                                                            <a href="{{ asset('storage/'.$report->path_file) }}" target="_blank" rel="noopener noreferrer" download="arquivo">
-                                                                <span class="mdi mdi-file-download-outline"></span>
-                                                            </a>
-                                                        @endif
-                                                    </td>
                                                     <td>
                                                         @switch($report->active)
                                                             @case(0) <span class="badge bg-danger">Inativo</span> @break
