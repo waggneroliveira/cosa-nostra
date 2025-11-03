@@ -31,6 +31,7 @@ use App\Repositories\SettingThemeRepository;
 use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepoimentController;
 use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\FormIndexController;
 use App\Http\Controllers\UnionizedController;
@@ -189,6 +190,10 @@ Route::prefix('painel/')->group(function () {
         Route::resource('denuncie', ReportController::class)
         ->names('admin.dashboard.report')
         ->parameters(['denuncie'=>'report']);
+        //DEPOIMENT
+        Route::resource('depoimentos', DepoimentController::class)
+        ->names('admin.dashboard.depoiment')
+        ->parameters(['depoimentos'=>'depoiment']);
         //Agreement
         Route::resource('convenios', AgreementController::class)
         ->names('admin.dashboard.agreement')

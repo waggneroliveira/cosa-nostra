@@ -335,50 +335,41 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 pq-testimonial-padding">
-                <h4 class="pq-section-sub-title">{{$report->description}}</h4>
-                <h5 class="text-white">{{$report->title}} </h5>
-                <div class="owl-carousel" data-dots="true" data-nav="false" data-desk_num="1" data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="true" data-margin="30">
-                    <div class="item">
-                        <div class="pq-testimonial-box pq-testimonialbox-2 mt-4 col-12 col-lg-11">
-                            <div class="pq-testimonial-star">
-                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                            </div>
-                            <div class="pq-testimonial-info">
-                                <div class="pq-testimonial-content">
-                                    <div class="pq-quote"><i class="fa fa-quote-right"></i></div>
-                                    <p>Um pedacinho da Itália em Salvador! A comida é maravilhosa, o ambiente aconchegante e o atendimento impecável. Já virou parada obrigatória com minha família nos fins de semana.</p>
-                                </div>
-                                <div class="pq-testimonial-img">
-                                    <div class="pq-testimonial-meta">
-                                        <h5 class="text-white">Hosana Costa</h5>
-                                        <span>Cliente há 2 anos</span>
+                @if (isset($report) && $report->description <> null)                    
+                    <h4 class="pq-section-sub-title">{{$report->description}}</h4>
+                @endif
+                @if (isset($report) && $report->title <> null)                    
+                    <h5 class="text-white">{{$report->title}} </h5>
+                @endif
+                @if (isset($depoiments) && $depoiments->count() > 0)
+                    <div class="owl-carousel" data-dots="true" data-nav="false" data-desk_num="1" data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="true" data-margin="30">
+                        @foreach ($depoiments as $depoiment)
+                            <div class="item">
+                                <div class="pq-testimonial-box pq-testimonialbox-2 mt-4 col-12 col-lg-11">
+                                    <div class="pq-testimonial-star">
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="pq-testimonial-info">
+                                        <div class="pq-testimonial-content">
+                                            <div class="pq-quote"><i class="fa fa-quote-right"></i></div>
+                                            <p>{{$depoiment->text}}</p>
+                                        </div>
+                                        <div class="pq-testimonial-img">
+                                            <div class="pq-testimonial-meta">
+                                                <h5 class="text-white">{{$depoiment->title}}</h5>
+                                                <span>{{$depoiment->details}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="item">
-                        <div class="pq-testimonial-box pq-testimonialbox-2">
-                            <div class="pq-testimonial-star">
-                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                            </div>
-                            <div class="pq-testimonial-info">
-                                <div class="pq-testimonial-content">
-                                    <div class="pq-quote"><i class="fa fa-quote-right"></i></div>
-                                    <p>Um pedacinho da Itália em Salvador! A comida é maravilhosa, o ambiente aconchegante e o atendimento impecável. Já virou parada obrigatória com minha família nos fins de semana.</p>
-                                </div>
-                                <div class="pq-testimonial-img">
-                                    <div class="pq-testimonial-meta">
-                                        <h5 class="text-white">Wagner Oliveira</h5>
-                                        <span>Cliente há 2 anos</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
-            <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2" style="--bg-image: url('{{ asset('storage/' . $report->path_image) }}')"></div>
+            @if (isset($report) && $report->path_image <> null)                
+                <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2" style="--bg-image: url('{{ asset('storage/' . $report->path_image) }}')"></div>
+            @endif
         </div>
     </div>
 </section>

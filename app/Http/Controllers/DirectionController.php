@@ -137,7 +137,7 @@ class DirectionController extends Controller
         return redirect()->back();
     }
 
-        public function destroySelected(Request $request)
+    public function destroySelected(Request $request)
     {    
         foreach ($request->deleteAll as $directionId) {
             $direction = Direction::find($directionId);

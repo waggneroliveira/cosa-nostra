@@ -22,6 +22,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\StackSessionTitle;
 use App\Http\Controllers\Controller;
+use App\Models\Depoiment;
 
 class HomePageController extends Controller
 {
@@ -110,6 +111,7 @@ class HomePageController extends Controller
         $directions = Direction::active()->sorting()->get();
         $statute = Statute::active()->first();
         $unionizeds = Unionized::get();
+        $depoiments = Depoiment::active()->sorting()->get();
         
         return view('client.blades.index', compact(
             'featuredNews',
@@ -131,6 +133,7 @@ class HomePageController extends Controller
             'directions', 
             'statute', 
             'unionizeds', 
+            'depoiments', 
             'topics')
         );
     }
