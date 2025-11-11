@@ -305,7 +305,7 @@
                 <div class="col-md-5 col-xl-3">
                     <div class="card borda-cx ratio ratio-4x3 border-whi">
                         <div class="d-flex align-items-center justify-content-center">
-                            <a href="{{route('admin.dashboard.reservatioHere.index')}}">
+                            <a href="{{route('admin.dashboard.reservationHere.index')}}">
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">

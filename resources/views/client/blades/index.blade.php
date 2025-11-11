@@ -343,123 +343,51 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-12">
-                <div class="pq-blog-post">
-                    <div class="pq-post-media">
-                        <img src="{{ asset('build/client/images/blog/1.jpg') }}" alt="team">
-                        <div class="pq-post-date">
-                            <a href="blog-single.html">
-                            <span>April 18, 2022</span>
-                            </a>
+            @foreach ($blogHighlights as $blogHighlight)    
+                @php
+                    \Carbon\Carbon::setLocale('pt_BR');
+                    $dataFormatada = \Carbon\Carbon::parse($blogHighlight->date)->translatedFormat('d \d\e F \d\e Y');
+                @endphp             
+                <div class="col-lg-4 col-md-12">
+                    <div class="pq-blog-post">
+                        <div class="pq-post-media">
+                            <img src="{{ asset('storage/' . $blogHighlight->path_image_thumbnail) }}" alt="team">
+                            <div class="pq-post-date">
+                                <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                <span>{{$dataFormatada}}</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pq-blog-contain">
-                        <div class="pq-post-meta">
-                            <ul>
-                                <li class="pq-post-tag">
-                                    <a href="blog-single.html">
-                                    <i class="fa fa-tag"></i>
-                                    Food
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h5 class="pq-blog-title">
-                            <a href="blog-single.html">Cooking Dining Experience</a>
-                        </h5>
-                        <div class="pq-blog-info">
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-                        </div>
-                        <div class="pq-btn-container">
-                            <a class="pq-button pq-btn-link" href="blog-single.html">
-                                <div class="pq-button-block">
-                                    <span class="pq-button-line-left"></span>
-                                    <span class="pq-button-text">Read More</span>
-                                    <span class="pq-button-line-right"></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="pq-blog-post">
-                    <div class="pq-post-media">
-                        <img src="{{ asset('build/client/images/blog/2.jpg') }}" alt="team">
-                        <div class="pq-post-date">
-                            <a href="blog-single.html">
-                            <span>April 18, 2022</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="pq-blog-contain">
-                        <div class="pq-post-meta">
-                            <ul>
-                                <li class="pq-post-tag">
-                                    <a href="blog-single.html">
-                                    <i class="fa fa-tag"></i>
-                                    Food
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h5 class="pq-blog-title">
-                            <a href="blog-single.html">Spaghetti with Rock Shrimp</a>
-                        </h5>
-                        <div class="pq-blog-info">
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-                        </div>
-                        <div class="pq-btn-container">
-                            <a class="pq-button pq-btn-link" href="blog-single.html">
-                                <div class="pq-button-block">
-                                    <span class="pq-button-line-left"></span>
-                                    <span class="pq-button-text">Read More</span>
-                                    <span class="pq-button-line-right"></span>
-                                </div>
-                            </a>
+                        <div class="pq-blog-contain">
+                            <div class="pq-post-meta">
+                                <ul>
+                                    <li class="pq-post-tag">
+                                        <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                        <i class="fa fa-tag"></i>
+                                        {{$blogHighlight->category->title}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h5 class="pq-blog-title">
+                                <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">{{$blogHighlight->title}}</a>
+                            </h5>
+                            <div class="pq-blog-info mt-3">
+                               <p>{!! substr(strip_tags($blogHighlight->text), 0, 60) !!}</p> 
+                            </div>
+                            <div class="pq-btn-container">
+                                <a class="pq-button pq-btn-link" href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                    <div class="pq-button-block">
+                                        <span class="pq-button-line-left"></span>
+                                        <span class="pq-button-text">Ler matérias</span>
+                                        <span class="pq-button-line-right"></span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="pq-blog-post">
-                    <div class="pq-post-media">
-                        <img src="{{ asset('build/client/images/blog/3.jpg') }}" alt="team">
-                        <div class="pq-post-date">
-                            <a href="blog-single.html">
-                            <span>April 18, 2022</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="pq-blog-contain">
-                        <div class="pq-post-meta">
-                            <ul>
-                                <li class="pq-post-tag">
-                                    <a href="blog-single.html">
-                                    <i class="fa fa-tag"></i>
-                                    Food
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h5 class="pq-blog-title">
-                            <a href="blog-single.html">Life is a Combination of food</a>
-                        </h5>
-                        <div class="pq-blog-info">
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-                        </div>
-                        <div class="pq-btn-container">
-                            <a class="pq-button pq-btn-link" href="blog-single.html">
-                                <div class="pq-button-block">
-                                    <span class="pq-button-line-left"></span>
-                                    <span class="pq-button-text">Read More</span>
-                                    <span class="pq-button-line-right"></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

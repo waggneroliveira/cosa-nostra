@@ -1,27 +1,27 @@
 @extends('client.core.client')
 @section('content')
-   <div class="banner-inner position-relative">
-      <div class="max-width m-auto">
+   <div class="banner-inner position-relative d-flex justify-content-start align-items-center mt-3">
+      <div class="container">
          <h1 class="h2 m-0 text-white text-uppercase rethink-sans-bold font-38 d-block" data-aos="fade-right" data-aos-delay="100">{{$blogInner->title}}</h1>
          <ol class="breadcrumb mt-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
-            <li class="breadcrumb-item">
-               <a href="{{route('index')}}">
+            <li class="breadcrumb-item list-unstyled">
+               <a href="{{route('index')}}" class="text-white">
                   <i class="fas fa-home me-2"></i>Home
                </a>
             </li>
-            <li class="breadcrumb-item blog">
-               <a href="{{route('blog')}}">
-                  <i class="fas fa-newspaper me-2"></i>Blog WHI
+            <li class="breadcrumb-item list-unstyled blog">
+               <a href="{{route('blog')}}" class="text-white">
+                  <i class="fas fa-newspaper me-2"></i>Blog
                </a>
             </li>
-            <li class="breadcrumb-item active">{{$blogInner->title}}</li>			               			
+            <li class="breadcrumb-item list-unstyled active">{{$blogInner->title}}</li>			               			
          </ol>
       </div>
    </div>
    
     @include('client.includes.announcement') 
     <!-- News With Sidebar Start -->
-    <div class="container-fluid mb-5 blog-inn mt-4">
+    <div class="container mb-5 blog-inn mt-4">
         <div class="max-width m-auto">
             <div class="row">
                 <div class="col-lg-8" data-aos="fade-right" data-aos-delay="750">
@@ -33,14 +33,17 @@
                     <div class="position-relative mb-3">
                         <article>
                             <h2 class="mb-3 title-blue rethink-sans-bold font-28 text-uppercase">{{$blogInner->title}}</h2>
-                            <div class="mb-3 d-flex justify-content-start align-items-center gap-1 flex-wrap">
-                                <span class="badge background-red rethink-sans-semiBold font-12 text-uppercase py-2 px-2 me-2">{{$blogInner->category->title}}</span>
-                                <p class="text-color mb-0 montserrat-regular font-15">{{$dataFormatada}}</p>
+                            <div class="posotion-relative">
+                                <div class="position-absolute top-0 lef-0">
+                                    <span class="badge background-red rethink-sans-semiBold font-12 text-uppercase py-2 px-2 me-2">{{$blogInner->category->title}}</span>
+                                    {{-- <p class="text-color mb-0 montserrat-regular font-15">{{$dataFormatada}}</p> --}}
+                                </div>
+
+                                <img class="border img-fluid w-100 rounded-3 image-inner d-flex justify-content-center align-items-center"
+                                  src="{{ $blogInner->path_image_thumbnail ? asset('storage/'.$blogInner->path_image_thumbnail) : 'https://placehold.co/600x400?text=Sem+imagem&font=montserrat' }}"
+                                  alt="{{ $blogInner->title ? $blogInner->title : 'Sem imagem'}}"
+                                  style="aspect-ratio:1.91/1;object-fit: cover;" loading="lazy">
                             </div>
-                            <img class="border img-fluid w-100 rounded-3 image-inner d-flex justify-content-center align-items-center"
-                              src="{{ $blogInner->path_image_thumbnail ? asset('storage/'.$blogInner->path_image_thumbnail) : 'https://placehold.co/600x400?text=Sem+imagem&font=montserrat' }}"
-                              alt="{{ $blogInner->title ? $blogInner->title : 'Sem imagem'}}"
-                              style="aspect-ratio:1.91/1;object-fit: contain;" loading="lazy">
                             <div class="py-4">
                                 <div class="barra-de-progresso mt-2 d-flex align-items-center gap-2">
                                     <i id="audioIcon" class="fa fa-play d-flex justify-content-center align-items-center dark-background rounded-5 font-12" onclick="togglePlayPause()"></i>
@@ -158,7 +161,7 @@
                             <div class="section-title mb-3 title-blue">
                                 <h4 class="m-0 text-uppercase rethink-sans-bold font-25 title-blue">{{$blogInner->comments->count()}} Comentários</h4>
                             </div>
-                            <div class="bg-white border p-4 comment-scroll">
+                            <div class="bg-transparentborder p-4 comment-scroll">
                                 @foreach ($blogInner->comments as $comment)
                                     @php
                                         \Carbon\Carbon::setLocale('pt_BR');
@@ -220,18 +223,18 @@
    
                       @if ($blogRelacionados)                        
                         <!-- Popular News Start -->
-                        <div class="mb-3 border p-3">
+                        <div class="mb-3 border p-3" style="border-color: #777777 !important;">
                             <div class="section-title mb-0">
                                 <h4 class="m-0 text-uppercase rethink-sans-bold font-22 title-blue">Relacionados</h4>
                             </div>
-                            <div class="bg-white py-3">
+                            <div class="bg-transparent py-3">
                                 @foreach($blogRelacionados as $relacionado)    
                                     @php
                                         \Carbon\Carbon::setLocale('pt_BR');
                                         $dataFormatada = \Carbon\Carbon::parse($relacionado->date)->translatedFormat('d \d\e F \d\e Y');
                                     @endphp                               
                                     <article>
-                                        <div class="d-flex align-items-center bg-white mb-3 overflow-hidden" style="height: 110px;">
+                                        <div class="d-flex align-items-center bg-transparentmb-3 overflow-hidden" style="height: 110px;">
                                             <img loading="lazy" class="img-fluid"
                                             src="{{ $relacionado->path_image_thumbnail ? asset('storage/'.$relacionado->path_image_thumbnail) : 'https://placehold.co/600x400?text=Sem+imagem&font=montserrat' }}"
                                             alt="{{ $relacionado->title ? $blogInner->title : 'Sem imagem'}}" loading="lazy">
@@ -253,17 +256,22 @@
                       @endif
    
                      <!-- Tags Start -->
-                      <div class="mb-3 border p-3">
+                      <div class="mb-3 border p-3" style="border-color: #777777 !important;">
                           <div class="section-title mb-0 cat-mt">
                               <h4 class="m-0 text-uppercase rethink-sans-bold font-22 title-blue">CATEGORIAS</h4>
                           </div>
-                          <div class="bg-white py-3">
+                          <div class="bg-transparentpy-3">
                               <div class="d-flex flex-wrap m-n1">
                                   @foreach ($blogCategories as $category)
                                     <li class="nav-link">
                                         <a href="{{ route('blog', ['category' => $category->slug]) }}#news"
-                                        class="btn btn-sm btn-outline-secondary rethink-sans-semiBold font-14 m-1
+                                        class="btn btn-sm rethink-sans-semiBold font-14 m-1
                                         {{ (request()->routeIs('blog-inner') && isset($blogInner) && $blogInner->category->id === $category->id) ? 'active background-red' : '' }}">
+                                            <span class="icon">
+                                                <svg width="6" height="9" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.07812 4.62891L1.28906 8.4375C1.09375 8.61328 0.800781 8.61328 0.625 8.4375L0.175781 7.98828C0 7.8125 0 7.51953 0.175781 7.32422L3.18359 4.29688L0.175781 1.28906C0 1.09375 0 0.800781 0.175781 0.625L0.625 0.175781C0.800781 0 1.09375 0 1.28906 0.175781L5.07812 3.98438C5.25391 4.16016 5.25391 4.45312 5.07812 4.62891Z" fill="#CA232A"/>
+                                                </svg>
+                                            </span>  
                                             {{ $category->title }}
                                         </a>
                                     </li>
@@ -274,7 +282,7 @@
                       <!-- Tags End -->
 
                       <!-- Newsletter Start -->
-                      <div class="mb-3 border p-3">
+                      <div class="mb-3 border p-3" style="border-color: #777777 !important;">
                           <div class="section-title mb-0">
                               <h4 class="m-0 text-uppercase rethink-sans-bold font-22 title-blue">Newsletter</h4>
                           </div>

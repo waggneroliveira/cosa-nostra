@@ -33,11 +33,12 @@ class HomePageController extends Controller
         $blogSuperHighlights = Blog::whereHas('category', function($active){
             $active->where('active', 1);
         })->superHighlightOnly()->active()->sorting()->limit(6)->get();
+
         $blogHighlights = Blog::whereHas('category', function($active){
             $active->where('active', 1);
         })->highlightOnly()->active()->sorting()->limit(3)->get();
+        
         $announcements = Announcement::select(
-            'exhibition',
             'link',
             'exhibition',
             'path_image',
