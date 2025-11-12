@@ -326,7 +326,10 @@ input, input.form-control {
 	margin-bottom: 30px;
 	color-scheme: dark;
 }
-
+.btn.btn-sm.rethink-sans-regular.font-14.m-1.active.background-red{
+	border: inherit !important;
+	color: var(--primary-color) !important;
+}
 input:focus, input:hover, textarea:focus, textarea:hover, .form-control:focus {
 	border-color: var(--primary-color);
 	outline: none;
@@ -3264,13 +3267,14 @@ Fancy Box
 	padding-top: 80px;
 }
 .reservation input, input.form-control{
-	color: var(--white-color);
-	border-color: var(--white-color);
+	color: var(--black-color);
+	border-color: var(--black-color);
 	margin-bottom: 0;
 }
-.reservation input::placeholder{
-	color: var(--white-color);
+.reservation .form-control:focus, input:focus{
+	color: var(--black-color) !important;
 }
+
 .icon-location{
 	width: 60px;
     height: 60px;

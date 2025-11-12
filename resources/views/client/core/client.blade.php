@@ -41,7 +41,7 @@
     <meta name="google-site-verification" content="kpN-gFJ5IGqEAXcdrwnTxAcJXZF-LsaP3bPwONwcvsY" />
     <link rel="shortcut icon" href="{{ asset('build/admin/images/favicon.png') }}">
 
-    <link rel="preload" as="image" href="{{asset('build/client/images/bann-1.webp')}}">
+    {{-- <link rel="preload" as="image" href="{{asset('build/client/images/bann-1.webp')}}"> --}}
 
     <!-- LOADING FONTS AND ICONS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('build/client/rev/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
@@ -208,59 +208,26 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand p-0" href="index.html">
+                            <a class="navbar-brand p-0" href="{{route("index")}}">
                                 <img class="img-fluid logo" src="{{ asset('build/client/images/header-logo/logo_header.svg') }}" alt="millennium">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="pq-menu-contain" class="pq-menu-contain">
                                     <ul id="pq-main-menu" class="navbar-nav ml-auto">
-                                        <li class="menu-item current-menu-item">
-                                            <a href="index.html">Home</a>
+                                        <li class="menu-item {{ request()->is('/') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('index') }}">Home</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#">Quem Somos</a>
+                                            <a href="{{ request()->is('/') ? '#about' : url('/') . '#about' }}">Quem Somos</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#">Galeria</a>
+                                            <a href="{{ request()->is('/') ? '#gallery' : url('/') . '#gallery' }}">Galeria</a>
+                                        </li>
+                                        <li class="menu-item {{ request()->is('blog') || request()->is('blog/*') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('blog') }}">Blog</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#">Blog</a>
-                                            <i class="ion-chevron-down pq-submenu-icon"></i>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item-has-children">
-                                                    <a href="#">Grid Style</a>
-                                                    <i class="ion-chevron-down pq-submenu-icon"></i>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item">
-                                                            <a href="1-column-blog.html">1 Column Blog</a>
-                                                        </li>
-                                                        <li class="menu-item">
-                                                            <a href="2-column-blog.html">2 Column Blog</a>
-                                                        </li>
-                                                        <li class="menu-item">
-                                                            <a href="3-column-blog.html">3 Column Blog</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="#">Blog Sidebar</a>
-                                                    <i class="ion-chevron-down pq-submenu-icon"></i>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item">
-                                                            <a href="left-sidebar.html">Left Sidebar</a>
-                                                        </li>
-                                                        <li class="menu-item">
-                                                            <a href="right-sidebar.html">Right Sidebar</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="blog-single.html">Blog Single</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="contact-us.html">Contact us</a>
+                                            <a href="{{ request()->is('/') ? '#reservation' : url('/') . '#reservation' }}">Contato</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -285,7 +252,7 @@
                                 <a href="booking-table.html" class="pq-button">
                                     <div class="pq-button-block">
                                         <span class="pq-button-line-left"></span>
-                                        <span class="pq-button-text text-white">Book a table</span>
+                                        <span class="pq-button-text text-black">Book a table</span>
                                         <span class="pq-button-line-right"></span>
                                     </div>
                                 </a>
@@ -361,8 +328,8 @@
             <div class="modal-content header-color">
 
                 <div class="modal-header green-color">
-                    <h5 class="modal-title text-uppercase rethink-sans-bold font-22 text-p" id="loginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <h5 class="modal-title rethink-sans-bold font-22 text-p" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="line-height: 15px; padding: 10px 8px 5px 8px;">X</button>
                 </div>
 
                 <div class="modal-body">
@@ -371,21 +338,21 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="email" class="form-label rethink-sans-bold font-15 text-white">E-mail</label>
+                            <label for="email" class="form-label rethink-sans-bold font-15 text-black">E-mail</label>
                             <input type="email" class="form-control rethink-sans-regular font-15" id="email" name="email" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label rethink-sans-bold font-15 text-white">Senha</label>
+                            <label for="password" class="form-label rethink-sans-bold font-15 text-black">Senha</label>
                             <input type="password" class="form-control rethink-sans-regular font-15" id="password" name="password" required>
                         </div>
 
-                        <div class="d-flex justify-content-center mt-3 mb-4">
-                            <button type="submit" class="btn px-5 background-red rounded-3 text-white rethink-sans-bold font-15">Entrar</button>
+                        <div class="mb-4 col-12 col-lg-4 m-auto">
+                            <button type="submit" class="mt-3 btn px-5 background-red rounded-0 text-black text-black rethink-sans-bold font-15">Entrar</button>
                         </div>
 
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            <p class="rethink-sans-regular font-15 text-white text-center">
+                            <p class="rethink-sans-regular font-15 text-black text-center">
                                 Ainda não tem uma conta?
                                 <a href="#" class="text-decoration-underline rethink-sans-bold ms-1 under" 
                                 data-bs-dismiss="modal"
@@ -415,8 +382,8 @@
             <div class="modal-content header-color">
 
                 <div class="modal-header green-color">
-                    <h5 class="modal-title text-uppercase rethink-sans-bold font-22 text-p" id="registerModalLabel">Cadastro</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <h5 class="modal-title rethink-sans-bold font-22 text-p" id="registerModalLabel">Cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="line-height: 15px; padding: 10px 8px 5px 8px;">X</button>
                 </div>
 
                 <div class="modal-body">
@@ -424,26 +391,26 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="name" class="form-label rethink-sans-bold font-15 text-white">Nome</label>
+                            <label for="name" class="form-label rethink-sans-bold font-15 text-black">Nome</label>
                             <input type="text" class="form-control rethink-sans-regular font-15" id="name" name="name" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="emailRegister" class="form-label rethink-sans-bold font-15 text-white">E-mail</label>
+                            <label for="emailRegister" class="form-label rethink-sans-bold font-15 text-black">E-mail</label>
                             <input type="email" class="form-control rethink-sans-regular font-15" id="emailRegister" name="email" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="passwordRegister" class="form-label rethink-sans-bold font-15 text-white">Senha</label>
+                            <label for="passwordRegister" class="form-label rethink-sans-bold font-15 text-black">Senha</label>
                             <input type="password" class="form-control rethink-sans-regular font-15" id="passwordRegister" name="password" required>
                         </div>
 
-                        <div class="d-flex justify-content-center my-2">
-                            <button type="submit" class="btn px-4 background-red rounded-3 text-white rethink-sans-bold font-15">Cadastrar</button>
+                        <div class="col-12 col-lg-4 m-auto my-2">
+                            <button type="submit" class="btn mt-3 px-4 background-red rounded-0 text-black rethink-sans-bold font-15">Cadastrar</button>
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <p class="rethink-sans-regular font-15 text-white text-center">
+                            <p class="rethink-sans-regular font-15 text-black text-center">
                                 Já tem uma conta?
                                 <a href="#" class="text-decoration-underline rethink-sans-bold ms-1 under"
                                 data-bs-dismiss="modal"
@@ -472,8 +439,8 @@
                 <div class="modal-content header-color">
 
                     <div class="modal-header green-color">
-                        <h5 class="modal-title text-uppercase rethink-sans-bold font-22 text-p" id="editClientModalLabel">Editar Informações</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                        <h5 class="modal-title rethink-sans-bold font-22 text-p" id="editClientModalLabel">Editar Informações</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="line-height: 15px; padding: 10px 8px 5px 8px;">X</button>
                     </div>
 
                     <div class="modal-body">
@@ -481,17 +448,17 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="name" class="form-label rethink-sans-bold font-15 text-white">Nome</label>
+                                <label for="name" class="form-label rethink-sans-bold font-15 text-black">Nome</label>
                                 <input type="text" class="form-control rethink-sans-regular font-15" id="name" name="name" value="{{Auth::guard('client')->user()->name}}" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="emailRegister" class="form-label rethink-sans-bold font-15 text-white">E-mail</label>
+                                <label for="emailRegister" class="form-label rethink-sans-bold font-15 text-black">E-mail</label>
                                 <input type="email" class="form-control rethink-sans-regular font-15" id="emailRegister" name="email" value="{{Auth::guard('client')->user()->email}}" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="passwordRegister" class="form-label rethink-sans-bold font-15 text-white">Senha</label>
+                                <label for="passwordRegister" class="form-label rethink-sans-bold font-15 text-black">Senha</label>
                                 <input type="password" class="form-control rethink-sans-regular font-15" id="passwordRegister" name="password">
                             </div>
                             <div class="col-lg-12">
@@ -502,14 +469,15 @@
                                         name="path_image" 
                                         data-plugins="dropify" 
                                         data-default-file="{{ $defaultImage }}" 
+                                        class="mb-1"
                                     />
-                                    <p class="rethink-sans-regular text-white font-12 mt-2 mb-0">{{__('dashboard.text_img_size')}} <b class="text-danger">2 MB</b>.</p>
+                                    <p class="rethink-sans-regular text-black font-12 mt-2 mb-0">{{__('dashboard.text_img_size')}} <b class="text-danger">2 MB</b>.</p>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn bg-secondary rounded-3 text-white rethink-sans-bold font-15" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn px-4 background-red rounded-3 text-white rethink-sans-bold font-15">Salvar alterações</button>
+                                <button type="button" class="btn bg-light rounded-0 text-black rethink-sans-bold font-15" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn px-4 background-red rounded-0 text-black rethink-sans-bold font-15">Salvar alterações</button>
                             </div>
 
                         </form>
@@ -525,10 +493,10 @@
             <div class="modal-content header-color">
 
                 <div class="modal-header green-color">
-                    <h5 class="modal-title text-uppercase rethink-sans-bold font-22 text-p" id="forgotPasswordModalLabel">
+                    <h5 class="modal-title rethink-sans-bold font-22 text-p" id="forgotPasswordModalLabel">
                         Recuperar Senha
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="line-height: 15px; padding: 10px 8px 5px 8px;">X</button>
                 </div>
 
                 <div class="modal-body">
@@ -536,12 +504,12 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="recover_email" class="form-label rethink-sans-bold font-15 text-white">Digite seu e-mail</label>
+                            <label for="recover_email" class="form-label rethink-sans-bold font-15 text-black">Digite seu e-mail</label>
                             <input type="email" class="form-control rethink-sans-regular font-15" id="recover_email" name="email" required>
                         </div>
 
-                        <div class="d-flex justify-content-center mt-3 mb-4">
-                            <button type="submit" class="btn px-5 background-red rounded-3 text-white rethink-sans-bold font-15">
+                        <div class="col-12 col-lg-9 m-auto mb-4">
+                            <button type="submit" class="btn mt-3 px-5 background-red rounded-0 text-black rethink-sans-bold font-15">
                                 Enviar link de recuperação
                             </button>
                         </div>
@@ -816,8 +784,22 @@
     <script>
         const starUrl = "{{ asset('build/client/images/star.svg') }}";
     </script>
-    <script src="{{ asset('build/client/js/default.js') }}"></script>
+    {{-- <script src="{{ asset('build/client/js/default.js') }}"></script> --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuItems = document.querySelectorAll('#pq-main-menu .menu-item');
 
+            menuItems.forEach(item => {
+                const link = item.querySelector('a');
+                link.addEventListener('click', () => {
+                    // Remove a classe de todos
+                    menuItems.forEach(i => i.classList.remove('current-menu-item'));
+                    // Adiciona apenas no item clicado
+                    item.classList.add('current-menu-item');
+                });
+            });
+        });
+    </script>
 
     {{-- Modais alert --}}
     <script>

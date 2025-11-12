@@ -74,7 +74,7 @@
 <!-- <portfolio-end> -->
 <!-- <about-start> -->
 @if(isset($about))
-    <section class="about">
+    <section id="about" class="about">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-12 col-md-12 pe-xl-5">
@@ -180,7 +180,7 @@
 </section>
 <!-- <service-end> -->
 <!-- <gallery-start> -->
-<section class="portfolio py-0">
+<section id="gallery" class="portfolio py-0">
     <div class="container-fluid p-0">
         <div class="row g-0 gallery">
             @foreach ($benefitTopics as $benefitTopics)
@@ -452,31 +452,31 @@
                     <form class="pq-applyform" novalidate>
                         <div class="row g-2">
                             <div class="col-12 col-lg-8">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
+                                <input type="text" class="form-control text-muted border-white" placeholder="Your Name" required>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <input type="text" class="form-control" placeholder="Your Phone / WhatsApp" required>
+                                <input type="text" class="form-control text-muted border-white" placeholder="Your Phone / WhatsApp" required>
                             </div>
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <input type="email" class="form-control" placeholder="Your Email (optional)">
+                                <input type="email" class="form-control text-muted border-white" placeholder="Your Email (optional)">
                             </div>
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-12 col-lg-6">
-                                <input type="number" min="1" class="form-control" placeholder="Number of People" required>
+                                <input type="number" min="1" class="form-control text-muted border-white" placeholder="Number of People" required>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <input type="date" class="form-control" required>
+                                <input type="date" class="form-control text-muted border-white" required>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <input type="time" class="form-control" required>
+                                <input type="time" class="form-control text-muted border-white" required>
                             </div>
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <textarea class="form-control" rows="3" placeholder="Special Requests (optional)"></textarea>
+                                <textarea class="form-control text-muted border-white bg-transparent" rows="3" placeholder="Mensagem (opcional)"></textarea>
                             </div>
                         </div>
                         <div class="col-12 text-start mt-2">

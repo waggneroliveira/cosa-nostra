@@ -50,31 +50,8 @@
                                 </div>
                                 <h2 class="mb-3 title-blue rethink-sans-bold font-22 mt-3">{{$blogInner->title}}</h2>
                             </div>
-                            <div class="py-4">
-                                <div class="barra-de-progresso mt-2 d-flex align-items-center gap-2">
-                                    <i id="audioIcon" class="fa fa-play d-flex justify-content-center align-items-center text-black rounded-5 font-12" onclick="togglePlayPause()"></i>
-                                    
-                                    <span id="audioStatus" class="text-muted rethink-sans-regular font-12"></span>
-
-                                    <div id="progressContainer" class="progressContainer flex-grow-1">
-                                        <div id="progressBar" class="background-red" style="width:0%;"></div>
-                                    </div>
-
-                                    <!-- Controlador de velocidade -->
-                                    <div class="d-flex gap-1 align-items-center">
-                                        <button id="decreaseSpeed" class="btn-voz d-flex justify-content-center align-items-center btn btn-sm text-black border-dark">-</button>
-                                        <span id="speedLabel" class="text-black rethink-sans-regular font-12 ms-1 me-1">1x</span>
-                                        <button id="increaseSpeed" class="btn-voz d-flex justify-content-center align-items-center text-black btn btn-sm border-dark">+</button>
-                                    </div>
-
-                                    <!-- Controlador de volume simplificado -->
-                                    <div class="d-flex align-items-center ms-3 justify-content-center">
-                                        <i class="fa fa-volume-up text-black me-2"></i>
-                                        <input id="volumeSlider" type="range" min="0" max="1" step="0.1" value="1" class="form-range w-50 mb-0">
-                                    </div>
-                                </div>
-
-                                <div class="black-color rethink-sans-regular font-16 mt-4 text-audio text-blog-inner">
+                            <div class="py-2">
+                                <div class="black-color rethink-sans-regular font-16 mt-0 text-audio text-blog-inner">
                                     {!! $blogInner->text !!}
                                 </div>                                
                             </div>                        
@@ -107,7 +84,7 @@
                     <!-- Comment Form Start -->
                     <div class="mb-0 mt-5 border border-black p-4">
                         <div class="section-title mb-0 d-flex flex-wrap justify-content-between align-items-center">
-                            <h4 class="m-0 rethink-sans-bold font-25 title-blue col-12 col-lg-8 mb-3">Escreva um comentário</h4>
+                            <h4 class="m-0 rethink-sans-bold font-25 title-blue col-12 col-lg-8 mb-2">Escreva um comentário</h4>
                             <div class="d-flex justify-content-start align-items-start gap-1 col-12 col-lg-4">                        
                                 @if (Auth::guard('client')->check())
                                     @php
@@ -144,8 +121,7 @@
                                 <input type="hidden" name="blog_id" value="{{ $blogInner->id }}">
 
                                 <div class="mb-3">
-                                    <label for="message" class="text-black">Mensagem *</label>
-                                    <textarea id="message" name="comment" required cols="30" rows="5" class="form-control montserrat-regular font-15 rounded-0 border border-black bg-transparent"></textarea>
+                                    <textarea id="message" placeholder="* Escreva seu comentário" name="comment" required cols="30" rows="5" class="form-control montserrat-regular font-15 rounded-0 border border-black bg-transparent"></textarea>
                                 </div>
                                                                 
                                 <div class="mb-0 text-start">
@@ -227,7 +203,7 @@
                         <!-- Popular News Start -->
                         <div class="mb-3 border p-3" style="border-color: #777777 !important;">
                             <div class="section-title mb-0">
-                                <h4 class="m-0 text-uppercase rethink-sans-bold font-22 title-blue">Relacionados</h4>
+                                <h4 class="m-0 rethink-sans-bold font-22 title-blue">Relacionados</h4>
                             </div>
                             <div class="bg-transparent py-3">
                                 @foreach($blogRelacionados as $relacionado)    
@@ -236,17 +212,15 @@
                                         $dataFormatada = \Carbon\Carbon::parse($relacionado->date)->translatedFormat('d \d\e F \d\e Y');
                                     @endphp                               
                                     <article>
-                                        <div class="d-flex align-items-center bg-transparentmb-3 overflow-hidden" style="height: 110px;">
-                                            <img loading="lazy" class="img-fluid"
-                                            src="{{ $relacionado->path_image_thumbnail ? asset('storage/'.$relacionado->path_image_thumbnail) : 'https://placehold.co/600x400?text=Sem+imagem&font=montserrat' }}"
-                                            alt="{{ $relacionado->title ? $blogInner->title : 'Sem imagem'}}" loading="lazy">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2 d-flex justify-content-start align-items-center gap-1 flex-wrap">
-                                                    <span class="badge badge-primary rethink-sans-regular font-10 text-uppercase py-1 px-2 mr-2 background-red">{{$relacionado->category->title}}</span>
-                                                    <p class="text-color mb-0 montserrat-regular font-12">{{$dataFormatada}}</p>
-                                                </div>
-                                                <a href="{{route('blog-inner', ['slug' => $relacionado->slug])}}" class="underline w-100">
-                                                    <h3 class="h6 m-0 text-uppercase rethink-sans-bold font-14 title-blue">{{$relacionado->title}}</h3>
+                                        <div class="d-flex align-items-center bg-transparentmb-3 overflow-hidden">
+                                            <div class="w-100 h-100 px-1 d-flex flex-column justify-content-center">
+                                                <a href="{{route('blog-inner', ['slug' => $relacionado->slug])}}" class="underline w-100 gap-1 d-flex justofy-content-start align-items-center">
+                                                    <span class="icon">
+                                                        <svg width="6" height="9" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5.07812 4.62891L1.28906 8.4375C1.09375 8.61328 0.800781 8.61328 0.625 8.4375L0.175781 7.98828C0 7.8125 0 7.51953 0.175781 7.32422L3.18359 4.29688L0.175781 1.28906C0 1.09375 0 0.800781 0.175781 0.625L0.625 0.175781C0.800781 0 1.09375 0 1.28906 0.175781L5.07812 3.98438C5.25391 4.16016 5.25391 4.45312 5.07812 4.62891Z" fill="#CA232A"/>
+                                                        </svg>
+                                                    </span> 
+                                                    <h3 class="h6 m-0 rethink-sans-bold font-14 title-blue">{{$relacionado->title}}</h3>
                                                 </a>
                                             </div>
                                         </div>
@@ -260,7 +234,7 @@
                      <!-- Tags Start -->
                       <div class="mb-3 border p-3" style="border-color: #777777 !important;">
                           <div class="section-title mb-0 cat-mt">
-                              <h4 class="m-0 text-uppercase rethink-sans-bold font-22 title-blue">CATEGORIAS</h4>
+                              <h4 class="m-0 rethink-sans-bold font-22 title-blue">Categorias</h4>
                           </div>
                           <div class="bg-transparentpy-3">
                               <div class="d-flex flex-wrap m-n1">

@@ -1,20 +1,20 @@
 <div class="bg-transparent text-center py-3">
     <form id="newsletterForm">
         @csrf
-        <p class="text-color rethink-sans-regular font-16 text-start">
-            Cadastre-se abaixo e receba as principais novidades via e-mail!
+        <p class="text-black rethink-sans-regular font-16 text-start">
+            Inscreva-se para receber as principais novidades
         </p>
-        <div class="input-group mb-2" style="width: 100%;">
-            <input type="text" name="email" id="email" class="form-control form-control-lg rethink-sans-regular text-color font-14" placeholder="Seu e-mail" required>
+        <div class="d-flex gap-2 mb-2" style="width: 100%;">
+            <input type="text" name="email" id="email" class="form-control border-black form-control-lg rethink-sans-regular text-color font-14" placeholder="Seu e-mail" required>
             <div class="input-group-append">
-                <button type="submit" class="btn background-red text-black rethink-sans-semiBold font-16 px-3 h-100 rounded-3">
+                <button type="submit" class="btn background-red text-black rethink-sans-semiBold font-16 px-3 py-1 h-100 rounded-0">
                     Enviar
                 </button>
             </div>
         </div>
         <div class="d-flex justify-content-start align-items-center gap-2">
-            <input type="checkbox" id="term_privacy" name="term_privacy" required>
-            <label for="term_privacy" class="rethink-sans-regular text-color font-12">
+            <input type="checkbox" id="term_privacy" class="mb-0" name="term_privacy" required>
+            <label for="term_privacy" class="rethink-sans-regular text-black font-12">
                 Aceito os termos descritos na Política de Privacidade
             </label>
         </div>
