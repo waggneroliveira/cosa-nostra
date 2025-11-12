@@ -67,7 +67,7 @@
     <link href="{{ asset('build/client/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('build/client/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('build/client/lgpd/style.css') }}" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
         
     <script defer src="https://cdn.userway.org/widget.js" data-account="qSpdtrySSt"></script>
     <link rel="preconnect" href="https://vlibras.gov.br" crossorigin>
@@ -816,7 +816,7 @@
     <script>
         const starUrl = "{{ asset('build/client/images/star.svg') }}";
     </script>
-    {{-- <script src="{{ asset('build/client/js/default.js') }}"></script> --}}
+    <script src="{{ asset('build/client/js/default.js') }}"></script>
 
 
     {{-- Modais alert --}}

@@ -379,7 +379,7 @@
                                 <a class="pq-button pq-btn-link" href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
                                     <div class="pq-button-block">
                                         <span class="pq-button-line-left"></span>
-                                        <span class="pq-button-text">Ler matérias</span>
+                                        <span class="pq-button-text">Ler matéria</span>
                                         <span class="pq-button-line-right"></span>
                                     </div>
                                 </a>

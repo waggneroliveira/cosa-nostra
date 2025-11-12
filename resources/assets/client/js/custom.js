@@ -280,3 +280,10 @@ Design and Developed by: Peaceful Qode
    });
 
 })(jQuery);
+
+if (document.getElementById('socialLinks')) {
+   document.getElementById('shareBtn').addEventListener('click', function() {
+      const links = document.getElementById('socialLinks');
+      links.classList.toggle('opacity-0');
+   });
+}

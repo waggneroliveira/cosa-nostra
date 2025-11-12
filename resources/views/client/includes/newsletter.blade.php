@@ -1,4 +1,4 @@
-<div class="bg-white text-center py-3">
+<div class="bg-transparent text-center py-3">
     <form id="newsletterForm">
         @csrf
         <p class="text-color rethink-sans-regular font-16 text-start">
@@ -7,7 +7,7 @@
         <div class="input-group mb-2" style="width: 100%;">
             <input type="text" name="email" id="email" class="form-control form-control-lg rethink-sans-regular text-color font-14" placeholder="Seu e-mail" required>
             <div class="input-group-append">
-                <button type="submit" class="btn background-red text-white rethink-sans-semiBold font-16 px-3 h-100 rounded-3">
+                <button type="submit" class="btn background-red text-black rethink-sans-semiBold font-16 px-3 h-100 rounded-3">
                     Enviar
                 </button>
             </div>
