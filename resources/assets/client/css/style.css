@@ -3271,10 +3271,15 @@ Fancy Box
 	border-color: var(--black-color);
 	margin-bottom: 0;
 }
-.reservation .form-control:focus, input:focus{
+.reservation .form-control:focus{
+	color: var(--secondary-color);
+}
+input:focus{
 	color: var(--black-color) !important;
 }
-
+#reservationTime.form-control:disabled{
+	background-color: transparent !important;
+}
 .icon-location{
 	width: 60px;
     height: 60px;

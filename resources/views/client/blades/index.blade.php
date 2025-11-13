@@ -449,40 +449,54 @@
                     </div>
                 </div>
                 <div class="pq-reservation-main-form p-0 mt-3 mb-0">
-                    <form class="pq-applyform" novalidate>
+                    <form id="reservationForm" class="pq-applyform" novalidate>
+                        @csrf
                         <div class="row g-2">
                             <div class="col-12 col-lg-8">
-                                <input type="text" class="form-control text-muted border-white" placeholder="Nome completo" required>
+                                <input type="text" name="name_complete" class="form-control text-muted border-white" placeholder="*Nome completo" required>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <input type="text" class="form-control text-muted border-white" placeholder="WhatsApp" required>
+                                <input type="text" name="phone_whatsapp" class="form-control text-muted border-white" placeholder="WhatsApp" required>
                             </div>
                         </div>
+
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <input type="email" class="form-control text-muted border-white" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control text-muted border-white" placeholder="Email" required>
                             </div>
                         </div>
+
                         <div class="row g-2 mt-2">
-                            <div class="col-12 col-lg-6">
-                                <input type="number" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
+                            <div class="col-12 col-lg-3">
+                                <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <input type="date" class="form-control text-muted border-white" required>
+                                <select name="location_area" class="form-control text-muted border-white" required>
+                                    <option disabled selected>Área do estabelecimento</option>
+                                    <option value="interna">Interna</option>
+                                    <option value="varanda">Varanda</option>
+                                </select>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <input type="time" class="form-control text-muted border-white" required>
+                                <input type="date" id="reservationDate" name="date" class="form-control text-muted border-white" required>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <select id="reservationTime" name="hours" class="form-control text-muted border-white" required disabled>
+                                    <option value="">Selecione um horário</option>
+                                </select>
                             </div>
                         </div>
+
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <textarea class="form-control text-muted border-white bg-transparent" rows="3" placeholder="Mensagem (opcional)"></textarea>
+                                <textarea name="message" class="form-control rounded-0 text-muted border-white bg-transparent" rows="3" placeholder="Mensagem (opcional)"></textarea>
                             </div>
                         </div>
+
                         <div class="col-12 text-start mt-2">
-                            <a href="booking-table.html" class="pq-button pq-button-flat">
-                            <span class="pq-button-text text-white">Reservar</span>
-                            </a>
+                            <button type="submit" class="pq-button pq-button-flat">
+                                <span class="pq-button-text text-white">Reservar</span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -496,4 +510,126 @@
     </div>
 </section>
 <!-- <reservation-end> -->
+
+<!--Script para data e hora de agendamento-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('reservationDate');
+        const timeSelect = document.getElementById('reservationTime');
+
+        // Impedir datas retroativas
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const minDate = `${yyyy}-${mm}-${dd}`;
+        dateInput.setAttribute('min', minDate);
+
+        // Tabela de horários por dia da semana
+        const horarios = {
+            1: ['12:00–15:30', '18:00–22:00'], // segunda
+            2: ['12:00–15:30', '18:00–22:00'], // terça
+            3: ['12:00–15:30', '18:00–22:00'], // quarta
+            4: ['12:00–15:30', '18:00–22:00'], // quinta
+            5: ['12:00–15:30', '18:00–22:00'], // sexta
+            6: ['12:00–16:30', '18:00–23:00'], // sábado
+            0: ['12:00–16:30', '18:00–22:00']  // domingo
+        };
+
+        dateInput.addEventListener('change', () => {
+            const selectedDate = new Date(dateInput.value);
+            const day = selectedDate.getDay(); // 0 = domingo ... 6 = sábado
+            const faixas = horarios[day];
+
+            // Limpa o select
+            timeSelect.innerHTML = '<option value="">Selecione um horário</option>';
+
+            if (!faixas) {
+                timeSelect.disabled = true;
+                return;
+            }
+
+            // Habilita o select
+            timeSelect.disabled = false;
+
+            // Gerar horários de 30 em 30 minutos dentro das faixas
+            const times = [];
+            faixas.forEach(faixa => {
+                const [start, end] = faixa.split('–');
+                const [sh, sm] = start.split(':').map(Number);
+                const [eh, em] = end.split(':').map(Number);
+
+                let current = new Date();
+                current.setHours(sh, sm, 0);
+
+                const limit = new Date();
+                limit.setHours(eh, em, 0);
+
+                while (current <= limit) {
+                    const h = current.getHours().toString().padStart(2, '0');
+                    const m = current.getMinutes().toString().padStart(2, '0');
+                    times.push(`${h}:${m}`);
+                    current.setMinutes(current.getMinutes() + 30);
+                }
+            });
+
+            // Adiciona as opções no select
+            times.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = time;
+                timeSelect.appendChild(option);
+            });
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#reservationForm').on('submit', function(e) {
+        e.preventDefault();
+
+        const formData = $(this).serialize();
+
+        $.ajax({
+            url: '{{ route("send-reservation") }}',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: response.message,
+                    icon: 'success',
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+                $('#reservationForm')[0].reset();
+            },
+            error: function(xhr) {
+                if (xhr.status === 422) {
+                    const errors = xhr.responseJSON.errors;
+                    let errorMessages = '';
+                    for (let field in errors) {
+                        errorMessages += errors[field][0] + '\n';
+                    }
+
+                    Swal.fire({
+                        title: 'Erro',
+                        text: errorMessages,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Erro',
+                        text: 'Ocorreu um erro ao enviar seu cadastro. Tente novamente.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            }
+        });
+    });
+
+</script>
 @endsection

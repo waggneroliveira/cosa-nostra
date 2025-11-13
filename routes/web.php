@@ -29,6 +29,7 @@ use App\Http\Controllers\Client\JuridicoPageController;
 use App\Http\Controllers\Client\NoticiesPageController;
 use App\Http\Controllers\Auth\PasswordEmailClientController;
 use App\Http\Controllers\Auth\ResetPasswordClientController;
+use App\Http\Controllers\ReservationController;
 
 require __DIR__ . '/dashboard.php';
 
@@ -79,6 +80,7 @@ Route::get('blog/interna/{slug}', [BlogPageController::class, 'blogInner'])
 Route::get('blog/{category?}', [BlogPageController::class, 'index'])->name('blog');
 Route::post('blog/search', [BlogPageController::class, 'index'])->name('blog-search');
 Route::post('send-newsletter', [NewsletterController::class, 'store'])->name('send-newsletter');
+Route::post('send-reservation', [ReservationController::class, 'store'])->name('send-reservation');
 
 Route::post('cliente/cadastro', [ClientController::class, 'store'])->name('register-client');
 Route::get('/', [HomePageController::class, 'index'])->name('index');
