@@ -25,7 +25,7 @@
                     @endif
               
                     @if($slide->link && $slide->btn_title)
-                        <a id="slider-16-slide-{{$slide->id}}-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="about-us.html" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
+                        <a id="slider-16-slide-{{$slide->id}}-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="{{$slide->link}}" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
                             <div class="pq-button-block">
                                 <br/>
                                 <span class="pq-button-line-left"></span>
@@ -126,7 +126,7 @@
 @endif
 <!-- <about-end> -->
 <!-- <service-start> -->
-<section class="section pq-service-bg-dark-color pb-0">
+<section id="experience" class="section pq-service-bg-dark-color pb-0">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -230,10 +230,10 @@
                             <div class="row">
                                 <div class="col-lg-12 advance-list">
                                     {!!$reservationHere->event!!}
-                                    <a class="pq-button pq-button-flat pq-mt-30" href="about-us.html">
+                                    <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
                                         <div class="pq-button-block">
                                             <span class="pq-button-line-left"></span>
-                                            <span class="pq-button-text text-white">Read More</span>
+                                            <span class="pq-button-text text-white">Reserve seu Evento</span>
                                             <span class="pq-button-line-right"></span>
                                         </div>
                                     </a>
@@ -244,10 +244,10 @@
                             <div class="row">
                                 <div class="col-lg-12 advance-list">
                                     {!!$reservationHere->benefit!!}
-                                    <a class="pq-button pq-button-flat pq-mt-30" href="about-us.html">
+                                    <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
                                         <div class="pq-button-block">
                                             <span class="pq-button-line-left"></span>
-                                            <span class="pq-button-text text-white">Read More</span>
+                                            <span class="pq-button-text text-white">Reserve seu Evento</span>
                                             <span class="pq-button-line-right"></span>
                                         </div>
                                     </a>
@@ -318,10 +318,10 @@
             </div>
             <div class="col-lg-3 col-md-12">
                 <div class="pq-btn-container">
-                    <a class="pq-button pq-button-flat" href="booking-table.html">
+                    <a class="pq-button pq-button-flat" href="#reservation">
                         <div class="pq-button-block">
                             <span class="pq-button-line-left"></span>
-                            <span class="pq-button-text text-white">booking table</span>
+                            <span class="pq-button-text text-white">Reserve sua mesa</span>
                             <span class="pq-button-line-right"></span>
                         </div>
                     </a>
@@ -481,7 +481,7 @@
                         </div>
                         <div class="col-12 text-start mt-2">
                             <a href="booking-table.html" class="pq-button pq-button-flat">
-                            <span class="pq-button-text text-white">Book a Table</span>
+                            <span class="pq-button-text text-white">Reservar</span>
                             </a>
                         </div>
                     </form>

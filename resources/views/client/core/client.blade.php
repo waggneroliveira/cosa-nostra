@@ -237,22 +237,23 @@
                                     <i class="ti-search"></i>
                                 </a>
                                 <div class="pq-search-form">
-                                    <form role="search" method="get" class="search-form">
+                                    <form action="{{route('blog-search')}}#news" role="search" method="post" class="search-form">
+                                        @csrf
                                         <label>
-                                            <span class="screen-reader-text">Search for:</span>
-                                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                                            <span class="screen-reader-text">Pesquisar:</span>
+                                            <input type="search" name="search" class="search-field" placeholder="Pesquisar…">
                                         </label>
-                                        <button class="search-submit">
-                                            <span class="screen-reader-text">Search</span>
+                                        <button type="search" class="search-submit">
+                                            <span class="screen-reader-text">Buscar</span>
                                         </button>
                                     </form>
                                 </div>
                             </div>
                             <div class="pq-btn-container">
-                                <a href="booking-table.html" class="pq-button">
+                                <a href="#reservation" class="pq-button">
                                     <div class="pq-button-block">
                                         <span class="pq-button-line-left"></span>
-                                        <span class="pq-button-text text-black">Book a table</span>
+                                        <span class="pq-button-text text-white font-15">Reserve agora</span>
                                         <span class="pq-button-line-right"></span>
                                     </div>
                                 </a>
@@ -529,13 +530,13 @@
         <div class="pq-footer-style-1">
             <div class="pq-footer-top pb-0">
                 <div class="container">
-                    <div class="row">
+                    <div class="row justify-content-between">
                         <div class="col-xl-3 col-md-6">
                             <div class="footer">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <img src="{{ asset('build/client/images/footer-logo/logo_header.svg') }}" class="pq-footer-logo" alt="Millennium-footer-logo">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget rhoncus consectetur enim.</p>
+                                        <p>Desde 1987, autêntica gastronomia italiana em Salvador, com tradição, sabor e hospitalidade.</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -566,63 +567,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-5 col-md-6">
                             <div class="footer">
-                                <h4 class="footer-title">Use Full Link</h4>
+                                <h4 class="footer-title">Sitemap</h4>
                                 <div class="menu-use-full-link-container">
                                     <ul id="menu-use-full-link" class="menu">
                                         <li class="menu-item">
-                                            <a href="team-single.html">Team Signal</a>
+                                            <a href="#about">Quem Somos</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="team-single.html">Contact Us</a>
+                                            <a href="#depoiment">Depoimentos</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="booking-table.html">Booking Table</a>
+                                            <a href="#experience">Por que nos visitar? </a>
+                                        </li>                                       
+                                        <li class="menu-item">
+                                            <a href="#blog">Blog</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="our-kitchen.html">Our Kitchen</a>
+                                            <a href="#gallery">Galeria</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="our-menu.html">Our Menu</a>
+                                            <a href="#reservation">Reservas</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="our-team.html">Our team</a>
+                                            <a href="">Eventos</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="about-us.html">About Us</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="faq.html">FAQ</a>
+                                            <a href="">Política de Privacidade</a>
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="footer footer-port-1">
-                                <h4 class="footer-title">Contact Us</h4>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul class="pq-contact">
-                                            <li>
-                                                <a href="tel:+1800001658">
-                                                    <i class="fa fa-phone"></i>
-                                                    <span>+1800-001-658</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="mailto:peacefulqode@gmail.com">
-                                                    <i class="fa fa-envelope"></i>
-                                                    <span>peacefulqode@gmail.com</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-map-marker"></i>
-                                                <span>Themeforest, Envato HQ 24 Fifth st., Los Angeles, USA</span>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

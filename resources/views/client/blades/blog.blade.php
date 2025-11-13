@@ -68,40 +68,52 @@
             
             <div class="col-lg-8 mb-4" data-aos="fade-up" data-aos-delay="750">
                @if ($blogAll->count())   
-                  <div class="col-12">
+                  <div class="col-11 col-lg-12 m-auto">
 
-                     <div class="row mt-5">
+                     <div class="row">
                         @foreach($blogAll as $blog)   
                            @php
                               \Carbon\Carbon::setLocale('pt_BR');
                               $dataFormatada = \Carbon\Carbon::parse($blog->date)->translatedFormat('d \d\e F \d\e Y');
                            @endphp                     
-                           <article class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
-                              <div class="news-lg border rounded-2 overflow-hidden bg-white w-100 d-flex flex-column">
-                                 <div class="img-bann overflow-hidden d-flex justify-content-center align-items-center">
+                           <article class="col-12 mb-5 d-flex px-0">
+                              <div class="news-lg rounded-0 overflow-hidden w-100 d-flex flex-column">
+                                 <div class="img-bann overflow-hidden d-flex justify-content-center align-items-center position-relative">
+                                    <div class="position-absolute pq-post-date">
+                                          <p class="text-color mb-0 text-black mb-0 rethink-sans-regular font-14">{{$dataFormatada}}</p>
+                                    </div>
                                     <img loading="lazy" class="img-fluid h-100 w-100 object-fit-cover"
                                        src="{{ $blog->path_image_thumbnail ? asset('storage/'.$blog->path_image_thumbnail) : 'https://placehold.co/600x400?text=Sem+imagem&font=montserrat' }}"
                                        alt="{{ $blog->title ? $blog->title : 'Sem imagem'}}"
                                        style="aspect-ratio: 1.91/ 1; object-fit: cover;">
                                  </div>
                                  <div class="d-flex flex-column px-0">
-                                    <div class="p-4 d-flex flex-column">
-                                       <div class="mb-2 d-flex justify-content-start align-items-center gap-1 flex-wrap">
-                                          <span class="badge badge-primary rethink-sans-semiBold font-12 me-2 background-red text-uppercase font-weight-semi-bold p-2">
-                                             {{$blog->category->title}}
-                                          </span>
-                                          <p class="text-color mb-0 rethink-sans-regular font-14">
-                                             {{$dataFormatada}}
-                                          </p>
+                                    <div class="p-0 d-flex flex-column">
+                                       <div class="category my-2">
+                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M0 7.90625V1.5C0 0.6875 0.65625 0 1.5 0H7.875C8.28125 0 8.65625 0.1875 8.9375 0.46875L15.5312 7.0625C16.125 7.65625 16.125 8.625 15.5312 9.1875L9.15625 15.5625C8.59375 16.1562 7.625 16.1562 7.03125 15.5625L0.4375 8.96875C0.15625 8.6875 0 8.3125 0 7.90625ZM3.5 2C2.65625 2 2 2.6875 2 3.5C2 4.34375 2.65625 5 3.5 5C4.3125 5 5 4.34375 5 3.5C5 2.6875 4.3125 2 3.5 2Z" fill="#CA232A"/>
+                                             </svg>
+                                             <span class="badge background-red rethink-sans-regular font-12 p-0">{{$blog->category->title}}</span>
                                        </div>
+
                                        <a href="{{route('blog-inner', ['slug' => $blog->slug])}}" class="underline">
                                           <h3 class="h4 d-block mb-3 text-uppercase rethink-sans-semiBold font-20 title-blue">
                                              {{$blog->title}}
                                           </h3>
                                        </a>
-                                       <p class="m-0 text-color rethink-sans-regular font-16">
+                                       <p class="m-0 text-black rethink-sans-regular font-16 border-bottom border-black pb-3">
                                           {!! substr(strip_tags($blog->text), 0, 180) !!}...
                                        </p>
+
+                                       <div class="pq-btn-container mt-3">
+                                          <a class="pq-button pq-btn-link" href="{{route('blog-inner', ['slug' => $blog->slug])}}">
+                                                <div class="pq-button-block">
+                                                   <span class="pq-button-line-left"></span>
+                                                   <span class="pq-button-text font-15">Ler Mais</span>
+                                                   <span class="pq-button-line-right"></span>
+                                                </div>
+                                          </a>
+                                       </div>
                                     </div>
                                  </div>
                               </div>
@@ -122,7 +134,7 @@
             </div>
 
             <div class="col-lg-4" data-aos="fade-left" data-aos-delay="750">
-                  <aside>
+                  <aside class="col-12 col-lg-11 m-auto">
                     <style>
                         .comment-text p{
                             font-size: 0.938rem;
@@ -154,7 +166,7 @@
                            <form action="{{route('blog-search')}}#news" class="search col-12 h-75" method="post">
                               @csrf
                               <div class="input-group input-group-lg h-100">
-                                 <input type="search" name="search" class="form-control border-end-0 rounded-0 text-color rethink-sans-regular bg-transparent border-black py-0" placeholder="Pesquisar">
+                                 <input type="search" name="search" class="form-control border-end-0 rounded-0 text-black rethink-sans-regular bg-transparent border-black py-0" placeholder="Pesquisar">
                                  <button type="submit" title="search" class="btn-reset rounded-0 border-black py-0 input-group-text bg-transparent border">
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99989 0C3.13331 0 0 3.13427 0 6.99979C0 10.8663 3.13351 14.0004 6.99989 14.0004C8.49916 14.0004 9.88877 13.5285 11.0281 12.7252L15.9512 17.6491C16.4199 18.117 17.1798 18.117 17.6485 17.6491C18.1172 17.1804 18.1172 16.4205 17.6485 15.9518L12.7254 11.0288C13.5279 9.88936 13.9998 8.4997 13.9998 6.99983C13.9998 3.13411 10.8655 0 6.99989 0ZM2.39962 6.99979C2.39962 4.45981 4.45907 2.40019 6.99989 2.40019C9.54072 2.40019 11.6002 4.45961 11.6002 6.99979C11.6002 9.54058 9.54072 11.6 6.99989 11.6C4.45907 11.6 2.39962 9.54058 2.39962 6.99979Z" fill="#31404B"/>
@@ -183,7 +195,7 @@
                                                         <path d="M5.07812 4.62891L1.28906 8.4375C1.09375 8.61328 0.800781 8.61328 0.625 8.4375L0.175781 7.98828C0 7.8125 0 7.51953 0.175781 7.32422L3.18359 4.29688L0.175781 1.28906C0 1.09375 0 0.800781 0.175781 0.625L0.625 0.175781C0.800781 0 1.09375 0 1.28906 0.175781L5.07812 3.98438C5.25391 4.16016 5.25391 4.45312 5.07812 4.62891Z" fill="#CA232A"/>
                                                         </svg>
                                                     </span> 
-                                                    <h3 class="h6 m-0 rethink-sans-bold font-14 title-blue">{{$relacionado->title}}</h3>
+                                                    <h3 class="h6 m-0 mb-1 rethink-sans-bold font-14 title-blue">{{$relacionado->title}}</h3>
                                                 </a>
                                             </div>
                                         </div>
