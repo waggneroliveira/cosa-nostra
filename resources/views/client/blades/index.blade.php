@@ -452,20 +452,20 @@
                     <form class="pq-applyform" novalidate>
                         <div class="row g-2">
                             <div class="col-12 col-lg-8">
-                                <input type="text" class="form-control text-muted border-white" placeholder="Your Name" required>
+                                <input type="text" class="form-control text-muted border-white" placeholder="Nome completo" required>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <input type="text" class="form-control text-muted border-white" placeholder="Your Phone / WhatsApp" required>
+                                <input type="text" class="form-control text-muted border-white" placeholder="WhatsApp" required>
                             </div>
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <input type="email" class="form-control text-muted border-white" placeholder="Your Email (optional)">
+                                <input type="email" class="form-control text-muted border-white" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-12 col-lg-6">
-                                <input type="number" min="1" class="form-control text-muted border-white" placeholder="Number of People" required>
+                                <input type="number" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
                             </div>
                             <div class="col-6 col-lg-3">
                                 <input type="date" class="form-control text-muted border-white" required>
