@@ -1,7 +1,7 @@
 @extends('client.core.client')
 @section('content')
    <div class="banner-inner position-relative d-flex justify-content-start align-items-center mt-3">
-      <div class="container">
+      <div class="container" style="z-index: 10;">
          <h1 class="h2 m-0 text-white text-uppercase rethink-sans-bold font-38 d-block" data-aos="fade-right" data-aos-delay="100">{{$blogInner->title}}</h1>
          <ol class="breadcrumb mt-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
             <li class="breadcrumb-item list-unstyled">
@@ -143,7 +143,7 @@
                                 @foreach ($blogInner->comments as $comment)
                                     @php
                                         \Carbon\Carbon::setLocale('pt_BR');
-                                        $dataFormatada = \Carbon\Carbon::parse($comment->date)->translatedFormat('d \d\e F \d\e Y');
+                                        $dataFormatada = \Carbon\Carbon::parse($comment->created_at)->translatedFormat('d \d\e F \d\e Y');
                                         $client = $comment->client;
                                     @endphp
 

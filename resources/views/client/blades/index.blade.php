@@ -466,16 +466,16 @@
                             </div>
                         </div>
 
-                        <div class="row g-2 mt-2">
-                            <div class="col-12 col-lg-3">
-                                <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
-                            </div>
+                        <div class="row g-2 mt-2">                            
                             <div class="col-6 col-lg-3">
                                 <select name="location_area" class="form-control text-muted border-white" required>
                                     <option disabled selected>Área do estabelecimento</option>
                                     <option value="interna">Interna</option>
                                     <option value="varanda">Varanda</option>
                                 </select>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
                             </div>
                             <div class="col-6 col-lg-3">
                                 <input type="date" id="reservationDate" name="date" class="form-control text-muted border-white" required>
@@ -516,6 +516,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         const dateInput = document.getElementById('reservationDate');
         const timeSelect = document.getElementById('reservationTime');
+        const areaSelect = document.querySelector('select[name="location_area"]');
+        const peopleInput = document.querySelector('input[name="number_of_people"]');
 
         // Impedir datas retroativas
         const today = new Date();
@@ -524,6 +526,19 @@
         const dd = String(today.getDate()).padStart(2, '0');
         const minDate = `${yyyy}-${mm}-${dd}`;
         dateInput.setAttribute('min', minDate);
+
+        // Desabilitar campo de número de pessoas inicialmente
+        peopleInput.disabled = true;
+
+        // Habilitar número de pessoas quando área for selecionada
+        areaSelect.addEventListener('change', () => {
+            if (areaSelect.value) {
+                peopleInput.disabled = false;
+            } else {
+                peopleInput.disabled = true;
+                peopleInput.value = ''; // Limpa o valor se a área for desselecionada
+            }
+        });
 
         // Tabela de horários por dia da semana
         const horarios = {

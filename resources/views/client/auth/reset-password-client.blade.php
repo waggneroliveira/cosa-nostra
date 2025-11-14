@@ -16,11 +16,11 @@
                                 <div class="auth-brand">
                                     <div class="logo-img px-3 py-2 rounded-2 d-flex justify-content-center align-items-center">
                                         <a href="{{route('blog')}}">
-                                            <img src="{{asset('build/client/images/logo.svg')}}" alt="Sindacs-BA" title="Sindacs-BA" class="img-fluid">
+                                            <img src="{{ asset('build/client/images/header-logo/logo_header.svg') }}" alt="Cosa Nostra" title="Cosa Nostra" class="img-fluid">
                                         </a>
                                     </div>
                                 </div>
-                                <p class="text-white montserrat-regular font-15 mb-4 mt-3">Por favor, preencha os campos abaixo para redefinir sua senha.</p>
+                                <p class="text-black montserrat-regular font-15 mb-4 mt-3">Por favor, preencha os campos abaixo para redefinir sua senha.</p>
                             </div>
 
                             <form action="{{route('client-password.update')}}" method="POST">
@@ -33,20 +33,20 @@
                                 @endif
                                 <input type="hidden" name="token" value="{{$token}}">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label text-white montserrat-medium font-15">E-mail</label>
+                                    <label for="email" class="form-label text-black montserrat-medium font-15">E-mail</label>
                                     <input class="form-control montserrat-regular" name="email" type="email" required="" id="email" placeholder="Digite seu E-mail">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label text-white montserrat-medium font-15">Nova Senha</label>
+                                    <label for="password" class="form-label text-black montserrat-medium font-15">Nova Senha</label>
                                     <input class="form-control montserrat-regular" name="password" type="password" required="" id="password" placeholder="Digite a nova senha">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password_confirmation" class="form-label text-white montserrat-medium font-15">Confirmar Nova Senha</label>
+                                    <label for="password_confirmation" class="form-label text-black montserrat-medium font-15">Confirmar Nova Senha</label>
                                     <input class="form-control montserrat-regular" name="password_confirmation" type="password" required="" id="password_confirmation" placeholder="Digite a nova senha">
                                 </div>
         
-                                <div class="text-center d-grid">
-                                    <button class="btn text-white montserrat-medium rounded-3 font-15 background-red" type="submit"> Alterar Senha </button>
+                                <div class="text-center">
+                                    <button class="btn mt-4 text-black montserrat-medium rounded-0 font-15 background-red" type="submit"> Alterar Senha </button>
                                 </div>
                             </form>
 
@@ -56,7 +56,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            {{-- <p class="text-white-50">Voltar para <a href="{{route('admin.dashboard.painel')}}" class="text-white ms-1"><b>Login</b></a></p> --}}
+                            {{-- <p class="text-black-50">Voltar para <a href="{{route('admin.dashboard.painel')}}" class="text-black ms-1"><b>Login</b></a></p> --}}
                         </div> <!-- end col -->
                     </div>
                     <!-- end row -->

@@ -1,16 +1,16 @@
 @extends('client.core.client')
 @section('content')
-   <div class="banner-inner email position-relative">
-      <div class="max-width m-auto">
+   <div class="banner-inner email position-relative d-flex justify-content-start align-items-center mt-3">
+      <div class="container m-auto" style="z-index: 10;">
          <h1 class="h2 m-0 text-white text-uppercase rethink-sans-bold font-50 d-block" data-aos="fade-right" data-aos-delay="100">Confirmação de envio de e-mail</h1>
          <p class="text-white mb-0 rethink-sans-regular font-20 col-12 col-lg-12 mt-4" data-aos="fade-right" data-aos-delay="300">Um e-mail foi enviado para . Por favor, verifique sua caixa de entrada e siga as instruções para prosseguir com a redefinição de sua senha.</p>
          <ol class="breadcrumb mt-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
-            <li class="breadcrumb-item">
-               <a href="{{route('index')}}">
+            <li class="breadcrumb-item list-unstyled">
+               <a href="{{route('index')}}" class="text-white">
                   <i class="fas fa-home me-2"></i>Home
                </a>
             </li>
-            <li class="breadcrumb-item active">Envio de E-mail</li>			               			
+            <li class="breadcrumb-item active list-unstyled">Envio de E-mail</li>			               			
          </ol>
       </div>
    </div>
@@ -26,13 +26,13 @@
                                     <div class="auth-brand">
                                         <div class="logo-img px-3 py-2 rounded-2 d-flex justify-content-center align-items-center">
                                             <a href="{{route('blog')}}">
-                                                <img src="{{asset('build/client/images/logo.svg')}}" alt="Sindacs-BA" title="Sindacs-BA" class="img-fluid">
+                                                <img src="{{ asset('build/client/images/header-logo/logo_header.svg') }}" alt="Cosa Nostra" title="Cosa Nostra" class="img-fluid">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="mt-3 text-center">
+                                <div class="mt-0 text-center">
                                     <svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 98 98" style="height: 120px;" xml:space="preserve">
                                         <style type="text/css">
                                             .st0 {
@@ -83,11 +83,11 @@
                                         </g>
                                     </svg>
 
-                                    <h3 class="montserrat-bold font-20 text-white mt-3">Sucesso!</h3>
-                                    <p class="montserrat-regular font-15 text-white mt-3"> Um e-mail foi enviado para  <b>{{$email}}</b>.
+                                    <h3 class="montserrat-bold font-24 text-black mt-0">Sucesso!</h3>
+                                    <p class="montserrat-regular font-15 text-black mt-3"> Um e-mail foi enviado para  <b>{{$email}}</b>.
                                         Por favor, verifique sua caixa de entrada e siga as instruções para prosseguir com a redefinição de sua senha.
                                     </p>
-                                    <a href="{{route('blog')}}" class="btn w-100 background-red montserrat-medium font-15 text-white mt-3">Voltar</a>
+                                    <a href="{{route('index')}}" class="btn w-100 background-red montserrat-medium font-15 text-black mt-3">Voltar</a>
                                 </div>
 
                             </div> <!-- end card-body -->

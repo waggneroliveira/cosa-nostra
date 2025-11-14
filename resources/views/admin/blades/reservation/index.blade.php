@@ -125,12 +125,21 @@
                                                             </div><!-- /.modal-content -->
                                                         </div><!-- /.modal-dialog -->
                                                     </div><!-- /.modal -->
-                                                    @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar', 'grupo.remover']))                                                        
-                                                        <form action="{{ route('admin.dashboard.reservation.update', ['reservation' => $reservation->id]) }}" method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <button type="button" style="width: 30px"class="demo-delete-row btn btn-success btn-xs btn-icon btSubmitDeleteItem"><i class="fa fa-check"></i></button>                                                                                                                       
-                                                        </form>
+                                                    @if($reservation->limite_atingido)
+                                                        <button type="button" 
+                                                                style="width: 30px"
+                                                                class="demo-delete-row btn btn-secondary btn-xs btn-icon"
+                                                                disabled
+                                                                title="Limite atingido para este horário e local">
+                                                            <i class="fa fa-check"></i>
+                                                        </button>
+                                                    @else
+                                                        {{-- Botão normal --}}
+                                                        <button type="submit" 
+                                                                style="width: 30px"
+                                                                class="demo-delete-row btn btn-success btn-xs btn-icon">
+                                                            <i class="fa fa-check"></i>
+                                                        </button>
                                                     @endif
                                                     @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar', 'grupo.remover']))                                                        
                                                         <form action="{{route('admin.dashboard.reservation.destroy',['reservation' => $reservation->id])}}" style="width: 30px" method="POST">

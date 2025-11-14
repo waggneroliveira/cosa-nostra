@@ -44,7 +44,7 @@
 
 <div class="blog mb-5">
    <div class="banner-inner position-relative d-flex justify-content-start align-items-center mt-3">
-      <div class="container m-auto">
+      <div class="container m-auto" style="z-index: 10;">
          <h1 class="h2 m-0 text-white text-uppercase rethink-sans-bold font-50 d-block" data-aos="fade-right" data-aos-delay="100">Blog</h1>
          <p class="text-white mb-0 rethink-sans-regular font-20 col-12 col-lg-12 mt-4" data-aos="fade-right" data-aos-delay="300">Confira uma área repleta de informações sobre o universo digital. Aqui escrevermos sobre tecnologia e tudo  feito pra quem vive — ou quer viver — o digital de verdade.</p>
          <ol class="breadcrumb mt-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
