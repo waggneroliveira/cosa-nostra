@@ -36,6 +36,7 @@ use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\FormIndexController;
 use App\Http\Controllers\UnionizedController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\BenefitTopicController;
 use App\Http\Controllers\BlogCategoryController;
@@ -199,6 +200,10 @@ Route::prefix('painel/')->group(function () {
         Route::resource('secao-reserva-aqui', ReservationHereController::class)
         ->names('admin.dashboard.reservationHere')
         ->parameters(['secao-reserva-aqui'=>'reservationHere']);
+        //RESERVATION
+        Route::resource('reserva', ReservationController::class)
+        ->names('admin.dashboard.reservation')
+        ->parameters(['reserva'=>'reservation']);
         //Agreement
         Route::resource('convenios', AgreementController::class)
         ->names('admin.dashboard.agreement')

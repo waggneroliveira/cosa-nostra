@@ -19,6 +19,7 @@ class Reservation extends Model
         'email',
         'number_of_people',
         'date',
+        'location_area',
         'hours',
         'message',
         'status'

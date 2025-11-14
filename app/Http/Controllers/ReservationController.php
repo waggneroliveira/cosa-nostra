@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $reservations = Reservation::get();
+        // dd($reservations);
+        return view('admin.blades.reservation.index', compact('reservations'));
     }
 
     /**
@@ -59,6 +58,7 @@ class ReservationController extends Controller
                 'phone_whatsapp' => $validated['phone_whatsapp'],
                 'number_of_people' => $validated['number_of_people'],
                 'date' => $validated['date'],
+                'location_area' => $validated['location_area'],
                 'hours' => $validated['hours'],
                 'email' => $validated['email'],
                 'message' => $validated['message'],

@@ -74,7 +74,25 @@
                         </div>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
-            @endif
+                @endif
+                <div class="col-md-5 col-xl-3">
+                    <div class="card borda-cx ratio ratio-4x3 border-whi">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a href="{{route('admin.dashboard.reservation.index')}}">
+                                <div class="row">
+                                    <div class="col-12 d-flex align-items-center justify-content-center">
+                                        <div class="avatar-xl bg-hoom rounded-circle text-center">
+                                            <i class="avatar-md mdi mdi-format-list-bulleted font-48 text-muted"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 col-12 text-center">
+                                    <h5 class="text-uppercase text-muted">Reservas</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- end card-->
+                </div> <!-- end col -->
 
             {{-- @if (Auth::user()->hasRole('Super') || 
             Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
