@@ -80,6 +80,9 @@ Route::get('blog/interna/{slug}', [BlogPageController::class, 'blogInner'])
 Route::get('blog/{category?}', [BlogPageController::class, 'index'])->name('blog');
 Route::post('blog/search', [BlogPageController::class, 'index'])->name('blog-search');
 Route::post('send-newsletter', [NewsletterController::class, 'store'])->name('send-newsletter');
+
+Route::post('reservations/check-areas-availability', [HomePageController::class, 'checkAreasAvailability'])
+    ->name('reservations.checkAreas');
 Route::post('send-reservation', [ReservationController::class, 'store'])->name('send-reservation');
 
 Route::post('cliente/cadastro', [ClientController::class, 'store'])->name('register-client');

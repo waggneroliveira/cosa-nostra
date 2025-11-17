@@ -17,6 +17,7 @@ use App\Models\Statute;
 use App\Models\Depoiment;
 use App\Models\Direction;
 use App\Models\Unionized;
+use App\Models\Reservation;
 use App\Models\Announcement;
 use App\Models\BenefitTopic;
 use App\Models\BlogCategory;
@@ -142,49 +143,131 @@ class HomePageController extends Controller
         );
     }
 
-    public function filterByCategory($categorySlug = null)
-    {
-        try {
-            $query = Blog::whereHas('category', function($active) {
-                $active->where('active', 1);
-            })
-            ->with(['category'])
-            ->active();
+    // public function filterByCategory($categorySlug = null)
+    // {
+    //     try {
+    //         $query = Blog::whereHas('category', function($active) {
+    //             $active->where('active', 1);
+    //         })
+    //         ->with(['category'])
+    //         ->active();
 
-            // Se uma categoria específica for selecionada
-            if ($categorySlug && $categorySlug !== 'todas') {
-                $query->whereHas('category', function($q) use ($categorySlug) {
-                    $q->where('slug', $categorySlug);
-                });
-            }
+    //         // Se uma categoria específica for selecionada
+    //         if ($categorySlug && $categorySlug !== 'todas') {
+    //             $query->whereHas('category', function($q) use ($categorySlug) {
+    //                 $q->where('slug', $categorySlug);
+    //             });
+    //         }
 
-            // Obter TODAS as notícias ordenadas por data
-            $allNews = $query->orderBy('created_at', 'DESC')->get();
+    //         // Obter TODAS as notícias ordenadas por data
+    //         $allNews = $query->orderBy('created_at', 'DESC')->get();
 
-            // Separar featured news (primeira) e latest news (restantes)
-            $featuredNews = $allNews->first();
+    //         // Separar featured news (primeira) e latest news (restantes)
+    //         $featuredNews = $allNews->first();
             
-            // Pegar as próximas notícias (excluindo a primeira)
-            $latestNews = $allNews->slice(1)->take(10);
+    //         // Pegar as próximas notícias (excluindo a primeira)
+    //         $latestNews = $allNews->slice(1)->take(10);
 
-            $html = view('client.ajax.filter-blog-homePage', [
-                'featuredNews' => $featuredNews,
-                'latestNews' => $latestNews
-            ])->render();
+    //         $html = view('client.ajax.filter-blog-homePage', [
+    //             'featuredNews' => $featuredNews,
+    //             'latestNews' => $latestNews
+    //         ])->render();
 
-            return response()->json([
-                'success' => true,
-                'html' => $html,
-                'count' => $allNews->count(),
-                'featured_id' => $featuredNews ? $featuredNews->id : null,
-                'latest_count' => $latestNews->count()
-            ]);
+    //         return response()->json([
+    //             'success' => true,
+    //             'html' => $html,
+    //             'count' => $allNews->count(),
+    //             'featured_id' => $featuredNews ? $featuredNews->id : null,
+    //             'latest_count' => $latestNews->count()
+    //         ]);
 
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erro ao filtrar notícias: ' . $e->getMessage()
-            ]);
-        }
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Erro ao filtrar notícias: ' . $e->getMessage()
+    //         ]);
+    //     }
+    // }
+
+    public function checkAvailability(Request $request)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'hours' => 'required|string',
+            'location_area' => 'required|string|in:interna,varanda',
+        ]);
+
+        // Capacidade por área
+        $capacities = [
+            'varanda' => 16,
+            'interna' => 60,
+        ];
+
+        $capacity = $capacities[$request->location_area];
+
+        // Pessoas confirmadas
+        $confirmed = Reservation::where('date', $request->date)
+            ->where('hours', $request->hours)
+            ->where('location_area', $request->location_area)
+            ->where('status', 'confirmed')
+            ->sum('number_of_people');
+
+        // Pessoas em stand-by
+        $standby = Reservation::where('date', $request->date)
+            ->where('hours', $request->hours)
+            ->where('location_area', $request->location_area)
+            ->where('status', 'stand_by')
+            ->sum('number_of_people');
+
+        $remaining = max($capacity - ($confirmed + $standby), 0);
+
+        return response()->json([
+            'capacity'   => $capacity,
+            'confirmed'  => $confirmed,
+            'standby'    => $standby,
+            'remaining'  => $remaining
+        ]);
     }
+    public function checkAreasAvailability(Request $request)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'hours' => 'required|string',
+        ]);
+
+        // capacidades
+        $capacities = [
+            'interna' => 60,
+            'varanda' => 16,
+        ];
+
+        $result = [];
+
+        foreach ($capacities as $area => $cap) {
+
+            $confirmed = Reservation::where('date', $request->date)
+                ->where('hours', $request->hours)
+                ->where('location_area', $area)
+                ->where('status', 'confirmed')
+                ->sum('number_of_people');
+
+            $standby = Reservation::where('date', $request->date)
+                ->where('hours', $request->hours)
+                ->where('location_area', $area)
+                ->where('status', 'stand_by')
+                ->sum('number_of_people');
+
+            $remaining = max($cap - ($confirmed + $standby), 0);
+
+            $result[$area] = [
+                'capacity'   => $cap,
+                'confirmed'  => $confirmed,
+                'standby'    => $standby,
+                'remaining'  => $remaining
+            ];
+        }
+
+        return response()->json($result);
+    }
+
 }

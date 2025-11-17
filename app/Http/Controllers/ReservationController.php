@@ -8,117 +8,211 @@ use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reservations = Reservation::orderBy('date', 'ASC')->where('status', 'stand_by')->get();
-        $reservationCounts = Reservation::orderBy('date', 'ASC')->where('status', 'confirmed')->get();
-        
-        // Horários do estabelecimento
-        $horarios = [
-            1 => ['12:00–15:30', '18:00–21:30'],
-            2 => ['12:00–15:30', '18:00–21:30'],
-            3 => ['12:00–15:30', '18:00–21:30'],
-            4 => ['12:00–15:30', '18:00–21:30'],
-            5 => ['12:00–15:30', '18:00–21:30'],
-            6 => ['12:00–16:30', '18:00–21:30'],
-            0 => ['12:00–16:30', '18:00–21:30']
-        ];
-        
-        // Limites por local
-        $limites = [
-            'varanda' => 16,
-            'interna' => 60
-        ];
-        
-        // Array para armazenar a contagem por data, horário e local
-        $contagemPorHorario = [];
-            
-        foreach ($reservationCounts as $reservation) {
-            $data = $reservation->date;
-            $horario = $reservation->time_hoursslot;
-            $local = $reservation->location_area;
-            $pessoas = $reservation->number_of_people;
-            
-            if (!array_key_exists($local, $limites)) {
-                continue;
+        $reservationQuery = Reservation::query();
+
+        // ============================
+        // 1 - FILTRO ESPECIAL: DUPLICADOS
+        // ============================
+        if ($request->duplicados == 1) {
+
+            // Busca todos os registros stand_by ou confirmed
+            $all = Reservation::whereIn('status', ['stand_by', 'confirmed'])->get();
+
+            // Busca pares duplicados
+            $gruposDuplicados = [];
+
+            foreach ($all as $res) {
+
+                $duplicados = Reservation::whereDate('date', $res->date)
+                    ->where(function ($q) use ($res) {
+                        $q->where('name_complete', $res->name_complete)
+                        ->orWhere('email', $res->email);
+                    })
+                    ->where('id', '!=', $res->id)
+                    ->whereIn('status', ['stand_by', 'confirmed'])
+                    ->pluck('id')
+                    ->toArray();
+
+                if (!empty($duplicados)) {
+                    // inclui o próprio no grupo
+                    $duplicados[] = $res->id;
+                    sort($duplicados);
+                    $gruposDuplicados[] = $duplicados;
+                }
             }
-            
-            $chave = $data . '_' . $horario . '_' . $local;
-            
-            if (!isset($contagemPorHorario[$chave])) {
-                $contagemPorHorario[$chave] = [
-                    'data' => $data,
-                    'horario' => $horario,
-                    'local' => $local,
-                    'total_pessoas' => 0,
-                    'limite_atingido' => false,
-                    'limite_maximo' => $limites[$local]
-                ];
+
+            // Remove grupos repetidos
+            $gruposDuplicados = array_map("unserialize", array_unique(array_map("serialize", $gruposDuplicados)));
+
+            // Junta todos IDs duplicados
+            $idsDuplicados = [];
+            foreach ($gruposDuplicados as $grupo) {
+                $idsDuplicados = array_merge($idsDuplicados, $grupo);
             }
-            
-            $contagemPorHorario[$chave]['total_pessoas'] += $pessoas;
-            
-            if ($contagemPorHorario[$chave]['total_pessoas'] >= $limites[$local]) {
-                $contagemPorHorario[$chave]['limite_atingido'] = true;
+            $idsDuplicados = array_unique($idsDuplicados);
+
+            // Busca todos os duplicados
+            $reservations = Reservation::whereIn('id', $idsDuplicados)
+                ->orderBy('date', 'ASC')
+                ->get();
+
+            // Marca duplicados
+            foreach ($reservations as $r) {
+                $r->duplicada = true;
+            }
+
+            $existeDuplicados = true;
+
+            return view('admin.blades.reservation.index', compact('reservations', 'existeDuplicados'));
+        }
+
+        // ============================
+        // 2 - FILTRAR NORMAL
+        // ============================
+
+        // Detecta se filtrou por nome ou email
+        $filtrouNomeOuEmail = $request->filled('name_complete') || $request->filled('email');
+
+        // ====================
+        // STATUS
+        // ====================
+        if ($filtrouNomeOuEmail) {
+
+            // Se filtrou nome ou email, só filtra status se o usuário escolheu explicitamente
+            if ($request->filled('status')) {
+                $reservationQuery->where('status', $request->status);
+            }
+
+        } else {
+
+            // Caso NÃO tenha filtrado nome/email → segue regra normal
+            if ($request->filled('status')) {
+                $reservationQuery->where('status', $request->status);
+            } else {
+                $reservationQuery->where('status', 'stand_by');
             }
         }
-        
-        // ADICIONE ESTA PARTE: Verificar limite para cada reserva stand_by
+
+        if ($request->filled('email')) {
+            $reservationQuery->where('email', $request->email);
+        }
+
+        if ($request->filled('name_complete')) {
+            $reservationQuery->where('name_complete', 'like', '%' . $request->name_complete . '%');
+        }
+
+        if ($request->filled('hours')) {
+            $reservationQuery->where('hours', $request->hours);
+        }
+
+        if ($request->filled('date')) {
+            $reservationQuery->whereDate('date', $request->date);
+        }
+
+        // Paginação
+        $reservations = $reservationQuery
+            ->orderBy('date', 'ASC')
+            ->paginate(50)
+            ->withQueryString();
+
+        // ====================================
+        // MARCA DUPLICADOS NA LISTAGEM NORMAL
+        // ====================================
         foreach ($reservations as $reservation) {
-            $chaveReserva = $reservation->date . '_' . $reservation->time_hoursslot . '_' . $reservation->location_area;
-            $reservation->limite_atingido = isset($contagemPorHorario[$chaveReserva]) && $contagemPorHorario[$chaveReserva]['limite_atingido'];
+            $duplicates = Reservation::whereDate('date', $reservation->date)
+                ->where(function ($q) use ($reservation) {
+                    $q->where('name_complete', $reservation->name_complete)
+                    ->orWhere('email', $reservation->email);
+                })
+                ->where('id', '!=', $reservation->id)
+                ->whereIn('status', ['stand_by', 'confirmed'])
+                ->exists();
+
+            $reservation->duplicada = $duplicates;
         }
-        
-        return view('admin.blades.reservation.index', compact('reservations', 'contagemPorHorario', 'limites'));
+
+        $existeDuplicados = $reservations->contains('duplicada', true);
+
+        return view('admin.blades.reservation.index', compact('reservations', 'existeDuplicados'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         // Validação
         $validated = $request->validate([
-            'name_complete' => 'required|string|min:3|max:255',
-            'phone_whatsapp' => 'required|string|min:9|max:20',
-            'email' => 'required|email|max:255',
-            'number_of_people' => 'required|integer|min:1',
-            'date' => 'required|date|after_or_equal:today',
-            'hours' => 'required|string',
-            'message' => 'nullable|string|max:1000',
-            'location_area' => 'nullable|string|max:20',
-        ], [
-            'name_complete.required' => 'O nome completo é obrigatório.',
-            'phone_whatsapp.required' => 'O telefone WhatsApp é obrigatório.',
-            'number_of_people.required' => 'O número de pessoas é obrigatório.',
-            'date.required' => 'A data é obrigatória.',
-            'date.after_or_equal' => 'A data não pode ser retroativa.',
-            'hours.required' => 'O horário é obrigatório.',
-            'email.required' => 'O email é obrigatório.',
-            'location_area.required' => 'O campo é obrigatório.'
+            'name_complete'      => 'required|string|min:3|max:255',
+            'phone_whatsapp'     => 'required|string|min:9|max:20',
+            'email'              => 'required|email|max:255',
+            'number_of_people'   => 'required|integer|min:1',
+            'date'               => 'required|date|after_or_equal:today',
+            'hours'              => 'required|string',
+            'message'            => 'nullable|string|max:1000',
+            'location_area'      => 'required|string|max:20',
         ]);
-
 
         try {
             DB::beginTransaction();
 
+            // -----------------------------------------------
+            // DEFINIR LIMITES POR ÁREA
+            // -----------------------------------------------
+            $limit = $validated['location_area'] === 'varanda'
+                ? 16
+                : 60;
+
+            // -----------------------------------------------
+            // SOMA DE APROVADAS
+            // -----------------------------------------------
+            $approvedSum = Reservation::where('date', $validated['date'])
+                ->where('hours', $validated['hours'])
+                ->where('location_area', $validated['location_area'])
+                ->where('status', 'confirmed')
+                ->sum('number_of_people');
+
+            // -----------------------------------------------
+            // SOMA DE STAND_BY
+            // -----------------------------------------------
+            $standBySum = Reservation::where('date', $validated['date'])
+                ->where('hours', $validated['hours'])
+                ->where('location_area', $validated['location_area'])
+                ->where('status', 'stand_by')
+                ->sum('number_of_people');
+
+            // -----------------------------------------------
+            // CALCULAR OCUPAÇÃO TOTAL COM O QUE O CLIENTE PEDIU
+            // -----------------------------------------------
+            $totalOcupado = $approvedSum + $standBySum + $validated['number_of_people'];
+
+            if ($totalOcupado > $limit) {
+
+                // calcula quantas vagas realmente restam
+                $restante = $limit - ($approvedSum + $standBySum);
+
+                return response()->json([
+                    'errors' => [
+                        'number_of_people' => [
+                            "Não é possível reservar {$validated['number_of_people']} pessoas. Restam apenas {$restante} vagas para esta área neste horário."
+                        ]
+                    ]
+                ], 422);
+            }
+
+            // -----------------------------------------------
+            // SE PASSOU NA VERIFICAÇÃO → CRIA COMO STAND_BY
+            // -----------------------------------------------
+
             Reservation::create([
-                'name_complete' => $validated['name_complete'],
-                'phone_whatsapp' => $validated['phone_whatsapp'],
+                'name_complete'    => $validated['name_complete'],
+                'phone_whatsapp'   => $validated['phone_whatsapp'],
                 'number_of_people' => $validated['number_of_people'],
-                'date' => $validated['date'],
-                'location_area' => $validated['location_area'],
-                'hours' => $validated['hours'],
-                'email' => $validated['email'],
-                'message' => $validated['message'],
+                'date'             => $validated['date'],
+                'location_area'    => $validated['location_area'],
+                'hours'            => $validated['hours'],
+                'email'            => $validated['email'],
+                'message'          => isset($validated['message']) ? $validated['message'] : '',
+                'status'           => 'stand_by',
             ]);
 
             DB::commit();
@@ -127,13 +221,14 @@ class ReservationController extends Controller
                 'success' => true,
                 'message' => 'Solicitação enviada com sucesso!',
             ]);
+
         } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
-                'error' => true,
-                'message' => 'Ocorreu um erro ao cadastrar. Por favor, tente novamente.',
-                'details' => $e->getMessage()
+                'error'    => true,
+                'message'  => 'Ocorreu um erro ao cadastrar. Por favor, tente novamente.',
+                'details'  => $e->getMessage()
             ], 500);
         }
     }
@@ -163,8 +258,10 @@ class ReservationController extends Controller
                     'status' => 'canceled',
                 ]);
             DB::commit();
+            return redirect()->back()->with('success', 'Reserva cancelada com sucesso!');
         } catch (\Exception $e) {
             DB::rollBack();
+            return redirect()->back()->with('error', 'Erro ao cancelar reserva: ' . $e->getMessage());
         }
     }
 

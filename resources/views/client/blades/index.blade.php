@@ -456,27 +456,17 @@
                                 <input type="text" name="name_complete" class="form-control text-muted border-white" placeholder="*Nome completo" required>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <input type="text" name="phone_whatsapp" class="form-control text-muted border-white" placeholder="WhatsApp" required>
+                                <input type="text" name="phone_whatsapp" class="form-control text-muted border-white" placeholder="*WhatsApp" required>
                             </div>
                         </div>
 
                         <div class="row g-2 mt-2">
                             <div class="col-12">
-                                <input type="email" name="email" class="form-control text-muted border-white" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control text-muted border-white" placeholder="*Email" required>
                             </div>
                         </div>
 
-                        <div class="row g-2 mt-2">                            
-                            <div class="col-6 col-lg-3">
-                                <select name="location_area" class="form-control text-muted border-white" required>
-                                    <option disabled selected>Área do estabelecimento</option>
-                                    <option value="interna">Interna</option>
-                                    <option value="varanda">Varanda</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
-                            </div>
+                        <div class="row g-2 mt-2">
                             <div class="col-6 col-lg-3">
                                 <input type="date" id="reservationDate" name="date" class="form-control text-muted border-white" required>
                             </div>
@@ -484,6 +474,16 @@
                                 <select id="reservationTime" name="hours" class="form-control text-muted border-white" required disabled>
                                     <option value="">Selecione um horário</option>
                                 </select>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <select name="location_area" class="form-control text-muted border-white" required disabled>
+                                    <option disabled selected>Área do estabelecimento</option>
+                                    <option value="interna">Interna</option>
+                                    <option value="varanda">Varanda</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
                             </div>
                         </div>
 
@@ -514,49 +514,42 @@
 <!--Script para data e hora de agendamento-->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const dateInput = document.getElementById('reservationDate');
-        const timeSelect = document.getElementById('reservationTime');
-        const areaSelect = document.querySelector('select[name="location_area"]');
+
+        const dateInput   = document.getElementById('reservationDate');
+        const timeSelect  = document.getElementById('reservationTime');
+        const areaSelect  = document.querySelector('select[name="location_area"]');
         const peopleInput = document.querySelector('input[name="number_of_people"]');
+
+        let lastAvailabilityData = null; // para reaproveitar os dados
 
         // Impedir datas retroativas
         const today = new Date();
         const yyyy = today.getFullYear();
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
-        const minDate = `${yyyy}-${mm}-${dd}`;
-        dateInput.setAttribute('min', minDate);
+        dateInput.setAttribute('min', `${yyyy}-${mm}-${dd}`);
 
         // Desabilitar campo de número de pessoas inicialmente
         peopleInput.disabled = true;
 
-        // Habilitar número de pessoas quando área for selecionada
-        areaSelect.addEventListener('change', () => {
-            if (areaSelect.value) {
-                peopleInput.disabled = false;
-            } else {
-                peopleInput.disabled = true;
-                peopleInput.value = ''; // Limpa o valor se a área for desselecionada
-            }
-        });
-
-        // Tabela de horários por dia da semana
+        // =====================================================
+        // 1. GERAÇÃO AUTOMÁTICA DE HORÁRIOS
+        // =====================================================
         const horarios = {
-            1: ['12:00–15:30', '18:00–21:30'], // segunda
-            2: ['12:00–15:30', '18:00–21:30'], // terça
-            3: ['12:00–15:30', '18:00–21:30'], // quarta
-            4: ['12:00–15:30', '18:00–21:30'], // quinta
-            5: ['12:00–15:30', '18:00–21:30'], // sexta
-            6: ['12:00–16:30', '18:00–21:30'], // sábado
-            0: ['12:00–16:30', '18:00–21:30']  // domingo
+            1: ['12:00–15:30', '18:00–21:30'], 
+            2: ['12:00–15:30', '18:00–21:30'],
+            3: ['12:00–15:30', '18:00–21:30'],
+            4: ['12:00–15:30', '18:00–21:30'],
+            5: ['12:00–15:30', '18:00–21:30'],
+            6: ['12:00–16:30', '18:00–21:30'],
+            0: ['12:00–16:30', '18:00–21:30']
         };
 
         dateInput.addEventListener('change', () => {
             const selectedDate = new Date(dateInput.value);
-            const day = selectedDate.getDay(); // 0 = domingo ... 6 = sábado
+            const day = selectedDate.getDay();
             const faixas = horarios[day];
 
-            // Limpa o select
             timeSelect.innerHTML = '<option value="">Selecione um horário</option>';
 
             if (!faixas) {
@@ -564,11 +557,10 @@
                 return;
             }
 
-            // Habilita o select
             timeSelect.disabled = false;
 
-            // Gerar horários de 30 em 30 minutos dentro das faixas
             const times = [];
+
             faixas.forEach(faixa => {
                 const [start, end] = faixa.split('–');
                 const [sh, sm] = start.split(':').map(Number);
@@ -588,14 +580,116 @@
                 }
             });
 
-            // Adiciona as opções no select
-            times.forEach(time => {
-                const option = document.createElement('option');
-                option.value = time;
-                option.textContent = time;
-                timeSelect.appendChild(option);
+            times.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t;
+                opt.textContent = t;
+                timeSelect.appendChild(opt);
             });
         });
+
+        // =====================================================
+        // 2. VERIFICA DISPONIBILIDADE DE TODAS ÁREAS
+        // =====================================================
+        function updateAreasAvailability() {
+            const date = dateInput.value;
+            const time = timeSelect.value;
+
+            if (!date || !time) return;
+
+            fetch('/reservations/check-areas-availability', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify({ date, hours: time })
+            })
+            .then(res => res.json())
+            .then(data => {
+
+                lastAvailabilityData = data;
+
+                areaSelect.innerHTML = '<option disabled selected>Área do estabelecimento</option>';
+                areaSelect.disabled = false;
+
+                let disponiveis = [];
+
+                // Interna
+                if (data.interna.remaining > 0) {
+                    areaSelect.innerHTML += `<option value="interna">Interna (${data.interna.remaining} vagas)</option>`;
+                    disponiveis.push('interna');
+                }
+
+                // Varanda
+                if (data.varanda.remaining > 0) {
+                    areaSelect.innerHTML += `<option value="varanda">Varanda (${data.varanda.remaining} vagas)</option>`;
+                    disponiveis.push('varanda');
+                }
+
+                // Nenhuma área disponível
+                if (disponiveis.length === 0) {
+                    areaSelect.disabled = true;
+                    peopleInput.disabled = true;
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sem vagas',
+                        text: 'Nenhuma área possui vagas para este horário.'
+                    });
+
+                    return;
+                }
+
+                // Se só houver 1 área disponível: seleciona automaticamente
+                if (disponiveis.length === 1) {
+                    areaSelect.value = disponiveis[0];
+                }
+
+                updatePeopleLimit();
+            })
+            .catch(err => console.error(err));
+        }
+
+        // =====================================================
+        // 3. ATUALIZA LIMITE DE PESSOAS
+        // =====================================================
+        function updatePeopleLimit() {
+            if (!lastAvailabilityData) return;
+
+            const area = areaSelect.value;
+            if (!area) {
+                peopleInput.disabled = true;
+                return;
+            }
+
+            let remaining = lastAvailabilityData[area].remaining;
+
+            // AQUI: limite por mesa = 10 pessoas
+            const maxPerTable = 10;
+
+            // Regra final = menor valor entre os dois
+            const finalLimit = Math.min(remaining, maxPerTable);
+
+            if (finalLimit <= 0) {
+                peopleInput.disabled = true;
+                peopleInput.value = "";
+                return;
+            }
+
+            peopleInput.disabled = false;
+            peopleInput.max = finalLimit;
+            peopleInput.placeholder = `Máximo disponível: ${finalLimit}`;
+        }
+
+        // =====================================================
+        // 4. EVENTOS
+        // =====================================================
+        dateInput.addEventListener('change', updateAreasAvailability);
+        timeSelect.addEventListener('change', updateAreasAvailability);
+
+        areaSelect.addEventListener('change', updatePeopleLimit);
+
     });
 </script>
 

@@ -206,6 +206,8 @@ Route::prefix('painel/')->group(function () {
         ->parameters(['reserva'=>'reservation']);
         Route::put('/reservations/{reservation}/confirmed', [ReservationController::class, 'confirmed'])
         ->name('admin.dashboard.reservation.confirmed');
+        Route::put('/reservations/{reservation}/canceled', [ReservationController::class, 'canceled'])
+        ->name('admin.dashboard.reservation.canceled');
         //Agreement
         Route::resource('convenios', AgreementController::class)
         ->names('admin.dashboard.agreement')

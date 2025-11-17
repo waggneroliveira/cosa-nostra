@@ -5267,7 +5267,10 @@ ol.commentlist {
     font-weight: 400;
     text-transform: uppercase;
 }
-
+#reservationForm .form-control:disabled{
+	background-color: transparent !important;
+	border-color: #6c757d !important;
+}
 .pq-reservation-drink{
 	position: relative;
     padding: 60px 45px;

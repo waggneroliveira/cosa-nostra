@@ -45,7 +45,7 @@
     
     <div class="col-12 col-lg-4">
         <label class="form-label">Data para agendamento</label>
-        <input type="text" class="form-control"
+        <input id="inputDate-{{ isset($reservation) ? $reservation->id : ''}}" type="text" class="form-control"
             value="{{ isset($reservation->date) ? \Carbon\Carbon::parse($reservation->date)->format('d/m/Y') : '' }}"
             readonly>
     </div>
@@ -70,3 +70,19 @@
     </div>
 
 </div>
+{{-- <div class="d-flex justify-content-between mt-3">    
+    <!-- Botão REAGENDAR -->
+    <button type="button"
+        class="btn btn-warning"
+        id="btnReagendar-{{ isset($reservation) ? $reservation->id : ''}}">
+        Reagendar
+    </button>
+
+    <!-- Botão SALVAR (oculto inicialmente) -->
+    <button type="submit"
+        class="btn btn-success d-none"
+        id="btnSalvarReagendamento-{{ isset($reservation) ? $reservation->id : ''}}">
+        Salvar Reagendamento
+    </button>
+
+</div> --}}
