@@ -83,7 +83,6 @@
                                                         <option value="20:30" {{ request('hours') == '20:30' ? 'selected' : '' }}>20:30</option>
                                                         <option value="21:00" {{ request('hours') == '21:00' ? 'selected' : '' }}>21:00</option>
                                                         <option value="21:30" {{ request('hours') == '21:30' ? 'selected' : '' }}>21:30</option>
-                                                        <option value="22:00" {{ request('hours') == '22:00' ? 'selected' : '' }}>22:00</option>
                                                     </select>
                                                 </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -138,100 +139,111 @@ class ReservationController extends Controller
         return view('admin.blades.reservation.index', compact('reservations', 'existeDuplicados'));
     }
 
-    public function store(Request $request)
-    {
-        // Validação
-        $validated = $request->validate([
-            'name_complete'      => 'required|string|min:3|max:255',
-            'phone_whatsapp'     => 'required|string|min:9|max:20',
-            'email'              => 'required|email|max:255',
-            'number_of_people'   => 'required|integer|min:1',
-            'date'               => 'required|date|after_or_equal:today',
-            'hours'              => 'required|string',
-            'message'            => 'nullable|string|max:1000',
-            'location_area'      => 'required|string|max:20',
+
+
+public function store(Request $request)
+{
+    // Validação
+    $validated = $request->validate([
+        'name_complete'      => 'required|string|min:3|max:255',
+        'phone_whatsapp'     => 'required|string|min:9|max:20',
+        'email'              => 'required|email|max:255',
+        'number_of_people'   => 'required|integer|min:1',
+        'date'               => 'required|date|after_or_equal:today',
+        'hours'              => 'required|string',
+        'message'            => 'nullable|string|max:1000',
+        'location_area'      => 'required|string|max:20',
+    ]);
+
+    // =====================================
+    // VERIFICA SE O HORÁRIO JÁ PASSOU HOJE
+    // =====================================
+    $reservationDateTime = Carbon::parse("{$validated['date']} {$validated['hours']}");
+    $now = Carbon::now();
+
+    if ($reservationDateTime->isPast()) {
+        return response()->json([
+            'errors' => [
+                'hours' => ['O horário selecionado já passou. Escolha um horário válido.']
+            ]
+        ], 422);
+    }
+
+    try {
+        DB::beginTransaction();
+
+        // -----------------------------------------------
+        // DEFINIR LIMITES POR ÁREA
+        // -----------------------------------------------
+        $limit = $validated['location_area'] === 'varanda' ? 16 : 60;
+
+        // -----------------------------------------------
+        // SOMA DE APROVADAS
+        // -----------------------------------------------
+        $approvedSum = Reservation::where('date', $validated['date'])
+            ->where('hours', $validated['hours'])
+            ->where('location_area', $validated['location_area'])
+            ->where('status', 'confirmed')
+            ->sum('number_of_people');
+
+        // -----------------------------------------------
+        // SOMA DE STAND_BY
+        // -----------------------------------------------
+        $standBySum = Reservation::where('date', $validated['date'])
+            ->where('hours', $validated['hours'])
+            ->where('location_area', $validated['location_area'])
+            ->where('status', 'stand_by')
+            ->sum('number_of_people');
+
+        // -----------------------------------------------
+        // CALCULAR OCUPAÇÃO TOTAL COM O QUE O CLIENTE PEDIU
+        // -----------------------------------------------
+        $totalOcupado = $approvedSum + $standBySum + $validated['number_of_people'];
+
+        if ($totalOcupado > $limit) {
+            $restante = $limit - ($approvedSum + $standBySum);
+            return response()->json([
+                'errors' => [
+                    'number_of_people' => [
+                        "Não é possível reservar {$validated['number_of_people']} pessoas. Restam apenas {$restante} vagas para esta área neste horário."
+                    ]
+                ]
+            ], 422);
+        }
+
+        // -----------------------------------------------
+        // SE PASSOU NA VERIFICAÇÃO → CRIA COMO STAND_BY
+        // -----------------------------------------------
+        Reservation::create([
+            'name_complete'    => $validated['name_complete'],
+            'phone_whatsapp'   => $validated['phone_whatsapp'],
+            'number_of_people' => $validated['number_of_people'],
+            'date'             => $validated['date'],
+            'location_area'    => $validated['location_area'],
+            'hours'            => $validated['hours'],
+            'email'            => $validated['email'],
+            'message'          => $validated['message'] ?? '',
+            'status'           => 'stand_by',
         ]);
 
-        try {
-            DB::beginTransaction();
+        DB::commit();
 
-            // -----------------------------------------------
-            // DEFINIR LIMITES POR ÁREA
-            // -----------------------------------------------
-            $limit = $validated['location_area'] === 'varanda'
-                ? 16
-                : 60;
+        return response()->json([
+            'success' => true,
+            'message' => 'Solicitação enviada com sucesso!',
+        ]);
 
-            // -----------------------------------------------
-            // SOMA DE APROVADAS
-            // -----------------------------------------------
-            $approvedSum = Reservation::where('date', $validated['date'])
-                ->where('hours', $validated['hours'])
-                ->where('location_area', $validated['location_area'])
-                ->where('status', 'confirmed')
-                ->sum('number_of_people');
+    } catch (\Exception $e) {
+        DB::rollBack();
 
-            // -----------------------------------------------
-            // SOMA DE STAND_BY
-            // -----------------------------------------------
-            $standBySum = Reservation::where('date', $validated['date'])
-                ->where('hours', $validated['hours'])
-                ->where('location_area', $validated['location_area'])
-                ->where('status', 'stand_by')
-                ->sum('number_of_people');
-
-            // -----------------------------------------------
-            // CALCULAR OCUPAÇÃO TOTAL COM O QUE O CLIENTE PEDIU
-            // -----------------------------------------------
-            $totalOcupado = $approvedSum + $standBySum + $validated['number_of_people'];
-
-            if ($totalOcupado > $limit) {
-
-                // calcula quantas vagas realmente restam
-                $restante = $limit - ($approvedSum + $standBySum);
-
-                return response()->json([
-                    'errors' => [
-                        'number_of_people' => [
-                            "Não é possível reservar {$validated['number_of_people']} pessoas. Restam apenas {$restante} vagas para esta área neste horário."
-                        ]
-                    ]
-                ], 422);
-            }
-
-            // -----------------------------------------------
-            // SE PASSOU NA VERIFICAÇÃO → CRIA COMO STAND_BY
-            // -----------------------------------------------
-
-            Reservation::create([
-                'name_complete'    => $validated['name_complete'],
-                'phone_whatsapp'   => $validated['phone_whatsapp'],
-                'number_of_people' => $validated['number_of_people'],
-                'date'             => $validated['date'],
-                'location_area'    => $validated['location_area'],
-                'hours'            => $validated['hours'],
-                'email'            => $validated['email'],
-                'message'          => isset($validated['message']) ? $validated['message'] : '',
-                'status'           => 'stand_by',
-            ]);
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Solicitação enviada com sucesso!',
-            ]);
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            return response()->json([
-                'error'    => true,
-                'message'  => 'Ocorreu um erro ao cadastrar. Por favor, tente novamente.',
-                'details'  => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'error'    => true,
+            'message'  => 'Ocorreu um erro ao cadastrar. Por favor, tente novamente.',
+            'details'  => $e->getMessage()
+        ], 500);
     }
+}
+
 
     public function confirmed(Request $request, Reservation $reservation)
     {

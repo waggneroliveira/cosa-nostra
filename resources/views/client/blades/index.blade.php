@@ -456,7 +456,7 @@
                                 <input type="text" name="name_complete" class="form-control text-muted border-white" placeholder="*Nome completo" required>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <input type="text" name="phone_whatsapp" class="form-control text-muted border-white" placeholder="*WhatsApp" required>
+                                <input type="text" id="phone-wpp" name="phone_whatsapp" class="form-control text-muted border-white" placeholder="*WhatsApp" required>
                             </div>
                         </div>
 
@@ -691,6 +691,34 @@
         areaSelect.addEventListener('change', updatePeopleLimit);
 
     });
+
+    //Mascara wpp
+    document.addEventListener("DOMContentLoaded", function () {
+            const wppInput = document.getElementById("phone-wpp");
+
+            if (!wppInput) return;
+
+            wppInput.addEventListener("input", function (e) {
+                let value = e.target.value;
+
+                // Remove tudo que não for número
+                value = value.replace(/\D/g, "");
+
+                // Limita a 11 dígitos
+                value = value.substring(0, 11);
+
+                // Aplica máscara
+                if (value.length > 6) {
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+                } else if (value.length > 2) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+                } else {
+                    value = value.replace(/(\d{0,2})/, "($1");
+                }
+
+                e.target.value = value;
+            });
+        });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
