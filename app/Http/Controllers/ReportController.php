@@ -21,7 +21,7 @@ class ReportController extends Controller
         $settingTheme = (new SettingThemeRepository())->settingTheme();
         if(!Auth::user()->hasRole('Super') && 
             !Auth::user()->can('usuario.tornar usuario master') && 
-            !Auth::user()->hasPermissionTo('denuncie.visualizar')){
+            !Auth::user()->hasPermissionTo('secao depoimento.visualizar')){
             return view('admin.error.403', compact('settingTheme'));
         }
         $report = Report::first();

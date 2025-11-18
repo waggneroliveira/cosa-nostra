@@ -27,8 +27,8 @@
                                 <div class="row mb-2">
                                     <div class="col-12 d-flex justify-end">
                                         <div class="col-12 d-flex justify-content-end">
-                                            @if (Auth::user()->can('convenios.visualizar') &&
-                                            Auth::user()->can('convenios.criar') ||
+                                            @if (Auth::user()->can('secao reserve aqui.visualizar') &&
+                                            Auth::user()->can('secao reserve aqui.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 @if (!isset($reservationHere))                                                    
@@ -90,15 +90,15 @@
                                                         @endswitch
                                                     </td>
                                                     <td class="d-flex gap-lg-1 justify-center">
-                                                        @if (Auth::user()->can('convenios.visualizar') &&
-                                                        Auth::user()->can('convenios.editar') ||
+                                                        @if (Auth::user()->can('secao reserve aqui.visualizar') &&
+                                                        Auth::user()->can('secao reserve aqui.editar') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                         <a href="{{route('admin.dashboard.reservationHere.edit', ['reservationHere' => $reservationHere->id])}}" class="table-edit-button btn btn-primary text-black" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-pencil"></span></a>
                                                         @endif
 
-                                                        @if (Auth::user()->can('convenios.visualizar') &&
-                                                        Auth::user()->can('convenios.remover') ||
+                                                        @if (Auth::user()->can('secao reserve aqui.visualizar') &&
+                                                        Auth::user()->can('secao reserve aqui.remover') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <form action="{{route('admin.dashboard.reservationHere.destroy',['reservationHere' => $reservationHere->id])}}" style="width: 30px" method="POST">

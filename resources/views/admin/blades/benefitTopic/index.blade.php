@@ -27,16 +27,16 @@
                                 <div class="row mb-2">
                                     <div class="col-12 d-flex justify-between">
                                         <div class="col-6">
-                                            @if (Auth::user()->can('beneficios.visualizar') &&
-                                            Auth::user()->can('beneficios.remover') ||
+                                            @if (Auth::user()->can('galeria.visualizar') &&
+                                            Auth::user()->can('galeria.remover') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 <button id="btSubmitDelete" data-route="{{route('admin.dashboard.benefitTopic.destroySelected')}}" type="button" class="btSubmitDelete btn btn-danger" style="display: none;">{{__('dashboard.btn_delete_all')}}</button>
                                             @endif
                                         </div>
                                         <div class="col-6 d-flex justify-content-end">
-                                            @if (Auth::user()->can('beneficios.visualizar') &&
-                                            Auth::user()->can('beneficios.criar') ||
+                                            @if (Auth::user()->can('galeria.visualizar') &&
+                                            Auth::user()->can('galeria.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 @if (isset($benefitTopics) && $benefitTopics->count() < 5)                                                
@@ -72,11 +72,11 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th class="bs-checkbox">
+                                                {{-- <th class="bs-checkbox">
                                                     <label><input name="btnSelectAll" type="checkbox"></label>
-                                                </th>
+                                                </th> --}}
                                                 {{-- <th>Link</th> --}}
-                                                <th>Título</th>
+                                                <th>Imagem</th>
                                                 <th>Status</th>
                                                 <th style="width: 85px;">Ações</th>
                                             </tr>
@@ -86,10 +86,16 @@
                                             @foreach ($benefitTopics as $key => $benefitTopic)
                                                 <tr data-code="{{$benefitTopic->id}}">
                                                     <td><span class="btnDrag mdi mdi-drag-horizontal font-22"></span></td>
-                                                    <td class="bs-checkbox">
+                                                    {{-- <td class="bs-checkbox">
                                                         <label><input data-index="{{$key}}" name="btnSelectItem" class="btnSelectItem" type="checkbox" value="{{$benefitTopic->id}}"></label>
-                                                    </td>
-                                                    <td>{{$benefitTopic->title}}</td>
+                                                    </td> --}}
+                                                    <td class="table-slide">
+                                                        @if ($benefitTopic->path_image)
+                                                            <img src="{{ asset('storage/'.$benefitTopic->path_image) }}" alt="table-slide" class="me-2 rounded-circle" style="width: 40px; height: 40px;">
+                                                            @else      
+                                                            <img src="{{asset('build/admin/images/slides/slide-3.jpg')}}" alt="table-slide" class="me-2 rounded-circle">
+                                                        @endif
+                                                    </td> 
                                                     <td>
                                                         @switch($benefitTopic->active)
                                                             @case(0) <span class="badge bg-danger">Inativo</span> @break
@@ -97,8 +103,8 @@
                                                         @endswitch
                                                     </td>
                                                     <td class="d-flex gap-lg-1 justify-center">
-                                                        @if (Auth::user()->can('beneficios.visualizar') &&
-                                                        Auth::user()->can('beneficios.editar') ||
+                                                        @if (Auth::user()->can('galeria.visualizar') &&
+                                                        Auth::user()->can('galeria.editar') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <button class="table-edit-button btn btn-primary text-black" data-bs-toggle="modal" data-bs-target="#modal-group-edit-{{$benefitTopic->id}}" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-pencil"></span></button>
@@ -125,8 +131,8 @@
                                                             </div><!-- /.modal -->                                                        
                                                         @endif
 
-                                                        @if (Auth::user()->can('beneficios.visualizar') &&
-                                                        Auth::user()->can('beneficios.remover') ||
+                                                        @if (Auth::user()->can('galeria.visualizar') &&
+                                                        Auth::user()->can('galeria.remover') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <form action="{{route('admin.dashboard.benefitTopic.destroy',['benefitTopic' => $benefitTopic->id])}}" style="width: 30px" method="POST">

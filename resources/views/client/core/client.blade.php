@@ -592,19 +592,21 @@
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="footer opening-hours">
-                                <h4 class="footer-title">Horário de funcionamento</h4>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul class="pq-time">
-                                            @foreach ($openingHours as $openingHour)                                                
-                                                <li>
-                                                    <span class="day">{{$openingHour->title}}</span>
-                                                    <span class="time">{{$openingHour->hours}}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                @if ($openingHours->count() > 0)                                    
+                                    <h4 class="footer-title">Horário de funcionamento</h4>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="pq-time">
+                                                @foreach ($openingHours as $openingHour)                                                
+                                                    <li>
+                                                        <span class="day">{{$openingHour->title}}</span>
+                                                        <span class="time">{{$openingHour->hours}}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

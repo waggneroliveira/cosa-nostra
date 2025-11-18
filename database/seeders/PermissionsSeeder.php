@@ -14,22 +14,10 @@ class PermissionsSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            'a direcao'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
-            'anuncio'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
             'auditoria'=>[
                 'Visualizar',
             ],
-            'beneficios'=>[
+            'galeria'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
@@ -41,25 +29,31 @@ class PermissionsSeeder extends Seeder
                 'Visualizar',
                 'Remover'
             ],
-            'convenios'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
             'contato'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
                 'Remover'
             ],
-            'denuncie'=>[
+            'depoimentos'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
                 'Remover'
             ],
-            'editais'=>[
+            'secao depoimento'=>[
+                'Criar',
+                'Editar',                
+                'Visualizar',
+                'Remover'
+            ],
+            'estatistica do sobre'=>[
+                'Criar',
+                'Editar',                
+                'Visualizar',
+                'Remover'
+            ],
+            'horario de funcionamento'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
@@ -70,13 +64,7 @@ class PermissionsSeeder extends Seeder
                 'configurar smtp',
                 'testar conexao smtp'
             ],
-            'estatuto'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
-            'agenda'=>[
+            'secao servicos'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
@@ -131,7 +119,18 @@ class PermissionsSeeder extends Seeder
                 'Visualizar',
                 'Remover'
             ],
-            'sindicalize-se'=>[
+            'reservas'=>[
+                'Confirmar',
+                'Cancelar',                
+                'Visualizar'
+            ],
+            'servicos'=>[
+                'Criar',
+                'Editar',                
+                'Visualizar',
+                'Remover'
+            ],
+            'secao reserve aqui'=>[
                 'Criar',
                 'Editar',                
                 'Visualizar',
@@ -163,13 +162,7 @@ class PermissionsSeeder extends Seeder
                 'Visualizar outros usuarios',
                 'Atribuir grupos',
                 'Tornar usuario master'
-            ],
-            'videos'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
+            ]
         ];
 
         foreach($permissions as $key => $permission){

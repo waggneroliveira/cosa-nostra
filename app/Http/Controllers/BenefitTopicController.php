@@ -22,7 +22,7 @@ class BenefitTopicController extends Controller
         $settingTheme = (new SettingThemeRepository())->settingTheme();
         if(!Auth::user()->hasRole('Super') && 
             !Auth::user()->can('usuario.tornar usuario master') && 
-            !Auth::user()->hasPermissionTo('beneficios.visualizar')){
+            !Auth::user()->hasPermissionTo('galeria.visualizar')){
             return view('admin.error.403', compact('settingTheme'));
         }
         $benefitTopics = BenefitTopic::get();

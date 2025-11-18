@@ -27,8 +27,8 @@
                                 <div class="row mb-2">
                                     <div class="col-12 d-flex justify-end">
                                         <div class="col-12 d-flex justify-content-end">
-                                            @if (Auth::user()->can('convenios.visualizar') &&
-                                            Auth::user()->can('convenios.criar') ||
+                                            @if (Auth::user()->can('depoimentos.visualizar') &&
+                                            Auth::user()->can('depoimentos.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 <button type="button" class="btn btn-primary text-black waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#depoiment-create"><i class="mdi mdi-plus-circle me-1"></i> {{__('dashboard.btn_create')}}</button>
@@ -89,8 +89,8 @@
                                                         @endswitch
                                                     </td>
                                                     <td class="d-flex gap-lg-1 justify-center">
-                                                        @if (Auth::user()->can('convenios.visualizar') &&
-                                                        Auth::user()->can('convenios.editar') ||
+                                                        @if (Auth::user()->can('depoimentos.visualizar') &&
+                                                        Auth::user()->can('depoimentos.editar') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <button class="table-edit-button btn btn-primary text-black" data-bs-toggle="modal" data-bs-target="#modal-group-edit-{{$depoiment->id}}" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-pencil"></span></button>
@@ -117,8 +117,8 @@
                                                             </div><!-- /.modal -->                                                        
                                                         @endif
 
-                                                        @if (Auth::user()->can('convenios.visualizar') &&
-                                                        Auth::user()->can('convenios.remover') ||
+                                                        @if (Auth::user()->can('depoimentos.visualizar') &&
+                                                        Auth::user()->can('depoimentos.remover') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <form action="{{route('admin.dashboard.depoiment.destroy',['depoiment' => $depoiment->id])}}" style="width: 30px" method="POST">

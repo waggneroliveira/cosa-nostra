@@ -14,12 +14,8 @@ class AuditActivity extends Model
         switch ($subjectType) { 
             case About::class:
                 return 'Sobre Nós';
-            case Agreement::class:
-                return 'Convênios';
-            case Announcement::class:
-                return 'Anuncios';
             case BenefitTopic::class:
-                return 'Benefícios';
+                return 'Galeria';
             case Blog::class:
                 return 'Notícias';
             case BlogCategory::class:
@@ -27,9 +23,9 @@ class AuditActivity extends Model
             case Contact::class:
                 return 'Contato';
             case Direction::class:
-                return 'A direção';
-            case Event::class:
-                return 'Agenda';
+                return 'Serviço';
+            case Depoiment::class:
+                return 'Depoimentos';
             case FormIndex::class:
                 return 'Lead contato - Informações enviadas pelo site (formulário de contato)';
             case Holidays::class:
@@ -41,15 +37,11 @@ class AuditActivity extends Model
             case Newsletter::class:
                 return 'Newsletter - E-mail enviado pelo site';
             case Noticies::class:
-                return 'Editais';
+                return 'Horário de funcionamento';
             case Partner::class:
                 return 'Parceiros';
-            case PopUp::class:
-                return 'Pop-Up';
-            case Regional::class:
-                return 'Regionais';
             case Report::class:
-                return 'Denuncie';
+                return 'Seção depoimento';
             case Role::class:
                 return __('blades/audit.roles');
             case SettingEmail::class:
@@ -57,15 +49,13 @@ class AuditActivity extends Model
             case Slide::class:
                 return 'Slides';
             case Statute::class:
-                return 'Estatuto';
+                return 'Seção Serviços';
             case Topic::class:
                 return 'Tópicos';
             case Unionized::class:
-                return 'Sindicalize-se';
+                return 'Estatística do sobre';
             case User::class:
                 return __('blades/audit.users');
-            case Video::class:
-                return 'Vídeos';
             default:
                 return __('blades/audit.system');
         }

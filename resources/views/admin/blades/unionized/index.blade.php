@@ -27,8 +27,8 @@
                                 <div class="row mb-2">
                                     <div class="col-12 d-flex justify-end">
                                         <div class="col-12 d-flex justify-content-end">
-                                            @if (Auth::user()->can('sindicalize-se.visualizar') &&
-                                            Auth::user()->can('sindicalize-se.criar') ||
+                                            @if (Auth::user()->can('estatistica do sobre.visualizar') &&
+                                            Auth::user()->can('estatistica do sobre.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
                                                 @if (isset($unionizeds) && $unionizeds->count() < 4)                                                
@@ -98,8 +98,8 @@
                                                         @endswitch
                                                     </td>
                                                     <td class="d-flex gap-lg-1 justify-center">
-                                                        @if (Auth::user()->can('sindicalize-se.visualizar') &&
-                                                        Auth::user()->can('sindicalize-se.editar') ||
+                                                        @if (Auth::user()->can('estatistica do sobre.visualizar') &&
+                                                        Auth::user()->can('estatistica do sobre.editar') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <button class="table-edit-button btn btn-primary text-black" data-bs-toggle="modal" data-bs-target="#modal-group-edit-{{$unionized->id}}" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-pencil"></span></button>
@@ -126,8 +126,8 @@
                                                             </div><!-- /.modal -->                                                        
                                                         @endif
 
-                                                        @if (Auth::user()->can('sindicalize-se.visualizar') &&
-                                                        Auth::user()->can('sindicalize-se.remover') ||
+                                                        @if (Auth::user()->can('estatistica do sobre.visualizar') &&
+                                                        Auth::user()->can('estatistica do sobre.remover') ||
                                                         Auth::user()->can('usuario.tornar usuario master') || 
                                                         Auth::user()->hasRole('Super'))
                                                             <form action="{{route('admin.dashboard.unionized.destroy',['unionized' => $unionized->id])}}" style="width: 30px" method="POST">

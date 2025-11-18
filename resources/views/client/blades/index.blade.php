@@ -3,77 +3,81 @@
 <!-- <banner-start> -->
 <!-- START home 3 REVOLUTION SLIDER 6.6.8 -->
 <p class="rs-p-wp-fix"></p>
-<rs-module-wrap id="rev_slider_16_1_wrapper" data-alias="home-1-11" data-source="gallery" style="visibility:hidden;background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
-    <rs-module id="rev_slider_16_1" data-version="6.6.8">
-        <rs-slides style="overflow: hidden; position: absolute;">
-            @foreach ($slides as $slide)
-                <rs-slide style="position: absolute;" data-key="rs-{{$slide->id}}" data-title="Slide" data-thumb="{{ asset('storage/' .$slide->path_image_mobile) }}" data-anim="adpr:false;ms:100;" data-in="o:0;" data-out="a:false;">
-                    <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="1" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('storage/' .$slide->path_image) }}" data-no-retina>
+@if ($slides->count() > 0)
+    <rs-module-wrap id="rev_slider_16_1_wrapper" data-alias="home-1-11" data-source="gallery" style="visibility:hidden;background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+        <rs-module id="rev_slider_16_1" data-version="6.6.8">
+            <rs-slides style="overflow: hidden; position: absolute;">
+                @foreach ($slides as $slide)
+                    <rs-slide style="position: absolute;" data-key="rs-{{$slide->id}}" data-title="Slide" data-thumb="{{ asset('storage/' .$slide->path_image_mobile) }}" data-anim="adpr:false;ms:100;" data-in="o:0;" data-out="a:false;">
+                        <img src="{{ asset('build/client/rev/assets/dummy.png') }}" alt="" title="1" width="1920" height="900" class="rev-slidebg tp-rs-img rs-lazyload" data-lazyload="{{ asset('storage/' .$slide->path_image) }}" data-no-retina>
 
-                    @if($slide->subtitle)
-                        <rs-layer id="slider-16-slide-{{$slide->id}}-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:100;sp:1000;sR:100;" data-frame_999="o:0;st:w;sR:7900;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">{{$slide->subtitle}}
-                        </rs-layer>
-                    @endif
-                    
-                    @if($slide->title)
-                        <rs-layer id="slider-16-slide-{{$slide->id}}-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:1px,0,0,0;y:m;yo:-96px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:1440px,680px,516px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:300;sp:1000;sR:300;" data-frame_999="o:0;st:w;sR:7700;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">{{$slide->title}}
-                        </rs-layer>
-                    @endif
+                        @if($slide->subtitle)
+                            <rs-layer id="slider-16-slide-{{$slide->id}}-layer-0" class="pq-banner-subtitle" data-type="text" data-color="#c9ab81" data-rsp_ch="on" data-xy="x:c;y:m;yo:-185px,-144px,-103px,-85px;" data-text="w:normal;s:18,16,16,14;l:28,24,26,22;" data-frame_0="y:50,39,29,17;" data-frame_1="st:100;sp:1000;sR:100;" data-frame_999="o:0;st:w;sR:7900;" style="z-index:13;font-family:'Miniver';text-transform:uppercase;">{{$slide->subtitle}}
+                            </rs-layer>
+                        @endif
+                        
+                        @if($slide->title)
+                            <rs-layer id="slider-16-slide-{{$slide->id}}-layer-1" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:1px,0,0,0;y:m;yo:-96px,-60px,-35px,-30px;" data-text="w:normal;s:64,56,44,32;l:72,64,52,40;fw:500;a:center;" data-dim="w:1440px,680px,516px,314px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:300;sp:1000;sR:300;" data-frame_999="o:0;st:w;sR:7700;" style="z-index:12;font-family:'Josefin Sans';text-transform:capitalize;">{{$slide->title}}
+                            </rs-layer>
+                        @endif
 
-                    @if($slide->description)
-                    <rs-layer id="slider-16-slide-{{$slide->id}}-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;sR:600;" data-frame_999="o:0;st:w;sR:7400;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">{!!$slide->description!!} </rs-layer>
-                    @endif
-              
-                    @if($slide->link && $slide->btn_title)
-                        <a id="slider-16-slide-{{$slide->id}}-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="{{$slide->link}}" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
-                            <div class="pq-button-block">
-                                <br/>
-                                <span class="pq-button-line-left"></span>
-                                <br/>
-                                <span class="pq-button-text">{{$slide->btn_title}}</span>
-                                <br/>
-                                <span class="pq-button-line-right"></span>
-                                <br/>
-                            </div>
-                        </a>
-                    @endif
-                </rs-slide>
-            @endforeach
-        </rs-slides>
-    </rs-module>
-</rs-module-wrap>
+                        @if($slide->description)
+                        <rs-layer id="slider-16-slide-{{$slide->id}}-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,22px,13px;y:m;yo:4px,28px,-49px,-71px;" data-text="w:normal;s:20,18,0,4;l:28,26,19,11;fw:300;a:center;" data-dim="w:auto,auto,404px,249px;h:auto,auto,58px,35px;" data-vbility="t,t,f,f" data-frame_0="y:50,39,29,17;" data-frame_1="st:600;sp:1000;sR:600;" data-frame_999="o:0;st:w;sR:7400;" style="z-index:11;font-family:'Josefin Sans';text-transform:capitalize;">{!!$slide->description!!} </rs-layer>
+                        @endif
+                
+                        @if($slide->link && $slide->btn_title)
+                            <a id="slider-16-slide-{{$slide->id}}-layer-3" class="rs-layer pq-button pq-button-flat rev-btn" href="{{$slide->link}}" target="_self" data-type="button" data-rsp_ch="on" data-xy="x:c;y:m;yo:89px,100px,66px,57px;" data-text="w:normal;s:18,16,14,16;l:26,24,22,21;fw:300;" data-dim="minh:0px,none,none,none;" data-padding="t:14,12,12,12;r:30;b:14,12,12,12;l:30;" data-border="bos:solid;boc:#ffffff;bow:1px,1px,1px,1px;" data-frame_0="y:50,39,29,17;" data-frame_1="st:900;sp:1000;sR:900;" data-frame_999="o:0;st:w;sR:7100;" data-frame_hover="bgc:#c6a87d;boc:#c6a87d;bor:0px,0px,0px,0px;bos:solid;bow:1px,1px,1px,1px;bri:120%;" style="z-index:10;background-color:rgba(201,171,129,0);font-family:'Josefin Sans';text-transform:capitalize;">
+                                <div class="pq-button-block">
+                                    <br/>
+                                    <span class="pq-button-line-left"></span>
+                                    <br/>
+                                    <span class="pq-button-text">{{$slide->btn_title}}</span>
+                                    <br/>
+                                    <span class="pq-button-line-right"></span>
+                                    <br/>
+                                </div>
+                            </a>
+                        @endif
+                    </rs-slide>
+                @endforeach
+            </rs-slides>
+        </rs-module>
+    </rs-module-wrap>
+@endif
 <!-- END REVOLUTION SLIDER -->
 <!-- <banner-end> -->
 <!-- <portfolio-start> -->
-<section class="portfolio p-0 pq-mt-60">
-    <div class="container">
-        <div class="row">
-            @foreach($topics as $topic)
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="pq-main-portfolio-box p-0">
-                        <div class="pq-portfolio-box-img mb-0 position-relative">
-                            <img src="{{ asset('storage/' .$topic->path_image) }}" class="img-fluid animation-bob" alt="{{$topic->title}}">
-                            <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
-                                @if($topic->link <> null)
-                                    <h5 class="pq-portfolio-image-box-title text-white">
-                                        <a href="{{$topic->link}}">{{$topic->title}}</a>
-                                    </h5>
-                                    @else
-                                    <h5 class="pq-portfolio-image-box-title text-white">
-                                        {{$topic->title}}
-                                    </h5>
-                                @endif
+@if ($topics->count() > 0)
+    <section class="portfolio p-0 pq-mt-60">
+        <div class="container">
+            <div class="row">
+                @foreach($topics as $topic)
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="pq-main-portfolio-box p-0">
+                            <div class="pq-portfolio-box-img mb-0 position-relative">
+                                <img src="{{ asset('storage/' .$topic->path_image) }}" class="img-fluid animation-bob" alt="{{$topic->title}}">
+                                <div class="pq-portfolio-image-box-content position-absolute bottom-0 start-50 translate-middle-x">
+                                    @if($topic->link <> null)
+                                        <h5 class="pq-portfolio-image-box-title text-white">
+                                            <a href="{{$topic->link}}">{{$topic->title}}</a>
+                                        </h5>
+                                        @else
+                                        <h5 class="pq-portfolio-image-box-title text-white">
+                                            {{$topic->title}}
+                                        </h5>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 <!-- <portfolio-end> -->
 <!-- <about-start> -->
-@if(isset($about))
+@if(isset($about) || $unionizeds->count() > 0)
     <section id="about" class="about">
         <div class="container">
             <div class="row">
@@ -126,184 +130,194 @@
 @endif
 <!-- <about-end> -->
 <!-- <service-start> -->
-<section id="experience" class="section pq-service-bg-dark-color pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @if ($statute)                    
-                    <div class="pq-section-title-style-1 ">
-                        <span class="pq-section-sub-title">{{$statute->description}}</span>
-                        <h5 class="pq-section-title text-white col-lg-5 col-12">
-                            {{$statute->title}}
-                        </h5>
-                        <div class="col-lg-3 col-md-12 mt-4">
-                            <div class="pq-btn-container">
-                                <a class="pq-button pq-button-flat" href="#reservation">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-line-left"></span>
-                                        <span class="pq-button-text text-white">Reserve agora</span>
-                                        <span class="pq-button-line-right"></span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <div class="pq-secondary-dark-color">
-                    <div class="row">
-                        @foreach ($directions as $direction)                            
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="pq-fancybox-style-2 text-center">
-                                    <div class="pq-service-icon-main">
-                                        <div class="pq-service-icon">
-                                            <img src="{{asset('storage/' .$direction->path_image)}}" alt="{{$direction->title}}">
+@if (isset($statute) || $directions->count() > 0)
+    <section id="experience" class="section pq-service-bg-dark-color pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @if ($statute)                    
+                        <div class="pq-section-title-style-1 ">
+                            <span class="pq-section-sub-title">{{$statute->description}}</span>
+                            <h5 class="pq-section-title text-white col-lg-5 col-12">
+                                {{$statute->title}}
+                            </h5>
+                            <div class="col-lg-3 col-md-12 mt-4">
+                                <div class="pq-btn-container">
+                                    <a class="pq-button pq-button-flat" href="#reservation">
+                                        <div class="pq-button-block">
+                                            <span class="pq-button-line-left"></span>
+                                            <span class="pq-button-text text-white">Reserve agora</span>
+                                            <span class="pq-button-line-right"></span>
                                         </div>
-                                    </div>
-                                    <div class="pq-fancy-box-info">
-                                        <h5 class="pq-fancy-box-title text-white">{{$direction->title}}</h5>
-                                        <div class="pq-fancy-box-content">
-                                            <p class="pq-fancybox-description m-0">{{$direction->description}}</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="pq-service-bg-img">
-                <img src="{{ asset('storage/' .$statute->path_file) }}" alt="Service">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- <service-end> -->
-<!-- <gallery-start> -->
-<section id="gallery" class="portfolio py-0">
-    <div class="container-fluid p-0">
-        <div class="row g-0 gallery">
-            @foreach ($benefitTopics as $benefitTopics)
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="{{ asset('storage/' .$benefitTopics->path_image) }}">
-                    <img src="{{ asset('storage/' .$benefitTopics->path_image) }}" class="img-fluid w-100" alt="">
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-<!-- <gallery-end> -->
-<!-- <pop-up-start> -->
-<section class="popup p-0">
-    <div class="container-fluid p-0">
-        <div class="row pq-bg-dark-color pq-ms-30">
-            <div class="col-xl-5 pq-popup-video-bg-img pq-popup-video-bg-img-dark-layer">
-                <div class="pq-popup-video-block">
-                    @if ($reservationHere->link <> null)
-                        <div class="pq-video-icon">
-                            <a href="{{$reservationHere->link}}" class="pq-video default popup-youtube">
-                            <i aria-hidden="true" class="ion ion-play"></i>
-                            </a>
                         </div>
                     @endif
-                </div>
-            </div>
-            <div class="col-xl-7 pq-tab-padding">
-                <div class="pq-dark-section-side-right">
-                </div>
-                <div class="pq-section-title-style-1">
-                    <span class="pq-section-sub-title">{{$reservationHere->subtitle}}</span>
-                    <h5 class="pq-section-title">{{$reservationHere->title}}</h5>
-                </div>
-                <div class="pq-advance-tab pq-about-tab">
-                    <div class="nav nav-tabs nav-fill pq-mb-30" id="advance-nav-tab" role="tablist">
-                        <a class="pq-tabs nav-item nav-link active" id="{{$reservationHere->event}}" data-bs-toggle="tab" href="#advance-nav-0" role="tab" aria-controls="{{$reservationHere->event}}" aria-selected="true">
-                        Eventos
-                        </a>
-                        <a class="pq-tabs nav-item nav-link " id="{{$reservationHere->benefit}}" data-bs-toggle="tab" href="#advance-nav-1" role="tab" aria-controls="{{$reservationHere->benefit}}" aria-selected="false" tabindex="-1">
-                        Benefícios
-                        </a>
-                    </div>
-                    <div class="tab-content" id="advance-nav-tabContent">
-                        <div class="pq-advance-tab-content tab-pane fade show active" id="advance-nav-0" role="tabpanel" aria-labelledby="{{$reservationHere->event}}">
-                            <div class="row">
-                                <div class="col-lg-12 advance-list">
-                                    {!!$reservationHere->event!!}
-                                    <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
-                                        <div class="pq-button-block">
-                                            <span class="pq-button-line-left"></span>
-                                            <span class="pq-button-text text-white">Reserve seu Evento</span>
-                                            <span class="pq-button-line-right"></span>
+
+                    <div class="pq-secondary-dark-color">
+                        <div class="row">
+                            @foreach ($directions as $direction)                            
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="pq-fancybox-style-2 text-center">
+                                        <div class="pq-service-icon-main">
+                                            <div class="pq-service-icon">
+                                                <img src="{{asset('storage/' .$direction->path_image)}}" alt="{{$direction->title}}">
+                                            </div>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pq-advance-tab-content tab-pane fade " id="advance-nav-1" role="tabpanel" aria-labelledby="{{$reservationHere->benefit}}">
-                            <div class="row">
-                                <div class="col-lg-12 advance-list">
-                                    {!!$reservationHere->benefit!!}
-                                    <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
-                                        <div class="pq-button-block">
-                                            <span class="pq-button-line-left"></span>
-                                            <span class="pq-button-text text-white">Reserve seu Evento</span>
-                                            <span class="pq-button-line-right"></span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- <pop-up-end> -->
-<!-- <depoiment-start> -->
-<section class="testimonial py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 pq-testimonial-padding">
-                @if (isset($report) && $report->description <> null)                    
-                    <h4 class="pq-section-sub-title">{{$report->description}}</h4>
-                @endif
-                @if (isset($report) && $report->title <> null)                    
-                    <h5 class="text-white">{{$report->title}} </h5>
-                @endif
-                @if (isset($depoiments) && $depoiments->count() > 0)
-                    <div class="owl-carousel" data-dots="true" data-nav="false" data-desk_num="1" data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="true" data-margin="30">
-                        @foreach ($depoiments as $depoiment)
-                            <div class="item">
-                                <div class="pq-testimonial-box pq-testimonialbox-2 mt-4 col-12 col-lg-11">
-                                    <div class="pq-testimonial-star">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="pq-testimonial-info">
-                                        <div class="pq-testimonial-content">
-                                            <div class="pq-quote"><i class="fa fa-quote-right"></i></div>
-                                            <p>{{$depoiment->text}}</p>
-                                        </div>
-                                        <div class="pq-testimonial-img">
-                                            <div class="pq-testimonial-meta">
-                                                <h5 class="text-white">{{$depoiment->title}}</h5>
-                                                <span>{{$depoiment->details}}</span>
+                                        <div class="pq-fancy-box-info">
+                                            <h5 class="pq-fancy-box-title text-white">{{$direction->title}}</h5>
+                                            <div class="pq-fancy-box-content">
+                                                <p class="pq-fancybox-description m-0">{{$direction->description}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                @if (isset($statute) && $statute->path_file <> null)                
+                    <div class="pq-service-bg-img">
+                        <img src="{{ asset('storage/' .$statute->path_file) }}" alt="Service">
                     </div>
                 @endif
             </div>
-            @if (isset($report) && $report->path_image <> null)                
-                <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2" style="--bg-image: url('{{ asset('storage/' . $report->path_image) }}')"></div>
-            @endif
         </div>
-    </div>
-</section>
+    </section>
+@endif
+<!-- <service-end> -->
+<!-- <gallery-start> -->
+@if ($benefitTopics->count() > 0)
+    <section id="gallery" class="portfolio py-0">
+        <div class="container-fluid p-0">
+            <div class="row g-0 gallery">
+                @foreach ($benefitTopics as $benefitTopics)
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a href="{{ asset('storage/' .$benefitTopics->path_image) }}">
+                        <img src="{{ asset('storage/' .$benefitTopics->path_image) }}" class="img-fluid w-100" alt="">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+@endif
+<!-- <gallery-end> -->
+<!-- <pop-up-start> -->
+@if (isset($reservationHere))        
+    <section class="popup p-0">
+        <div class="container-fluid p-0">
+            <div class="row pq-bg-dark-color pq-ms-30">
+                <div class="col-xl-5 pq-popup-video-bg-img pq-popup-video-bg-img-dark-layer">
+                    <div class="pq-popup-video-block">
+                        @if ($reservationHere->link <> null)
+                            <div class="pq-video-icon">
+                                <a href="{{$reservationHere->link}}" class="pq-video default popup-youtube">
+                                <i aria-hidden="true" class="ion ion-play"></i>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-xl-7 pq-tab-padding">
+                    <div class="pq-dark-section-side-right">
+                    </div>
+                    <div class="pq-section-title-style-1">
+                        <span class="pq-section-sub-title">{{$reservationHere->subtitle}}</span>
+                        <h5 class="pq-section-title">{{$reservationHere->title}}</h5>
+                    </div>
+                    <div class="pq-advance-tab pq-about-tab">
+                        <div class="nav nav-tabs nav-fill pq-mb-30" id="advance-nav-tab" role="tablist">
+                            <a class="pq-tabs nav-item nav-link active" id="{{$reservationHere->event}}" data-bs-toggle="tab" href="#advance-nav-0" role="tab" aria-controls="{{$reservationHere->event}}" aria-selected="true">
+                            Eventos
+                            </a>
+                            <a class="pq-tabs nav-item nav-link " id="{{$reservationHere->benefit}}" data-bs-toggle="tab" href="#advance-nav-1" role="tab" aria-controls="{{$reservationHere->benefit}}" aria-selected="false" tabindex="-1">
+                            Benefícios
+                            </a>
+                        </div>
+                        <div class="tab-content" id="advance-nav-tabContent">
+                            <div class="pq-advance-tab-content tab-pane fade show active" id="advance-nav-0" role="tabpanel" aria-labelledby="{{$reservationHere->event}}">
+                                <div class="row">
+                                    <div class="col-lg-12 advance-list">
+                                        {!!$reservationHere->event!!}
+                                        <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
+                                            <div class="pq-button-block">
+                                                <span class="pq-button-line-left"></span>
+                                                <span class="pq-button-text text-white">Reserve seu Evento</span>
+                                                <span class="pq-button-line-right"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pq-advance-tab-content tab-pane fade " id="advance-nav-1" role="tabpanel" aria-labelledby="{{$reservationHere->benefit}}">
+                                <div class="row">
+                                    <div class="col-lg-12 advance-list">
+                                        {!!$reservationHere->benefit!!}
+                                        <a class="pq-button pq-button-flat pq-mt-30" href="#reservation">
+                                            <div class="pq-button-block">
+                                                <span class="pq-button-line-left"></span>
+                                                <span class="pq-button-text text-white">Reserve seu Evento</span>
+                                                <span class="pq-button-line-right"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endif
+<!-- <pop-up-end> -->
+<!-- <depoiment-start> -->
+@if (isset($report) || $depoiments->count() > 0)
+    <section class="testimonial py-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 pq-testimonial-padding">
+                    @if (isset($report) && $report->description <> null)                    
+                        <h4 class="pq-section-sub-title">{{$report->description}}</h4>
+                    @endif
+                    @if (isset($report) && $report->title <> null)                    
+                        <h5 class="text-white">{{$report->title}} </h5>
+                    @endif
+                    @if (isset($depoiments) && $depoiments->count() > 0)
+                        <div class="owl-carousel" data-dots="true" data-nav="false" data-desk_num="1" data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="true" data-margin="30">
+                            @foreach ($depoiments as $depoiment)
+                                <div class="item">
+                                    <div class="pq-testimonial-box pq-testimonialbox-2 mt-4 col-12 col-lg-11">
+                                        <div class="pq-testimonial-star">
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="pq-testimonial-info">
+                                            <div class="pq-testimonial-content">
+                                                <div class="pq-quote"><i class="fa fa-quote-right"></i></div>
+                                                <p>{{$depoiment->text}}</p>
+                                            </div>
+                                            <div class="pq-testimonial-img">
+                                                <div class="pq-testimonial-meta">
+                                                    <h5 class="text-white">{{$depoiment->title}}</h5>
+                                                    <span>{{$depoiment->details}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+                @if (isset($report) && $report->path_image <> null)                
+                    <div class="col-xl-6 col-lg-6 pq-testimonial-bg-img-2" style="--bg-image: url('{{ asset('storage/' . $report->path_image) }}')"></div>
+                @endif
+            </div>
+        </div>
+    </section>
+@endif
 <!-- <depoiment-end> -->
 <!-- <cta-start> -->
 <section class="cta pq-cta-bg-img">
@@ -332,65 +346,67 @@
 </section>
 <!-- <cta-end> -->
 <!-- <blog-start> -->
-<section class="blog p-0 py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pq-section-title-style-1 text-center">
-                    <span class="pq-section-sub-title">Keep Up With Us</span>
-                    <h5 class="pq-section-title">Read Some Latest Blog & News</h5>
+@if ($blogHighlights->count() > 0)
+    <section class="blog p-0 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pq-section-title-style-1 text-center">
+                        <span class="pq-section-sub-title">Acompanhe nosso blog!</span>
+                        <h5 class="pq-section-title">dicas e novidades exclusivas</h5>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach ($blogHighlights as $blogHighlight)    
-                @php
-                    \Carbon\Carbon::setLocale('pt_BR');
-                    $dataFormatada = \Carbon\Carbon::parse($blogHighlight->date)->translatedFormat('d \d\e F \d\e Y');
-                @endphp             
-                <div class="col-lg-4 col-md-12">
-                    <div class="pq-blog-post">
-                        <div class="pq-post-media">
-                            <img src="{{ asset('storage/' . $blogHighlight->path_image_thumbnail) }}" alt="team">
-                            <div class="pq-post-date">
-                                <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
-                                <span>{{$dataFormatada}}</span>
-                                </a>
+            <div class="row">
+                @foreach ($blogHighlights as $blogHighlight)    
+                    @php
+                        \Carbon\Carbon::setLocale('pt_BR');
+                        $dataFormatada = \Carbon\Carbon::parse($blogHighlight->date)->translatedFormat('d \d\e F \d\e Y');
+                    @endphp             
+                    <div class="col-lg-4 col-md-12">
+                        <div class="pq-blog-post">
+                            <div class="pq-post-media">
+                                <img src="{{ asset('storage/' . $blogHighlight->path_image_thumbnail) }}" alt="team">
+                                <div class="pq-post-date">
+                                    <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                    <span>{{$dataFormatada}}</span>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pq-blog-contain">
-                            <div class="pq-post-meta">
-                                <ul>
-                                    <li class="pq-post-tag">
-                                        <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
-                                        <i class="fa fa-tag"></i>
-                                        {{$blogHighlight->category->title}}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h5 class="pq-blog-title">
-                                <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">{{$blogHighlight->title}}</a>
-                            </h5>
-                            <div class="pq-blog-info mt-3">
-                               <p>{!! substr(strip_tags($blogHighlight->text), 0, 60) !!}</p> 
-                            </div>
-                            <div class="pq-btn-container">
-                                <a class="pq-button pq-btn-link" href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-line-left"></span>
-                                        <span class="pq-button-text">Ler matéria</span>
-                                        <span class="pq-button-line-right"></span>
-                                    </div>
-                                </a>
+                            <div class="pq-blog-contain">
+                                <div class="pq-post-meta">
+                                    <ul>
+                                        <li class="pq-post-tag">
+                                            <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                            <i class="fa fa-tag"></i>
+                                            {{$blogHighlight->category->title}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5 class="pq-blog-title">
+                                    <a href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">{{$blogHighlight->title}}</a>
+                                </h5>
+                                <div class="pq-blog-info mt-3">
+                                <p>{!! substr(strip_tags($blogHighlight->text), 0, 60) !!}</p> 
+                                </div>
+                                <div class="pq-btn-container">
+                                    <a class="pq-button pq-btn-link" href="{{route('blog-inner', ['slug' => $blogHighlight->slug])}}">
+                                        <div class="pq-button-block">
+                                            <span class="pq-button-line-left"></span>
+                                            <span class="pq-button-text">Ler matéria</span>
+                                            <span class="pq-button-line-right"></span>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 <!-- <blog-end> -->
 <!-- <reservation-start> -->
 <section id="reservation" class="reservation p-0 pb-5 pt-0 pq-bg-dark-color">
