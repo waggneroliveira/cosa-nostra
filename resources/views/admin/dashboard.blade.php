@@ -442,7 +442,7 @@
                     <h4 class="page-title "><i class="mdi mdi-card-account-mail-outline"></i> Contato</h4>
                 </div>
             </div>
-            {{-- @if (Auth::user()->hasRole('Super') || 
+            @if (Auth::user()->hasRole('Super') || 
             Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
             Auth::user()->hasPermissionTo('contato.visualizar'))
                 <div class="col-md-5 col-xl-3">
@@ -463,7 +463,7 @@
                         </div>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
-            @endif --}}
+            @endif
     
             @if (Auth::user()->hasRole('Super') || 
             Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
@@ -511,7 +511,7 @@
             @endif
         </div>
     @endif
-    @if (Auth::user()->hasRole('Super') || 
+    {{-- @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
     Auth::user()->hasPermissionTo('anuncio.visualizar'))
         <div class="row">
@@ -559,8 +559,8 @@
                 </div> <!-- end card-->
             </div> <!-- end col -->
         </div>
-    @endif
-    {{-- @if (Auth::user()->hasRole('Super') || 
+    @endif --}}
+    @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
     Auth::user()->hasPermissionTo('editais.visualizar'))
         <div class="row">
@@ -589,7 +589,7 @@
                 </div> <!-- end card-->
             </div> <!-- end col -->
         </div>
-    @endif --}}
+    @endif
 
 
         @if (Auth::user()->hasRole('Super') || 

@@ -249,7 +249,7 @@
                                                         <form action="{{route('admin.dashboard.reservation.confirmed',['reservation' => $reservation->id])}}" style="width: 30px" method="POST">
                                                             @csrf
                                                             @method('put')
-                                                            @if($reservation->status == 'confirmed')
+                                                            @if($reservation->status == 'confirmed' || $reservation->date < now()->toDateString())
                                                                 <button type="button" 
                                                                         style="width: 30px"
                                                                         class="demo-delete-row btn btn-secondary btn-xs btn-icon"

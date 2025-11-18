@@ -158,46 +158,48 @@
                 <div class="row flex-row-reverse">
                     <div class="col-md-6 text-right">
                         <div class="pq-header-social text-right">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if (isset($contact))                                
+                                <ul>
+                                    @if ($contact->link_face)                                        
+                                        <li>
+                                            <a href="{{$contact->link_face}}" target="_blank" rel="noopener noreferrer">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if ($contact->link_insta)                                          
+                                        <li>
+                                            <a href="{{$contact->link_insta}}" target="_blank" rel="noopener noreferrer">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="pq-header-contact ">
-                            <ul class="d-flex gap-5 justify-content-start align-items-center">
-                                <li>
-                                    <a href="tel:+1800001658">
-                                        <i class="fas fa-phone"></i>
-                                        <span>+1800-001-658</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailto:peacefulqode@gmail.com">
-                                        <i class="fas fa-envelope"></i>
-                                        <span>peacefulqode@gmail.com</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if (isset($contact))                                
+                                <ul class="d-flex gap-5 justify-content-start align-items-center">
+                                    @if ($contact->whatsapp)                                    
+                                        <li>
+                                            <a href="tel:{{$contact->whatsapp}}">
+                                                <i class="fas fa-phone"></i>
+                                                <span>{{$contact->whatsapp}}</span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if ($contact->name_three)                                    
+                                        <li>
+                                            <a href="mailto:{{$contact->name_three}}">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>{{$contact->name_three}}</span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -573,36 +575,37 @@
                                 <div class="menu-use-full-link-container">
                                     <ul id="menu-use-full-link" class="menu">
                                         <li class="menu-item">
-                                            <a href="#about">Quem Somos</a>
+                                            <a href="{{ request()->is('/') ? '#about' : url('/') . '#about' }}">Quem Somos</a>
+                                        </li>
+
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#depoiment' : url('/') . '#depoiment' }}">Depoimentos</a>
+                                        </li>
+
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#experience' : url('/') . '#experience' }}">Por que nos visitar?</a>
+                                        </li>
+
+                                        <li class="menu-item">
+                                            <a href="{{ route('blog') }}">Blog</a>
+                                        </li>
+
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#gallery' : url('/') . '#gallery' }}">Galeria</a>
+                                        </li>
+                                        <li class="menu-item" target="_blank" rel="noopener noreferrer">
+                                            <a href="https://policies.google.com/privacy?hl=pt-BR">Política de Privacidade</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#depoiment">Depoimentos</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="#experience">Por que nos visitar? </a>
-                                        </li>                                       
-                                        <li class="menu-item">
-                                            <a href="#blog">Blog</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="#gallery">Galeria</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="#reservation">Reservas</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="">Eventos</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="">Política de Privacidade</a>
-                                        </li>
+                                            <a href="{{ request()->is('/') ? '#reservation' : url('/') . '#reservation' }}">Reservas</a>
+                                        </li>                                        
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="footer opening-hours">
-                                <h4 class="footer-title">Opening Hours</h4>
+                                <h4 class="footer-title">Horário de funcionamento</h4>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <ul class="pq-time">

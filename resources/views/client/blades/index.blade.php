@@ -397,57 +397,65 @@
     <div class="container">
         <div class="row align-items-baseline padding-top">
             <div class="col-lg-9 col-md-12 align-self-start mt-4 mt-lg-0">
-                <div class="text-start">
-                    <span class="pq-section-sub-title">Reservas</span>
-                    <h5 class="pq-section-title text-white">viva uma experiência única na Cantina</h5>
-                    <p class="description">Garanta o seu lugar em nosso ambiente aconchegante e aproveite a autêntica gastronomia italiana com quem você mais gosta.</p>
-                </div>
-                <div class="row gy-4">
-                    <!-- Localização -->
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
-                            <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 1.67188C12.8906 1.67188 7.03125 7.45312 7.03125 14.6406C7.03125 24.875 18.5938 38.3125 19.1406 38.9375L20 39.9531L20.8594 38.9375C21.4062 38.3125 32.9688 24.875 32.9688 14.6406C32.9688 7.45312 27.1094 1.67188 20 1.67188ZM20 36.2812C17.2656 32.9219 9.375 22.4531 9.375 14.6406C9.375 8.78125 14.1406 4.01562 20 4.01562C25.8594 4.01562 30.625 8.78125 30.625 14.6406C30.625 22.4531 22.7344 32.9219 20 36.2812ZM20 7.92188C16.0938 7.92188 12.9688 11.0469 12.9688 14.9531C12.9688 18.8594 16.0938 21.9844 20 21.9844C23.9062 21.9844 27.0312 18.8594 27.0312 14.9531C27.0312 11.0469 23.9062 7.92188 20 7.92188ZM20 19.6406C17.4219 19.6406 15.3125 17.5312 15.3125 14.9531C15.3125 12.375 17.4219 10.2656 20 10.2656C22.5781 10.2656 24.6875 12.375 24.6875 14.9531C24.6875 17.5312 22.5781 19.6406 20 19.6406Z" fill="#1F1D1E"/>
-                            </svg>
+                @if (isset($contact))    
+                    @if ($contact->name_section_social_media || $contact->name_section || $contact->text)                        
+                        <div class="text-start">
+                            <span class="pq-section-sub-title">{{$contact->name_section_social_media}}</span>
+                            <h5 class="pq-section-title text-white">{{$contact->name_section}}</h5>
+                            <p class="description">{{$contact->text}}</p>
                         </div>
-                        <div class="col-10 pe-1">
-                            <h5 class="text-light mb-1">Localização</h5>
-                            <p class="text-light mb-0 small">
-                                Rua Bahia 144, Pituba
-                                Salvador - BA, 41160-180
-                            </p>
-                        </div>
+                    @endif                
+                    <div class="row gy-4">
+                        <!-- Localização -->
+                        @if (isset($contact->address_one))                            
+                            <div class="col-12 col-md-4 d-flex">
+                                <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
+                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 1.67188C12.8906 1.67188 7.03125 7.45312 7.03125 14.6406C7.03125 24.875 18.5938 38.3125 19.1406 38.9375L20 39.9531L20.8594 38.9375C21.4062 38.3125 32.9688 24.875 32.9688 14.6406C32.9688 7.45312 27.1094 1.67188 20 1.67188ZM20 36.2812C17.2656 32.9219 9.375 22.4531 9.375 14.6406C9.375 8.78125 14.1406 4.01562 20 4.01562C25.8594 4.01562 30.625 8.78125 30.625 14.6406C30.625 22.4531 22.7344 32.9219 20 36.2812ZM20 7.92188C16.0938 7.92188 12.9688 11.0469 12.9688 14.9531C12.9688 18.8594 16.0938 21.9844 20 21.9844C23.9062 21.9844 27.0312 18.8594 27.0312 14.9531C27.0312 11.0469 23.9062 7.92188 20 7.92188ZM20 19.6406C17.4219 19.6406 15.3125 17.5312 15.3125 14.9531C15.3125 12.375 17.4219 10.2656 20 10.2656C22.5781 10.2656 24.6875 12.375 24.6875 14.9531C24.6875 17.5312 22.5781 19.6406 20 19.6406Z" fill="#1F1D1E"/>
+                                    </svg>
+                                </div>
+                                <div class="col-10 pe-1">
+                                    <h5 class="text-light mb-1">Localização</h5>
+                                    <p class="text-light mb-0 small">
+                                        {{$contact->address_one}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
+                        <!-- Contato -->
+                        @if (isset($contact->phone_two))                            
+                            <div class="col-12 col-md-4 d-flex mb-3">
+                                <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
+                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M36.875 14.6406C34.6094 6.28125 27.8125 0.5 20 0.5C12.2656 0.5 5.39062 6.28125 3.125 14.6406C1.40625 14.875 0 16.3594 0 18.1562V27.5312C0 29.0156 0.9375 30.2656 2.1875 30.8125C2.65625 34.9531 6.09375 38.1562 10.3125 38.1562H16.7188C17.1875 39.4844 18.4375 40.5 20 40.5H27.0312C28.9844 40.5 30.625 38.9375 30.625 36.9844C30.625 35.0312 28.9844 33.4688 27.0312 33.4688H20C18.4375 33.4688 17.1875 34.4062 16.7188 35.8125H10.3125C7.5 35.8125 5.07812 33.7812 4.53125 31.125H7.03125V28.7031H9.375V16.9844H7.03125V14.6406H5.625C7.8125 7.6875 13.5156 2.84375 20 2.84375C26.4844 2.84375 32.1875 7.60938 34.375 14.6406H32.9688V16.9844H30.625V28.7031H32.9688V31.125H36.4844C38.4375 31.125 40 29.4844 40 27.5312V18.1562C40 16.3594 38.5938 14.875 36.875 14.6406ZM20 35.8125H27.0312C27.7344 35.8125 28.2031 36.3594 28.2031 36.9844C28.2031 37.6094 27.7344 38.1562 27.0312 38.1562H20C19.375 38.1562 18.8281 37.6094 18.8281 36.9844C18.8281 36.3594 19.375 35.8125 20 35.8125ZM4.6875 28.7031H3.51562C2.89062 28.7031 2.34375 28.2344 2.34375 27.5312V18.1562C2.34375 17.5312 2.89062 16.9844 3.51562 16.9844H4.6875V28.7031ZM37.6562 27.5312C37.6562 28.2344 37.1094 28.7031 36.4844 28.7031H35.3125V16.9844H36.4844C37.1094 16.9844 37.6562 17.5312 37.6562 18.1562V27.5312Z" fill="#1F1D1E"/>
+                                    </svg>
+                                </div>
+                                <div class="col-10 pe-1">
+                                    <h5 class="text-light mb-1">Contato</h5>
+                                    <p class="text-light mb-0 small">
+                                        {{$contact->phone_two}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
+                        <!-- Email -->
+                        @if (isset($contact->name_three))                            
+                            <div class="col-12 col-md-4 d-flex">
+                                <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
+                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 5.1875V35.8125H40V5.1875H0ZM20 23.625L3.75 7.53125H36.25L20 23.625ZM13.5156 20.5L2.34375 31.5156V9.48438L13.5156 20.5ZM15.2344 22.2188L20 26.9062L24.6875 22.2969L35.9375 33.4688H3.82812L15.2344 22.2188ZM26.3281 20.6562L37.6562 9.48438V31.75L26.3281 20.6562Z" fill="#1F1D1E"/>
+                                    </svg>
+                                </div>
+                                <div class="col-10 pe-1">
+                                    <h5 class="text-light mb-1">E-Mail</h5>
+                                    <p class="text-light mb-0 small">
+                                        {{$contact->name_three}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-                    <!-- Contato -->
-                    <div class="col-12 col-md-4 d-flex mb-3">
-                        <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
-                            <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M36.875 14.6406C34.6094 6.28125 27.8125 0.5 20 0.5C12.2656 0.5 5.39062 6.28125 3.125 14.6406C1.40625 14.875 0 16.3594 0 18.1562V27.5312C0 29.0156 0.9375 30.2656 2.1875 30.8125C2.65625 34.9531 6.09375 38.1562 10.3125 38.1562H16.7188C17.1875 39.4844 18.4375 40.5 20 40.5H27.0312C28.9844 40.5 30.625 38.9375 30.625 36.9844C30.625 35.0312 28.9844 33.4688 27.0312 33.4688H20C18.4375 33.4688 17.1875 34.4062 16.7188 35.8125H10.3125C7.5 35.8125 5.07812 33.7812 4.53125 31.125H7.03125V28.7031H9.375V16.9844H7.03125V14.6406H5.625C7.8125 7.6875 13.5156 2.84375 20 2.84375C26.4844 2.84375 32.1875 7.60938 34.375 14.6406H32.9688V16.9844H30.625V28.7031H32.9688V31.125H36.4844C38.4375 31.125 40 29.4844 40 27.5312V18.1562C40 16.3594 38.5938 14.875 36.875 14.6406ZM20 35.8125H27.0312C27.7344 35.8125 28.2031 36.3594 28.2031 36.9844C28.2031 37.6094 27.7344 38.1562 27.0312 38.1562H20C19.375 38.1562 18.8281 37.6094 18.8281 36.9844C18.8281 36.3594 19.375 35.8125 20 35.8125ZM4.6875 28.7031H3.51562C2.89062 28.7031 2.34375 28.2344 2.34375 27.5312V18.1562C2.34375 17.5312 2.89062 16.9844 3.51562 16.9844H4.6875V28.7031ZM37.6562 27.5312C37.6562 28.2344 37.1094 28.7031 36.4844 28.7031H35.3125V16.9844H36.4844C37.1094 16.9844 37.6562 17.5312 37.6562 18.1562V27.5312Z" fill="#1F1D1E"/>
-                            </svg>
-                        </div>
-                        <div class="col-10 pe-1">
-                            <h5 class="text-light mb-1">Contato</h5>
-                            <p class="text-light mb-0 small">
-                                (71) 99704-9998 /
-                                (71) 3333-3333
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Email -->
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="p-2 me-3 icon-location d-flex justify-content-center align-items-center">
-                            <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 5.1875V35.8125H40V5.1875H0ZM20 23.625L3.75 7.53125H36.25L20 23.625ZM13.5156 20.5L2.34375 31.5156V9.48438L13.5156 20.5ZM15.2344 22.2188L20 26.9062L24.6875 22.2969L35.9375 33.4688H3.82812L15.2344 22.2188ZM26.3281 20.6562L37.6562 9.48438V31.75L26.3281 20.6562Z" fill="#1F1D1E"/>
-                            </svg>
-                        </div>
-                        <div class="col-10 pe-1">
-                            <h5 class="text-light mb-1">E-Mail</h5>
-                            <p class="text-light mb-0 small">
-                                atendimento@cantinacosanostra.com
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endif
                 <div class="pq-reservation-main-form p-0 mt-3 mb-0">
                     <form id="reservationForm" class="pq-applyform" novalidate>
                         @csrf
