@@ -27,18 +27,11 @@ class NoticiesRequestStore extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'path_file' => ['required', 'file', 'mimes:pdf'],
+            'title' => ['nullable', 'string', 'max:255'],
+            'path_file' => ['nullable', 'file', 'mimes:pdf'],
             'active' => 'boolean',
             'sorting' => ['nullable', 'integer'],
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'title.required' => 'O campo Título é obrigatório.',
-            'path_file.required' => 'O campo arquivo é obrigatório.',
-        ];
-    }
 }

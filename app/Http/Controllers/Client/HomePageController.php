@@ -14,6 +14,7 @@ use App\Models\Report;
 use App\Models\Contact;
 use App\Models\Partner;
 use App\Models\Statute;
+use App\Models\Noticies;
 use App\Models\Depoiment;
 use App\Models\Direction;
 use App\Models\Unionized;
@@ -46,6 +47,7 @@ class HomePageController extends Controller
         $unionizeds = Unionized::get();
         $depoiments = Depoiment::active()->sorting()->get();
         $reservationHere = ReservationHere::active()->first();
+        $openingHours = Noticies::active()->sorting()->get();
         
         return view('client.blades.index', compact(
             'contact', 
@@ -61,6 +63,7 @@ class HomePageController extends Controller
             'unionizeds', 
             'depoiments', 
             'reservationHere', 
+            'openingHours', 
             'topics')
         );
     }

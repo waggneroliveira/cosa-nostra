@@ -11,10 +11,10 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Editais</li>
+                                    <li class="breadcrumb-item active">Horários de Funcionamento</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Editais</h4>
+                            <h4 class="page-title">Horários de Funcionamento</h4>
                         </div>
                     </div>
                 </div>
@@ -25,46 +25,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row mb-2">
-                                    <div class="col-12">
-                                        <form action="{{ route('admin.dashboard.noticies.index') }}" method="GET" class="mb-4">
-                                            <div class="row g-3 align-items-end">
-
-                                                <!-- Título -->
-                                                <div class="col-md-6">
-                                                    <label for="title" class="form-label">Título</label>
-                                                    <input type="text" name="title" id="title" value="{{ request('title') }}" 
-                                                        class="form-control" placeholder="Pesquisar por título">
-                                                </div>
-
-                                                <!-- Ano -->
-                                                <div class="col-md-3">
-                                                    <label for="date" class="form-label">Ano</label>
-                                                    <select name="date" id="date" class="form-select">
-                                                        <option value="">Todas</option>
-                                                        @foreach($groupedNoticies as $year => $notice)
-                                                            <option value="{{ $year }}" 
-                                                                {{ request('date') == $year ? 'selected' : '' }}>
-                                                                {{ $year }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
-                                                <!-- Botões -->
-                                                <div class="col-md-3 d-flex gap-2">
-                                                    <button type="submit" class="btn btn-primary w-100 text-black">
-                                                        <i class="bi bi-search text-black"></i> Filtrar
-                                                    </button>
-
-                                                    @if (request()->has('title') || request()->has('date'))
-                                                        <a href="{{ route('admin.dashboard.noticies.index') }}" class="btn btn-outline-secondary w-100">
-                                                            <i class="bi bi-x-circle"></i> Limpar
-                                                        </a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
 
                                     <div class="col-12 d-flex justify-between">
                                         <div class="col-6">
@@ -80,7 +40,9 @@
                                             Auth::user()->can('editais.criar') ||
                                             Auth::user()->can('usuario.tornar usuario master') || 
                                             Auth::user()->hasRole('Super'))
-                                                <button type="button" class="btn btn-primary text-black waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#noticies-create"><i class="mdi mdi-plus-circle me-1"></i> {{__('dashboard.btn_create')}}</button>
+                                                @if ($noticies->count() < 4)                                                    
+                                                    <button type="button" class="btn btn-primary text-black waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#noticies-create"><i class="mdi mdi-plus-circle me-1"></i> {{__('dashboard.btn_create')}}</button>
+                                                @endif
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="noticies-create" tabindex="-1" role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" style="max-width: 980px;">
@@ -92,69 +54,11 @@
                                                             <div class="modal-body p-2 px-3 px-md-4">
                                                                 <form action="{{ route('admin.dashboard.noticies.store') }}" method="POST" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <div class="row g-3">
-                                                                        <div class="mb-3 col-12 col-md-8">
-                                                                            <label for="title" class="form-label">Título</label>
-                                                                            <input 
-                                                                                type="text" 
-                                                                                name="title" 
-                                                                                class="form-control" 
-                                                                                id="title" 
-                                                                                placeholder="Digite seu nome" 
-                                                                                required
-                                                                            >
-                                                                        </div>
-                                                                        <div class="mb-3 col-12 col-md-4">
-                                                                            <label for="date" class="form-label">Data de publicação</label>
-                                                                            <input 
-                                                                                type="date" 
-                                                                                name="date" 
-                                                                                class="form-control" 
-                                                                                id="date" 
-                                                                                required
-                                                                            >
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="mb-3">
-                                                                        <label for="path_file" class="form-label">Arquivo</label>
-                                                                        <input 
-                                                                            type="file" 
-                                                                            name="path_file" 
-                                                                            accept="application/pdf" 
-                                                                            data-plugins="dropify" 
-                                                                            class="form-control" 
-                                                                            required
-                                                                            id="path_file"
-                                                                        />
-                                                                        <p class="text-muted text-center mt-2 mb-0">
-                                                                            {{ __('dashboard.text_img_size') }} <b class="text-danger">2 MB</b>.
-                                                                        </p>
-                                                                    </div>
-                                                                    
-                                                                    <div class="mb-3 form-check">
-                                                                        <input 
-                                                                            name="active" 
-                                                                            type="checkbox" 
-                                                                            class="form-check-input" 
-                                                                            id="invalidCheck{{ isset($noticie->id) ? $noticie->id : '' }}" 
-                                                                        />
-                                                                        <label class="form-check-label" for="invalidCheck{{ isset($noticie->id) ? $noticie->id : '' }}">
-                                                                            {{ __('dashboard.active') }}?
-                                                                        </label>
-                                                                        <div class="invalid-feedback">
-                                                                            You must agree before submitting.
-                                                                        </div>
-                                                                    </div>
-                                                                    
+                                                                    @include('admin.blades.noticies.form')  
                                                                     <div class="d-flex justify-content-end gap-2">
-                                                                        <button type="button" class="btn btn-danger waves-effect waves-light" data-bs-dismiss="modal">
-                                                                            {{ __('dashboard.btn_cancel') }}
-                                                                        </button>
-                                                                        <button type="submit" class="btn btn-primary text-black waves-effect waves-light">
-                                                                            {{ __('dashboard.btn_create') }}
-                                                                        </button>
-                                                                    </div>
+                                                                        <button type="button" class="btn btn-danger waves-effect waves-light" data-bs-dismiss="modal">{{__('dashboard.btn_cancel')}}</button>
+                                                                        <button type="submit" class="btn btn-primary text-black waves-effect waves-light">{{__('dashboard.btn_create')}}</button>
+                                                                    </div>  
                                                                 </form>
                                                             </div>
 
@@ -217,7 +121,7 @@
                                                                 <div class="modal-dialog modal-dialog-centered" style="max-width: 980px;">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header bg-light">
-                                                                            <h4 class="modal-title" id="myCenterModalLabel">{{__('dashboard.group_and_permission')}}</h4>
+                                                                            <h4 class="modal-title" id="myCenterModalLabel">Editar</h4>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                                                                         </div>
                                                                         <div class="modal-body  p-2 px-3 px-md-4">

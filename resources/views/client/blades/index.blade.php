@@ -490,7 +490,7 @@
                                     <option value="varanda">Varanda</option>
                                 </select>
                             </div>
-                            <div class="col-12 col-lg-3">
+                            <div class="col-6 col-lg-3">
                                 <input type="number" name="number_of_people" min="1" max="10" class="form-control text-muted border-white" placeholder="Número de pessoas" required>
                             </div>
                         </div>

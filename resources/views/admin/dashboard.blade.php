@@ -582,7 +582,7 @@
                                 </div>
                             </div>
                             <div class="mt-3 col-12 text-center">
-                                <h5 class="text-uppercase text-muted">Editais</h5>
+                                <h5 class="text-uppercase text-muted">Horários de Funcionamento</h5>
                             </div>
                         </a>
                     </div>

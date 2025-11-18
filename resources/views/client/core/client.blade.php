@@ -69,15 +69,6 @@
     <link href="{{ asset('build/client/lgpd/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
         
-    <script defer src="https://cdn.userway.org/widget.js" data-account="qSpdtrySSt"></script>
-    <link rel="preconnect" href="https://vlibras.gov.br" crossorigin>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RXZ6TZT0V"></script>
-    <script defer>
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-        window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-6RXZ6TZT0V")
-    </script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -543,28 +534,24 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="pq-footer-social">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-linkedin-in"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        @if (isset($contact))                                
+                                            <ul>
+                                                @if ($contact->link_face)                                        
+                                                    <li>
+                                                        <a href="{{$contact->link_face}}" target="_blank" rel="noopener noreferrer">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if ($contact->link_insta)                                          
+                                                    <li>
+                                                        <a href="{{$contact->link_insta}}" target="_blank" rel="noopener noreferrer">
+                                                            <i class="fab fa-instagram"></i>
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            </ul>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -609,46 +596,12 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <ul class="pq-time">
-                                            <li>
-                                                <span class="day">Mon - Tue</span>
-                                                <span class="time">09.00 am - 10.00 pm</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer opening-hours">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul class="pq-time">
-                                            <li>
-                                                <span class="day">Wed - Thu</span>
-                                                <span class="time">10.00am - 11.00pm</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer opening-hours">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul class="pq-time">
-                                            <li>
-                                                <span class="day">Sat</span>
-                                                <span class="time">07.00am - 08.00pm</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer opening-hours">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul class="pq-time">
-                                            <li>
-                                                <span class="day">Sun</span>
-                                                <span class="time">9:00 am - 8 Pm</span>
-                                            </li>
+                                            @foreach ($openingHours as $openingHour)                                                
+                                                <li>
+                                                    <span class="day">{{$openingHour->title}}</span>
+                                                    <span class="time">{{$openingHour->hours}}</span>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -661,7 +614,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 align-self-center">
-                            <span class="pq-copyright">Copyright 2022 Millennium All Rights Reserved.</span>
+                            <p id="footer-text" class="text-black pq-copyright"></p>
+                            <script defer>
+                                const currentYear = (new Date).getFullYear();
+                                document.getElementById("footer-text").innerHTML = `© Copyright ${currentYear} Cantina Cosa Nostra. Todos os direitos reservados.`
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -680,11 +637,6 @@
         </div>
     </div>
 
-{{-- <p id="footer-text"></p>
-                    <script defer>
-                        const currentYear = (new Date).getFullYear();
-                        document.getElementById("footer-text").innerHTML = `WHI© ${currentYear} <span> todos os direitos reservados.</span>`
-                    </script> --}}
         <!--jquery js-->
         <script src="{{ asset('build/client/js/jquery.min.js') }}"></script>
         <!--bootstrap js-->
@@ -761,7 +713,7 @@
     <script>
         const starUrl = "{{ asset('build/client/images/star.svg') }}";
     </script>
-    {{-- <script src="{{ asset('build/client/js/default.js') }}"></script> --}}
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuItems = document.querySelectorAll('#pq-main-menu .menu-item');
@@ -815,24 +767,9 @@
                     icon: 'error',
                     timer: 2500,
                     showConfirmButton: false
-                });
+                });              
             </script>
         @endforeach
     @endif
-
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", (function() {
-            const o = document.createElement("script");
-            o.src = "https://vlibras.gov.br/app/vlibras-plugin.js", o.onload = function() {
-                window.VLibras && window.VLibras.Widget ? (new window.VLibras.Widget("https://vlibras.gov.br/app")) : console.warn("VLibras não foi carregado corretamente.")
-            }, document.body.appendChild(o)
-        }))
-    </script>
 </body>
 </html>

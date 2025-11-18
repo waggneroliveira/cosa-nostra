@@ -16,6 +16,7 @@ class Noticies extends Model
     protected $fillable = [
         'title',
         'date',
+        'hours',
         'active',
         'sorting',
         'path_file'
@@ -26,8 +27,7 @@ class Noticies extends Model
     }
 
     public function scopeSorting($query){
-        return $query->orderByRaw('YEAR(`date`) DESC')
-        ->orderBy('created_at', 'DESC');
+        return $query->orderBy('sorting', 'DESC');
     }
 
     public function getActivitylogOptions(): LogOptions

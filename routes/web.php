@@ -5,6 +5,7 @@ use App\Models\About;
 use App\Models\Report;
 use App\Models\Contact;
 use App\Models\Statute;
+use App\Models\Noticies;
 use App\Models\Agreement;
 use App\Models\Direction;
 use App\Models\Announcement;
@@ -17,6 +18,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FormIndexController;
 use App\Http\Middleware\AuthClientMiddleware;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\AuthClientController;
 use App\Http\Controllers\Client\BlogPageController;
 use App\Http\Controllers\Client\HomePageController;
@@ -29,7 +31,6 @@ use App\Http\Controllers\Client\JuridicoPageController;
 use App\Http\Controllers\Client\NoticiesPageController;
 use App\Http\Controllers\Auth\PasswordEmailClientController;
 use App\Http\Controllers\Auth\ResetPasswordClientController;
-use App\Http\Controllers\ReservationController;
 
 require __DIR__ . '/dashboard.php';
 
@@ -127,6 +128,7 @@ View::composer('client.core.client', function ($view) {
     $benefitTopics = BenefitTopic::active()->sorting()->count();
     $report = Report::active()->count();
     $agreement = Agreement::active()->count();
+    $openingHours = Noticies::active()->sorting()->get();
 
     return $view->with('blogCategories', $blogCategories)
     ->with('announcements', $announcements)
@@ -136,5 +138,6 @@ View::composer('client.core.client', function ($view) {
     ->with('benefitTopics', $benefitTopics)
     ->with('report', $report)
     ->with('agreement', $agreement)
+    ->with('openingHours', $openingHours)
     ->with('abouts', $abouts);
 });

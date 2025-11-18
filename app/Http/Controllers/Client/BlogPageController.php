@@ -81,7 +81,7 @@ class BlogPageController extends Controller
         ->sorting()
         ->get();
         $popUp = PopUp::active()->first();
-
+        
         return view('client.blades.blog', compact(
             'blogCategories',
             'blogSuperHighlights',

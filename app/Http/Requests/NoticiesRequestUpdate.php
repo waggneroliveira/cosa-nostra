@@ -27,16 +27,9 @@ class NoticiesRequestUpdate extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['nullable', 'string', 'max:255'],
             'active' => 'boolean',
             'sorting' => ['nullable', 'integer'],
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'title.required' => 'O campo Título é obrigatório.',
         ];
     }
 }

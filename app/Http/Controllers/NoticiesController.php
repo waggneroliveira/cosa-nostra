@@ -61,22 +61,10 @@ class NoticiesController extends Controller
     {
         $data = $request->all();
         $data['active'] = $request->active?1:0;
-        $helper = new HelperArchive();
-
-        $path_file = $helper->renameArchiveUpload($request, 'path_file');
-        if ($path_file) {
-            $data['path_file'] = $this->pathUpload . $path_file;
-        }
-        if ($path_file) {
-            $request->file('path_file')->storeAs($this->pathUpload, $path_file);
-        }
 
         try {
             DB::beginTransaction();
-                if(!Noticies::create($data)){                    
-                    Storage::delete($this->pathUpload . $path_file);
-                    throw new Exception();
-                }
+                Noticies::create($data);
             DB::commit();
             session()->flash('success', __('dashboard.response_item_create'));
             return redirect()->back();
@@ -91,31 +79,10 @@ class NoticiesController extends Controller
     {
         $data = $request->all();
         $data['active'] = $request->active?1:0;
-        $helper = new HelperArchive();
-
-        $path_file = $helper->renameArchiveUpload($request, 'path_file');
-        if ($path_file) {
-            $data['path_file'] = $this->pathUpload . $path_file;
-        }
-        if ($path_file) {
-            $request->file('path_file')->storeAs($this->pathUpload, $path_file);
-            Storage::delete($noticies->path_file);
-        }
-        if(isset($request->delete_path_file) && !$path_file){
-            $inputFile = $request->delete_path_file;
-            Storage::delete($noticies->$inputFile);
-            $data['path_file'] = null;
-        }
 
         try {
             DB::beginTransaction();
                 $noticies->fill($data)->save();
-                if ($path_file) {
-                    Storage::delete($this->pathUpload . $path_file);
-                }
-                if ($path_file) {
-                    $request->file('path_file')->storeAs($this->pathUpload, $path_file);
-                }
                 DB::commit();
             session()->flash('success', __('dashboard.response_item_update'));
             return redirect()->back();
@@ -128,7 +95,6 @@ class NoticiesController extends Controller
 
     public function destroy(Noticies $noticies)
     {
-        Storage::delete(isset($noticies->path_file)??$noticies->path_file);
         $noticies->delete();
         Session::flash('success',__('dashboard.response_item_delete'));
         return redirect()->back();
@@ -148,8 +114,7 @@ class NoticiesController extends Controller
                         'attributes' => [
                             'id' => $noticiesId,
                             'title' => $noticies->title,
-                            'data' => $noticies->date,
-                            'path_file' => $noticies->path_file,
+                            'hours' => $noticies->hours,
                             'sorting' => $noticies->sorting,
                             'active' => $noticies->active,
                             'event' => 'multiple_deleted',
@@ -191,8 +156,7 @@ class NoticiesController extends Controller
                         'attributes' => [
                             'id' => $id,
                             'title' => $noticies->title,
-                            'data' => $noticies->date,
-                            'path_file' => $noticies->path_file,
+                            'hours' => $noticies->hours,
                             'sorting' => $noticies->sorting,
                             'active' => $noticies->active,
                             'event' => 'order_updated',

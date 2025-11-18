@@ -1,41 +1,26 @@
 <div class="row g-3">
-    <div class="mb-3 col-12 col-md-8">
-        <label for="title" class="form-label">Título</label>
+    <div class="mb-3 col-12 col-md-6">
+        <label for="title" class="form-label">Dia(s)</label>
         <input 
             type="text" 
             name="title" 
             class="form-control" 
             id="title{{ isset($noticie->id) ? $noticie->id : '' }}" 
             value="{{ isset($noticie) ? $noticie->title : '' }}" 
-            placeholder="Digite seu nome"
+            placeholder="Dia(s)"
         >
     </div>
-    
-    <div class="mb-3 col-12 col-md-4">
-        <label for="date" class="form-label">Data de publicação</label>
+    <div class="mb-3 col-12 col-md-6">
+        <label for="hours" class="form-label">Horário de funcionamento</label>
         <input 
-            type="date" 
-            name="date" 
+            type="text" 
+            name="hours" 
             class="form-control" 
-            id="date{{ isset($noticie->id) ? $noticie->id : '' }}" 
-            value="{{ isset($noticie) ? $noticie->date : '' }}"
+            id="hours{{ isset($noticie->id) ? $noticie->id : '' }}" 
+            value="{{ isset($noticie) ? $noticie->hours : '' }}" 
+            placeholder="Horário de funcionamento"
         >
-    </div>
-</div>
-
-<div class="mb-3 col-12">
-    <label for="path_file" class="form-label">Arquivo</label>
-    <input 
-        type="file" 
-        name="path_file" 
-        accept="application/pdf" 
-        data-plugins="dropify" 
-        data-default-file="{{ isset($noticie) && $noticie->path_file != '' ? url('storage/'.$noticie->path_file) : '' }}" 
-        class="form-control"
-    />
-    <p class="text-muted text-center mt-2 mb-0">
-        {{ __('dashboard.text_img_size') }} <b class="text-danger">2 MB</b>.
-    </p>
+    </div>    
 </div>
 
 <div class="mb-3 col-12">
