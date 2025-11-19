@@ -518,7 +518,7 @@
                         </div>
 
                         <div class="col-12 text-start mt-2">
-                            <button type="submit" class="pq-button pq-button-flat">
+                            <button type="submit" class="pq-button pq-button-flat mb-2">
                                 <span class="pq-button-text text-white">Reservar</span>
                             </button>
                         </div>

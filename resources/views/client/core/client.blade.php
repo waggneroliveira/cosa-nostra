@@ -614,13 +614,19 @@
             </div>
             <div class="pq-copyright-footer">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 align-self-center">
-                            <p id="footer-text" class="text-black pq-copyright"></p>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-3 col-12"></div>
+                        <div class="col-12 col-lg-6 align-items-center">
+                            <p id="footer-text" class="text-black pq-copyright mb-0"></p>
                             <script defer>
                                 const currentYear = (new Date).getFullYear();
                                 document.getElementById("footer-text").innerHTML = `© Copyright ${currentYear} Cantina Cosa Nostra. Todos os direitos reservados.`
                             </script>
+                        </div>
+                        <div class="col-lg-3 col-12 text-center text-lg-end mt-2">
+                            <a href="https://www.whi.dev.br/" target="_blank" rel="noopener noreferrer">
+                                <img src="{{asset('build/client/images/whi.svg')}}" alt="Agência WHI" title="Agência WHI">
+                            </a>
                         </div>
                     </div>
                 </div>
