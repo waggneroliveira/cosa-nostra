@@ -206,7 +206,7 @@
 <!-- <gallery-end> -->
 <!-- <pop-up-start> -->
 @if (isset($reservationHere))        
-    <section class="popup p-0">
+    <section id="event" class="popup p-0">
         <div class="container-fluid p-0">
             <div class="row pq-bg-dark-color pq-ms-30">
                 <div class="col-xl-5 pq-popup-video-bg-img pq-popup-video-bg-img-dark-layer">
@@ -275,7 +275,7 @@
 <!-- <pop-up-end> -->
 <!-- <depoiment-start> -->
 @if (isset($report) || $depoiments->count() > 0)
-    <section class="testimonial py-0">
+    <section id="depoiment" class="testimonial py-0">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 pq-testimonial-padding">

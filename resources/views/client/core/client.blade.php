@@ -214,10 +214,19 @@
                                             <a href="{{ request()->is('/') ? '#about' : url('/') . '#about' }}">Quem Somos</a>
                                         </li>
                                         <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#experience' : url('/') . '#experience' }}">Por que nos visitar?</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#depoiment' : url('/') . '#depoiment' }}">Depoimentos</a>
+                                        </li>
+                                        <li class="menu-item">
                                             <a href="{{ request()->is('/') ? '#gallery' : url('/') . '#gallery' }}">Galeria</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#event' : url('/') . '#event' }}">Eventos</a>
+                                        </li>
                                         <li class="menu-item {{ request()->is('blog') || request()->is('blog/*') ? 'current-menu-item' : '' }}">
-                                            <a href="{{ route('blog') }}">Blog</a>
+                                            <a href="{{ route('blog') }}">Novidades</a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ request()->is('/') ? '#reservation' : url('/') . '#reservation' }}">Contato</a>
@@ -574,12 +583,17 @@
                                         </li>
 
                                         <li class="menu-item">
-                                            <a href="{{ route('blog') }}">Blog</a>
+                                            <a href="{{ route('blog') }}">Novidades</a>
                                         </li>
 
                                         <li class="menu-item">
                                             <a href="{{ request()->is('/') ? '#gallery' : url('/') . '#gallery' }}">Galeria</a>
                                         </li>
+                                        
+                                        <li class="menu-item">
+                                            <a href="{{ request()->is('/') ? '#event' : url('/') . '#event' }}">Eventos</a>
+                                        </li>
+
                                         <li class="menu-item" target="_blank" rel="noopener noreferrer">
                                             <a href="https://policies.google.com/privacy?hl=pt-BR">Política de Privacidade</a>
                                         </li>
