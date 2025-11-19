@@ -71,7 +71,6 @@
                                                     </th>
                                                     {{-- <th>Link</th> --}}
                                                     <th>Título</th>
-                                                    <th>Imagem</th>
                                                     <th>Status</th>
                                                     <th style="width: 85px;">Ações</th>
                                                 </tr>
@@ -84,13 +83,6 @@
                                                         <label><input data-index="" name="btnSelectItem" class="btnSelectItem" type="checkbox" value=""></label>
                                                     </td>
                                                     <td>{{$statute->title}}</td>
-                                                    <td class="table-user">
-                                                        @if ($statute->path_file)                                                            
-                                                            <a href="{{ asset('storage/'.$statute->path_file) }}" target="_blank" rel="noopener noreferrer" download="arquivo">
-                                                                <span class="mdi mdi-file-download-outline"></span>
-                                                            </a>
-                                                        @endif
-                                                    </td>
                                                     <td>
                                                         @switch($statute->active)
                                                             @case(0) <span class="badge bg-danger">Inativo</span> @break

@@ -21,7 +21,6 @@
     @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
     Auth::user()->hasPermissionTo('slide.visualizar') || 
-    Auth::user()->hasPermissionTo('parceiros.visualizar') || 
     Auth::user()->hasPermissionTo('reservas.visualizar') || 
     Auth::user()->hasPermissionTo('newsletter.visualizar') || 
     Auth::user()->hasPermissionTo('contato.visualizar') || 
@@ -98,7 +97,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-help-circle font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-information font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +120,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-account-box font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-chart-bar font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +143,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-file-document font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-briefcase font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +166,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-account-group font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-tools font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +189,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-star font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-image-multiple font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +212,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-alert-circle font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-calendar-check font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +235,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-alert-circle font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-message-text font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +258,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-alert-circle font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-account-voice font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -282,7 +281,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-format-list-bulleted font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-bookmark-check font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +304,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-card-account-mail-outline font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-contacts font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -351,7 +350,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-email-outline font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-email-newsletter font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -374,7 +373,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-file-document font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-clock-outline font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -388,7 +387,7 @@
             @endif
         </div>
     @endif      
-    
+        
     @if (Auth::user()->hasRole('Super') || 
     Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
     Auth::user()->hasPermissionTo('noticias.visualizar') || 
@@ -421,7 +420,7 @@
                     </div> <!-- end card-->
                 </div> <!-- end col -->
             @endif
-    
+
             @if (Auth::user()->hasRole('Super') || 
             Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
             Auth::user()->hasPermissionTo('noticias.visualizar'))
@@ -432,7 +431,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex align-items-center justify-content-center">
                                         <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                            <i class="avatar-md mdi mdi-newspaper-variant font-48 text-muted"></i>
+                                            <i class="avatar-md mdi mdi-newspaper font-48 text-muted"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -463,7 +462,7 @@
                             <div class="row">
                                 <div class="col-12 d-flex align-items-center justify-content-center">
                                     <div class="avatar-xl bg-hoom rounded-circle text-center">
-                                        <i class="avatar-md mdi mdi-email font-48 text-muted"></i>
+                                        <i class="avatar-md mdi mdi-email-send font-48 text-muted"></i>
                                     </div>
                                 </div>
                             </div>
@@ -485,7 +484,7 @@
         Auth::user()->can('grupo.visualizar'))
             <div class="col-12">
                 <div class="page-title-box">
-                    <h4 class="page-title "><i class="mdi mdi-security"></i> {{__('dashboard.security_and_access_control')}}</h4>
+                    <h4 class="page-title "><i class="mdi mdi-shield-account"></i> {{__('dashboard.security_and_access_control')}}</h4>
                 </div>
             </div>
             @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('auditoria.visualizar'))
@@ -529,7 +528,7 @@
                     </div> <!-- end card-->
                 </div> <!-- end col -->
             @endif
-    
+
             @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('usuario.visualizar'))
                 <div class="col-md-5 col-xl-3">
                     <div class="card borda-cx ratio ratio-4x3 border-whi">

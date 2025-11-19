@@ -27,7 +27,7 @@ class NoticiesController extends Controller
         // Verificação de permissões
         if (!Auth::user()->hasRole('Super') && 
             !Auth::user()->can('usuario.tornar usuario master') &&
-            !Auth::user()->hasPermissionTo('editais.visualizar')) {
+            !Auth::user()->hasPermissionTo('horario de funcionamento.visualizar')) {
             return view('admin.error.403', compact('settingTheme'));
         }
 

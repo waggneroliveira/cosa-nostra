@@ -113,7 +113,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    {{-- @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar', 'grupo.criar']))                                                        
+                                    {{-- @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['reservas.visualizar', 'reservas.criar']))                                                        
                                         <button type="button" class="btn btn-primary text-black waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#reservation-create"><i class="mdi mdi-plus-circle me-1"></i> {{__('dashboard.btn_create')}} </button>
                                     @endif --}}
                                     <!-- Modal -->
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="col-12 d-flex justify-between">
                                     <div class="col-6">
-                                        @if(Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar','grupo.remover']))
+                                        @if(Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['reservas.visualizar','reservas.remover']))
                                             {{-- <button id="btSubmitDelete" data-route="{{route('admin.dashboard.reservation.destroySelected')}}" type="button" class="btSubmitDelete btn btn-danger" style="display: none;">Deletar selecionados</button> --}}
                                         @endif
                                     </div>                                    
@@ -222,7 +222,7 @@
                                                 
                                                 <td class="d-flex flex-row gap-2">
                                                     @if ($reservation->status == 'canceled' || $reservation->status == 'confirmed' || $reservation->status == 'stand_by')                                                    
-                                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar', 'grupo.editar']))                                                        
+                                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('reservas.visualizar'))                                                        
                                                             <button data-bs-toggle="modal" data-bs-target="#reservation-view-{{$reservation->id}}" class="tabledit-edit-button btn btn-primary text-black" style="padding: 2px 8px;width: 30px"><span class="mdi mdi-eye"></span></button>
                                                         @endif
                                                         <div class="modal fade" id="reservation-view-{{$reservation->id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -258,15 +258,17 @@
                                                                     <i class="fa fa-check"></i>
                                                                 </button>
                                                             @else
-                                                                {{-- Botão normal --}}
-                                                                <button type="submit" 
-                                                                        style="width: 30px"
-                                                                        class="demo-delete-row btn btn-success btn-xs btn-icon">
-                                                                    <i class="fa fa-check"></i>
-                                                                </button>
+                                                                @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['reservas.visualizar', 'reservas.confirmar']))
+                                                                    {{-- Botão normal --}}
+                                                                    <button type="submit" 
+                                                                            style="width: 30px"
+                                                                            class="demo-delete-row btn btn-success btn-xs btn-icon">
+                                                                        <i class="fa fa-check"></i>
+                                                                    </button>
+                                                                @endif
                                                             @endif
                                                         </form>
-                                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['grupo.visualizar', 'grupo.remover']))                                                        
+                                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can(['reservas.visualizar', 'reservas.cancelar']))                                                        
                                                             <form action="{{route('admin.dashboard.reservation.canceled',['reservation' => $reservation->id])}}" style="width: 30px" method="POST">
                                                                 @method('put') @csrf        
                                                                 

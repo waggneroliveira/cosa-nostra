@@ -4,17 +4,26 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Reservation;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\MessageSanitizer;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Repositories\SettingThemeRepository;
 
 class ReservationController extends Controller
 {
     public function index(Request $request)
     {
+        $settingTheme = (new SettingThemeRepository())->settingTheme();
+        if(!Auth::user()->hasRole('Super') && 
+          !Auth::user()->can('usuario.tornar usuario master') && 
+          !Auth::user()->hasPermissionTo('reservas.visualizar')){
+            return view('admin.error.403', compact('settingTheme'));
+        }
+
         $reservationQuery = Reservation::query();
 
         // ============================

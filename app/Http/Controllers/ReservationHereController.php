@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReservationHere;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Repositories\SettingThemeRepository;
 
 class ReservationHereController extends Controller
 {
@@ -15,6 +17,12 @@ class ReservationHereController extends Controller
      */
     public function index()
     {
+        $settingTheme = (new SettingThemeRepository())->settingTheme();
+        if(!Auth::user()->hasRole('Super') && 
+            !Auth::user()->can('usuario.tornar usuario master') && 
+            !Auth::user()->hasPermissionTo('secao reserve aqui.visualizar')){
+            return view('admin.error.403', compact('settingTheme'));
+        }
         $reservationHere = ReservationHere::first();
 
         return view('admin.blades.reservationHere.index', compact('reservationHere'));

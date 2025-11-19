@@ -76,19 +76,7 @@ class PermissionsSeeder extends Seeder
                 'Visualizar',
                 'Remover'
             ],
-            'juridico'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
             'lead contato'=>[
-                'Visualizar',
-                'Remover'
-            ],
-            'municipios'=>[
-                'Criar',
-                'Editar',                
                 'Visualizar',
                 'Remover'
             ],
@@ -106,18 +94,6 @@ class PermissionsSeeder extends Seeder
             'notificacao'=>[               
                 'Visualizar',
                 'Notificacao de auditoria',
-            ],
-            'parceiros'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
-            ],
-            'regionais'=>[
-                'Criar',
-                'Editar',                
-                'Visualizar',
-                'Remover'
             ],
             'reservas'=>[
                 'Confirmar',

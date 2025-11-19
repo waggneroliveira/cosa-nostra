@@ -92,17 +92,29 @@
                     <ul class="menu">
 
                         <li class="menu-title">Listagem</li>
-                        {{-- @if (Auth::user()->hasRole('Super') || 
+                        
+                        @if (Auth::user()->hasRole('Super') || 
                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
                         Auth::user()->hasPermissionTo('slide.visualizar') || 
-                        Auth::user()->hasPermissionTo('parceiros.visualizar') || 
-                        Auth::user()->hasPermissionTo('videos.visualizar') || 
+                        Auth::user()->hasPermissionTo('reservas.visualizar') || 
+                        Auth::user()->hasPermissionTo('newsletter.visualizar') || 
+                        Auth::user()->hasPermissionTo('contato.visualizar') || 
+                        Auth::user()->hasPermissionTo('lead contato.visualizar') || 
+                        Auth::user()->hasPermissionTo('horario de funcionamento.visualizar') || 
+                        Auth::user()->hasPermissionTo('sobre nos.visualizar') || 
+                        Auth::user()->hasPermissionTo('servicos.visualizar') || 
+                        Auth::user()->hasPermissionTo('secao servicos.visualizar') || 
+                        Auth::user()->hasPermissionTo('estatistica do sobre.visualizar') || 
+                        Auth::user()->hasPermissionTo('galeria.visualizar') || 
+                        Auth::user()->hasPermissionTo('secao depoimento.visualizar') || 
+                        Auth::user()->hasPermissionTo('depoimentos.visualizar') || 
+                        Auth::user()->hasPermissionTo('secao reserve aqui.visualizar') || 
                         Auth::user()->hasPermissionTo('topicos.visualizar'))
                             <li class="menu-item">
                                 <a href="#menuDashboards" data-bs-toggle="collapse" class="menu-link">
                                     <span class="menu-icon"><i class="mdi mdi-home"></i></span>
                                     <span class="menu-text"> Home </span>
-                                    <span class="badge bg-success rounded-pill ms-auto">4</span>
+                                    <span class="badge bg-success rounded-pill ms-auto">16</span>
                                 </a>
                                 <div class="collapse" id="menuDashboards">
                                     <ul class="sub-menu">
@@ -115,6 +127,7 @@
                                                 </a>
                                             </li>
                                         @endif
+
                                         @if (Auth::user()->hasRole('Super') || 
                                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
                                         Auth::user()->hasPermissionTo('topicos.visualizar'))
@@ -124,42 +137,7 @@
                                                 </a>
                                             </li>
                                         @endif
-                                        @if (Auth::user()->hasRole('Super') || 
-                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                                        Auth::user()->hasPermissionTo('parceiros.visualizar'))
-                                            <li class="menu-item">
-                                                <a href="{{route('admin.dashboard.partner.index')}}" class="menu-link">
-                                                    <span class="menu-text">Parceiros</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (Auth::user()->hasRole('Super') || 
-                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                                        Auth::user()->hasPermissionTo('videos.visualizar'))
-                                            <li class="menu-item">
-                                                <a href="{{route('admin.dashboard.video.index')}}" class="menu-link">
-                                                    <span class="menu-text">Vídeos</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                        Auth::user()->hasPermissionTo('sobre nos.visualizar') || 
-                        Auth::user()->hasPermissionTo('a direcao.visualizar') || 
-                        Auth::user()->hasPermissionTo('videos.visualizar') || 
-                        Auth::user()->hasPermissionTo('topicos.visualizar'))
-                            <li class="menu-item">
-                                <a href="#about" data-bs-toggle="collapse" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-help-circle"></i></span>
-                                    <span class="menu-text"> Sobre Nós </span>
-                                    <span class="badge bg-success rounded-pill ms-auto">3</span>
-                                </a>
-                                <div class="collapse" id="about">
-                                    <ul class="sub-menu">
+
                                         @if (Auth::user()->hasRole('Super') || 
                                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
                                         Auth::user()->hasPermissionTo('sobre nos.visualizar'))
@@ -169,75 +147,123 @@
                                                 </a>
                                             </li>
                                         @endif
+
                                         @if (Auth::user()->hasRole('Super') || 
                                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                                        Auth::user()->hasPermissionTo('a direcao.visualizar'))
-                                            <li class="menu-item">
-                                                <a href="{{route('admin.dashboard.direction.index')}}" class="menu-link">
-                                                    <span class="menu-text">A direção</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (Auth::user()->hasRole('Super') || 
-                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                                        Auth::user()->hasPermissionTo('estatuto.visualizar'))
-                                            <li class="menu-item">
-                                                <a href="{{route('admin.dashboard.statute.index')}}" class="menu-link">
-                                                    <span class="menu-text">Estatuto</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                        Auth::user()->hasPermissionTo('sindicalize-se.visualizar') || 
-                        Auth::user()->hasPermissionTo('beneficios.visualizar') || 
-                        Auth::user()->hasPermissionTo('denuncie.visualizar') || 
-                        Auth::user()->hasPermissionTo('convenios.visualizar'))
-                            <li class="menu-item">
-                                <a href="#servicos" data-bs-toggle="collapse" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-toolbox"></i></span>
-                                    <span class="menu-text"> Serviços aos <br> sindicalizados </span>
-                                    <span class="badge bg-success rounded-pill ms-auto">4</span>
-                                </a>
-                                <div class="collapse" id="servicos">
-                                    <ul class="sub-menu">
-                                        @if (Auth::user()->hasRole('Super') || 
-                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
-                                        Auth::user()->hasPermissionTo('convenios.visualizar'))
-                                            <li class="menu-item">
-                                                <a href="{{route('admin.dashboard.agreement.index')}}" class="menu-link">
-                                                    <span class="menu-text">Convênios</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (Auth::user()->hasRole('Super') || 
-                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                                        Auth::user()->hasPermissionTo('sindicalize-se.visualizar'))
+                                        Auth::user()->hasPermissionTo('estatistica do sobre.visualizar'))
                                             <li class="menu-item">
                                                 <a href="{{route('admin.dashboard.unionized.index')}}" class="menu-link">
-                                                    <span class="menu-text">Sindicalize-se</span>
+                                                    <span class="menu-text">Estatística do sobre</span>
                                                 </a>
                                             </li>
                                         @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('secao servicos.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.statute.index')}}" class="menu-link">
+                                                    <span class="menu-text">Seção Serviços</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('servicos.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.direction.index')}}" class="menu-link">
+                                                    <span class="menu-text">Serviços</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
                                         @if (Auth::user()->hasRole('Super') || 
                                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
-                                        Auth::user()->hasPermissionTo('beneficios.visualizar'))
+                                        Auth::user()->hasPermissionTo('galeria.visualizar'))
                                             <li class="menu-item">
                                                 <a href="{{route('admin.dashboard.benefitTopic.index')}}" class="menu-link">
-                                                    <span class="menu-text">Benefícios</span>
+                                                    <span class="menu-text">Galeria</span>
                                                 </a>
                                             </li>
                                         @endif
+
                                         @if (Auth::user()->hasRole('Super') || 
                                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
-                                        Auth::user()->hasPermissionTo('denuncie.visualizar'))
+                                        Auth::user()->hasPermissionTo('secao reserve aqui.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.reservationHere.index')}}" class="menu-link">
+                                                    <span class="menu-text">Seção reserve aqui</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
+                                        Auth::user()->hasPermissionTo('secao depoimento.visualizar'))
                                             <li class="menu-item">
                                                 <a href="{{route('admin.dashboard.report.index')}}" class="menu-link">
-                                                    <span class="menu-text">Denuncie</span>
+                                                    <span class="menu-text">Informações Seção <br> Depoimento</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
+                                        Auth::user()->hasPermissionTo('depoimentos.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.depoiment.index')}}" class="menu-link">
+                                                    <span class="menu-text">Depoimentos</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('reservas.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.reservation.index')}}" class="menu-link">
+                                                    <span class="menu-text">Reservas</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('contato.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.contact.index')}}" class="menu-link">
+                                                    <span class="menu-text">Contato</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('lead contato.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.formIndex.index')}}" class="menu-link">
+                                                    <span class="menu-text">Lead Contato</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('newsletter.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.newsletter.index')}}" class="menu-link">
+                                                    <span class="menu-text">Newsletter</span>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('horario de funcionamento.visualizar'))            
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.noticies.index')}}" class="menu-link">
+                                                    <span class="menu-text">Horários de Funcionamento</span>
                                                 </a>
                                             </li>
                                         @endif
@@ -245,135 +271,46 @@
                                 </div>
                             </li>
                         @endif
+
                         @if (Auth::user()->hasRole('Super') || 
                         Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                        Auth::user()->hasPermissionTo('juridico.visualizar'))
+                        Auth::user()->hasPermissionTo('noticias.visualizar') || 
+                        Auth::user()->hasPermissionTo('categorias do noticias.visualizar'))
                             <li class="menu-item">
-                                <a href="{{route('admin.dashboard.juridico.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-scale-balance"></i></span>
-                                    <span class="menu-text"> Jurídico</span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                        Auth::user()->hasPermissionTo('regionais.visualizar'))                            
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.regional.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-map-marker-radius"></i></span>
-                                    <span class="menu-text"> Regionais</span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') ||
-                        Auth::user()->hasPermissionTo('municipios.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.municipality.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-map-marker"></i></span>
-                                    <span class="menu-text"> Municípios</span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
-                        Auth::user()->hasPermissionTo('agenda.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.event.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-calendar-outline"></i></span>
-                                    <span class="menu-text"> Agenda</span>
-                                </a>
-                            </li>
-                        @endif --}}
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('categorias de noticias.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.blogCategory.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-tag-multiple "></i></span>
-                                    <span class="menu-text"> Categoria de notícias </span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('noticias.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.blog.index')}}" class="menu-link">
+                                <a href="#noticias" data-bs-toggle="collapse" class="menu-link">
                                     <span class="menu-icon"><i class="mdi mdi-newspaper-variant"></i></span>
                                     <span class="menu-text"> Notícias </span>
+                                    <span class="badge bg-success rounded-pill ms-auto">2</span>
                                 </a>
+                                <div class="collapse" id="noticias">
+                                    <ul class="sub-menu">
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('categorias do noticias.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.blogCategory.index')}}" class="menu-link">
+                                                    <span class="menu-text">Categorias das Notícias</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                            
+                                        @if (Auth::user()->hasRole('Super') || 
+                                        Auth::user()->hasPermissionTo('usuario.tornar usuario master') || 
+                                        Auth::user()->hasPermissionTo('noticias.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.blog.index')}}" class="menu-link">
+                                                    <span class="menu-text">Notícias</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </li>
                         @endif
+
                         @if (Auth::user()->hasRole('Super') || 
                         Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('newsletter.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.newsletter.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-email-outline"></i></span>
-                                    <span class="menu-text"> Newsletter </span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('lead contato.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.formIndex.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-account-box-outline"></i></span>
-                                    <span class="menu-text"> Lead Contato </span>
-                                </a>
-                            </li>
-                        @endif
-                        {{-- @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('contato.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.contact.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-card-account-mail-outline"></i></span>
-                                    <span class="menu-text"> Contato </span>
-                                </a>
-                            </li>
-                        @endif --}}
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('anuncio.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.announcement.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-bullhorn-outline"></i></span>
-                                    <span class="menu-text"> Anuncios </span>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.popUp.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-window-maximize"></i></span>
-                                    <span class="menu-text"> Pop-up </span>
-                                </a>
-                            </li>
-                        @endif
-                        {{-- @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('editais.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.noticies.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-file-document"></i></span>
-                                    <span class="menu-text"> Editais </span>
-                                </a>
-                            </li>
-                        @endif --}}
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('auditoria.visualizar'))
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.audit.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-clipboard-text"></i></span>
-                                    <span class="menu-text"> {{__('dashboard.audit')}} </span>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('email.visualizar'))                            
+                        Auth::user()->can('email.visualizar'))
                             <li class="menu-item">
                                 <a href="{{route('admin.dashboard.settingEmail.index')}}" class="menu-link">
                                     <span class="menu-icon"><i class="mdi mdi-email"></i></span>
@@ -381,26 +318,48 @@
                                 </a>
                             </li>
                         @endif
+
                         @if (Auth::user()->hasRole('Super') || 
                         Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('grupo.visualizar'))                            
+                        Auth::user()->can('auditoria.visualizar') || 
+                        Auth::user()->can('usuario.visualizar')|| 
+                        Auth::user()->can('grupo.visualizar'))
                             <li class="menu-item">
-                                <a href="{{route('admin.dashboard.group.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-account-group"></i></span>
-                                    <span class="menu-text"> {{__('dashboard.group_and_permission')}}</span>
+                                <a href="#security" data-bs-toggle="collapse" class="menu-link">
+                                    <span class="menu-icon"><i class="mdi mdi-security"></i></span>
+                                    <span class="menu-text"> {{__('dashboard.security_and_access_control')}} </span>
+                                    <span class="badge bg-success rounded-pill ms-auto">3</span>
                                 </a>
+                                <div class="collapse" id="security">
+                                    <ul class="sub-menu">
+                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('auditoria.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.audit.index')}}" class="menu-link">
+                                                    <span class="menu-text">{{__('dashboard.audit')}}</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        
+                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('grupo.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.group.index')}}" class="menu-link">
+                                                    <span class="menu-text">{{__('dashboard.group_and_permission')}}</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                
+                                        @if (Auth::user()->hasRole('Super') || Auth::user()->can('usuario.tornar usuario master') || Auth::user()->can('usuario.visualizar'))
+                                            <li class="menu-item">
+                                                <a href="{{route('admin.dashboard.user.index')}}" class="menu-link">
+                                                    <span class="menu-text">{{__('dashboard.users')}}</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </li>
                         @endif
-                        @if (Auth::user()->hasRole('Super') || 
-                        Auth::user()->can('usuario.tornar usuario master') || 
-                        Auth::user()->can('usuario.visualizar'))                            
-                            <li class="menu-item">
-                                <a href="{{route('admin.dashboard.user.index')}}" class="menu-link">
-                                    <span class="menu-icon"><i class="mdi mdi-account-multiple"></i></span>
-                                    <span class="menu-text"> {{__('dashboard.users')}} </span>
-                                </a>
-                            </li>
-                        @endif
+
                     </ul>
                     <!--- End Menu -->
                     <div class="clearfix"></div>
