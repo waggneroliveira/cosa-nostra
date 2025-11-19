@@ -244,14 +244,6 @@
                           @include('client.includes.newsletter')
                       </div>
                       <!-- Newsletter End -->
-   
-                      <!-- Ads Start -->
-                      @if ($announcements->count())                        
-                        <div class="mb-3">
-                            @include('client.includes.announcementVertical')
-                        </div>
-                      @endif
-                      <!-- Ads End -->
                   </aside>
                </div>
          </div>

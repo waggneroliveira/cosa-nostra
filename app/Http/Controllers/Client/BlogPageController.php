@@ -54,32 +54,7 @@ class BlogPageController extends Controller
         ->inRandomOrder()
         ->limit(4)
         ->get();
-        $announcements = Announcement::select(
-            'exhibition',
-            'link',
-            'exhibition',
-            'path_image',
-            'active',
-            'sorting',
-        )
-        ->where('exhibition', '=', 'mobile')
-        ->orWhere('exhibition', '=', 'horizontal')
-        ->active()
-        ->sorting()
-        ->get();
 
-        $announcementVerticals = Announcement::select(
-            'exhibition',
-            'link',
-            'exhibition',
-            'path_image',
-            'active',
-            'sorting',
-        )
-        ->where('exhibition', '=', 'vertical')
-        ->active()
-        ->sorting()
-        ->get();
         $popUp = PopUp::active()->first();
         
         return view('client.blades.blog', compact(
@@ -88,8 +63,6 @@ class BlogPageController extends Controller
             'blogHighlights',
             'blogAll',
             'blogSeeAlso',
-            'announcements',
-            'announcementVerticals',
             'popUp',
         ));
     }
@@ -127,35 +100,11 @@ class BlogPageController extends Controller
         ->get();
 
         $blogCategories = BlogCategory::whereHas('blogs')->active()->sorting()->get();
-        $announcements = Announcement::select(
-            'exhibition',
-            'link',
-            'exhibition',
-            'path_image',
-            'active',
-            'sorting',
-        )
-        ->where('exhibition', '=', 'mobile')
-        ->orWhere('exhibition', '=', 'horizontal')
-        ->active()
-        ->sorting()
-        ->get();
-        $announcementVerticals = Announcement::select(
-            'exhibition',
-            'link',
-            'exhibition',
-            'path_image',
-            'active',
-            'sorting',
-        )
-        ->where('exhibition', '=', 'vertical')
-        ->active()
-        ->sorting()
-        ->get();
+
         // Compartilha a variável globalmente (para menu/header)
         view()->share('blogInner', $blogInner);
 
-        return view('client.blades.blog-inner', compact('announcementVerticals', 'announcements','blogInner', 'slug', 'blogCategories', 'blogRelacionados'));
+        return view('client.blades.blog-inner', compact('blogInner', 'slug', 'blogCategories', 'blogRelacionados'));
     }
 
 }

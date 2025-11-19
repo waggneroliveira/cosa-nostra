@@ -18,8 +18,7 @@
          </ol>
       </div>
    </div>
-   
-    @include('client.includes.announcement') 
+
     <!-- News With Sidebar Start -->
     <div class="container mb-5 blog-inn mt-4">
         <div class="max-width m-auto">
@@ -265,14 +264,7 @@
                           @include('client.includes.newsletter')
                       </div>
                       <!-- Newsletter End -->
-   
-                      <!-- Ads Start -->
-                      @if ($announcements->count())                        
-                        <div class="mb-3">
-                            @include('client.includes.announcementVertical')
-                        </div>
-                      @endif
-                      <!-- Ads End -->
+
                   </aside>
                 </div>
             </div>

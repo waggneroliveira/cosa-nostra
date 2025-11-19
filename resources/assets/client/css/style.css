@@ -5467,3 +5467,79 @@ ol.commentlist {
 .pq-mt-30{
 	margin-top: 30px;
 }
+
+
+.hidden div {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    margin-top: 0px !important;
+    align-items: center !important;
+    justify-content: end !important;
+	margin-left: -20px;
+}
+
+.relative.inline-flex.items-center.px-2.py-2.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.rounded-l-md.leading-5 {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF !important;
+    margin: 0 5px !important;
+    padding: 0px !important;
+    border-radius: 0;
+	background-color: var(--dourado-color) !important;
+	border-color: transparent !important;
+}
+
+.hidden div a,
+.hidden div span span[aria-current="page"] span,
+.relative.inline-flex.items-center.px-2.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.rounded-r-md.leading-5 {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px !important;
+    padding: 0px !important;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 0.87rem !important;
+    color: #FFF !important;
+    border-radius: 0;
+	background-color: var(--black-color) !important;
+	border-color: transparent !important;
+}
+
+.hidden div span span[aria-current="page"] span {
+    background: var(--dourado-color) !important;
+    color: #FFF !important;
+    border-radius: 0;
+}
+
+.relative.inline-flex.items-center.px-2.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.rounded-r-md.leading-5 {
+    background-color: var(--dourado-color) !important;
+    border-radius: 0;
+    color: #FFF !important;
+}
+
+.flex.justify-between.flex-1 {
+    display: none;
+}
+
+.relative.z-0.inline-flex.shadow-sm.rounded-md {
+    box-shadow: inherit !important;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.relative.z-0.inline-flex.shadow-sm.rounded-md svg {
+    width: 15px;
+}
+
+.hidden div p {
+    display: none;
+}
