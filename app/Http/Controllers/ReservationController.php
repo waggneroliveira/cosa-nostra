@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Services\MessageSanitizer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendSchedulingNotification;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Repositories\SettingThemeRepository;
@@ -304,7 +306,7 @@ class ReservationController extends Controller
             // -----------------------------------------------
             // SE PASSOU NA VERIFICAÇÃO → CRIA COMO STAND_BY
             // -----------------------------------------------
-            Reservation::create([
+            $reservation = Reservation::create([
                 'name_complete'    => $validated['name_complete'],
                 'phone_whatsapp'   => $validated['phone_whatsapp'],
                 'number_of_people' => $validated['number_of_people'],
@@ -315,6 +317,10 @@ class ReservationController extends Controller
                 'message'          => $validated['message'] ?? '',
                 'status'           => 'stand_by',
             ]);
+
+            // Disparar a notificação após cadastro
+            Mail::to($reservation->email)
+            ->send(new SendSchedulingNotification($reservation));
 
             // Incrementa o rate limiting por email após sucesso
             RateLimiter::hit($emailKey, 3600); // 1 hora
