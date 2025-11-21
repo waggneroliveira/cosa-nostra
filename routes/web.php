@@ -37,6 +37,9 @@ require __DIR__ . '/dashboard.php';
 Route::get('/', function () {
     return redirect()->route('index');
 });
+Route::get('/email', function () {
+    return view('client/blades/teste');
+});
 
 Route::post('login.do', [AuthClientController::class, 'authenticate'])
 ->name('client.user.authenticate');

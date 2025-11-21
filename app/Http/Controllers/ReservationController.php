@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Reservation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\EmailService;
 use App\Services\MessageSanitizer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ use App\Mail\SendSchedulingNotification;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Repositories\SettingThemeRepository;
+use App\Mail\SendCanceledSchedulingNotification;
+use App\Mail\SendConfirmationSchedulingNotification;
 
 class ReservationController extends Controller
 {
@@ -318,6 +321,9 @@ class ReservationController extends Controller
                 'status'           => 'stand_by',
             ]);
 
+            // Carrega config do painel
+            EmailService::loadSettings();
+
             // Disparar a notificação após cadastro
             Mail::to($reservation->email)
             ->send(new SendSchedulingNotification($reservation));
@@ -351,6 +357,13 @@ class ReservationController extends Controller
             $reservation->status = 'confirmed';
             $reservation->save();
             
+            // Carrega config do painel
+            EmailService::loadSettings();
+
+            // Disparar a notificação após cadastro
+            Mail::to($reservation->email)
+            ->send(new SendConfirmationSchedulingNotification($reservation));
+
             DB::commit();
             
             return redirect()->back()->with('success', 'Reserva confirmada com sucesso!');
@@ -367,6 +380,13 @@ class ReservationController extends Controller
                 $reservation->update([
                     'status' => 'canceled',
                 ]);
+
+                // Carrega config do painel
+                EmailService::loadSettings();
+
+                // Disparar a notificação após cadastro
+                Mail::to($reservation->email)
+                ->send(new SendCanceledSchedulingNotification($reservation));
             DB::commit();
             return redirect()->back()->with('success', 'Reserva cancelada com sucesso!');
         } catch (\Exception $e) {

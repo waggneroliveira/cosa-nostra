@@ -3,10 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendSchedulingNotification extends Mailable
+class SendCanceledSchedulingNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,8 +24,8 @@ class SendSchedulingNotification extends Mailable
     {
         $formattedDate = \Carbon\Carbon::parse($this->reservation->date)->format('d/m/Y');
 
-        return $this->subject('Solicitação de Agendamento de Reserva')
-            ->view('emails.scheduling-notification')
+        return $this->subject('Cancelamento de Reserva')
+            ->view('emails.scheduling-notification-canceled')
             ->with([
                 'name'   => $this->reservation->name_complete,
                 'date'   => $formattedDate,

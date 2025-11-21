@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Password;
 
 class EmailService {
+    // Usado para carregar as configs do banco e aplicar no config()
+    public static function loadSettings()
+    {
+        $emailSettings = SettingEmail::first();
+
+        if (!$emailSettings) {
+            throw new \Exception("Configurações de e-mail não encontradas no banco.");
+        }
+
+        // Reutiliza o método já existente
+        (new self)->configureAndSend($emailSettings);
+    }
+
     public function configureAndSend($emailSettings) {
         if (!$emailSettings) {
             throw new \InvalidArgumentException("Configurações de e-mail não encontradas.");

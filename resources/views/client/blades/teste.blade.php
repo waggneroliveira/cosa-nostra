@@ -1,0 +1,1 @@
+@include('emails/scheduling-notification-confirmation')
