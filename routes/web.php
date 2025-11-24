@@ -85,7 +85,7 @@ Route::get('blog/{category?}', [BlogPageController::class, 'index'])->name('blog
 Route::post('blog/search', [BlogPageController::class, 'index'])->name('blog-search');
 Route::post('send-newsletter', [NewsletterController::class, 'store'])->name('send-newsletter');
 
-Route::post('homologacao/teste/reservations/check-areas-availability', [HomePageController::class, 'checkAreasAvailability'])
+Route::post('reservations/check-areas-availability', [HomePageController::class, 'checkAreasAvailability'])
     ->name('reservations.checkAreas');
 Route::post('send-reservation', [ReservationController::class, 'store'])->name('send-reservation');
 

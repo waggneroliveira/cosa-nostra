@@ -621,7 +621,7 @@
 
             if (!date || !time) return;
 
-            fetch('/reservations/check-areas-availability', {
+            fetch('homologacao/teste/reservations/check-areas-availability', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
