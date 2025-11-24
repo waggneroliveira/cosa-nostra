@@ -621,7 +621,7 @@
 
             if (!date || !time) return;
 
-            fetch('homologacao/teste/reservations/check-areas-availability', {
+            fetch(document.querySelector('meta[name="check-areas-route"]').content, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
