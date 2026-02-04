@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#0d0d0d">
-    <meta name="description" content="Criação de sites, lojas virtuais e estratégias de marketing digital em Salvador. A WHI desenvolve soluções profissionais e personalizadas para o seu negócio crescer online.">
-    <meta name="keywords" content="Agência de marketing Salvador, criação de sites Salvador, marketing digital, desenvolvimento web, loja virtual, SEO local, redes sociais, tráfego pago, Google Ads, branding, identidade visual, WHI">
-    <title>WHI | Agência de Marketing Digital e Criação de Sites em Salvador</title>
+    <meta name="description" content="Cantina Cosa Nostra: tradição italiana em cada prato. Saboreie nossas massas frescas e receitas da nonna em ambiente familiar.">
+    <meta name="keywords" content="restaurante italiano, comida italiana, pizza napolitana, massas artesanais, jantar romântico, cantina italiana, Pituba">
+    <title>Cantina Cosa Nostra</title>
     @if(isset($blogInner))
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="article">
@@ -26,23 +26,21 @@
     @else
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="WHI | Agência de Marketing Digital e Criação de Sites em Salvador">
-        <meta property="og:description" content="Soluções digitais completas em Salvador: sites profissionais, marketing de performance, identidade visual e presença online com a WHI.">
-        <meta property="og:image" content="{{asset('build/client/images/compartilhamento.png')}}">
+        <meta property="og:title" content="Cantina Cosa Nostra">
+        <meta property="og:description" content="Cantina Cosa Nostra: tradição italiana em cada prato. Saboreie nossas massas frescas e receitas da nonna em ambiente familiar.">
+        <meta property="og:image" content="{{asset('build/client/images/header-logo/logo_header.svg')}}">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="WHI | Agência de Marketing Digital e Criação de Sites em Salvador">
-        <meta name="twitter:description" content="Soluções digitais completas em Salvador: sites profissionais, marketing de performance, identidade visual e presença online com a WHI.">
-        <meta name="twitter:image" content="{{asset('build/client/images/compartilhamento.png')}}">
+        <meta name="twitter:title" content="Cantina Cosa Nostra">
+        <meta name="twitter:description" content="Cantina Cosa Nostra: tradição italiana em cada prato. Saboreie nossas massas frescas e receitas da nonna em ambiente familiar.">
+        <meta name="twitter:image" content="{{asset('build/client/images/header-logo/logo_header.svg')}}">
     @endif
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="copyright" content="Direitos reservados WHI">
     <meta name="author" content="WHI">
     <meta name="google-site-verification" content="kpN-gFJ5IGqEAXcdrwnTxAcJXZF-LsaP3bPwONwcvsY" />
-    <link rel="shortcut icon" href="{{ asset('build/admin/images/favicon.png') }}">
-
-    {{-- <link rel="preload" as="image" href="{{asset('build/client/images/bann-1.webp')}}"> --}}
+    <link rel="shortcut icon" href="{{ asset('build/client/images/header-logo/logo_header.svg') }}">
 
     <!-- LOADING FONTS AND ICONS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('build/client/rev/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
@@ -71,67 +69,130 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
         
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "@id": "https://whi.dev.br/#organization",
-            "name": "WHI",
-            "legalName": "WHI Agência Digital",
-            "url": "https://whi.dev.br",
-            "logo": "https://whi.dev.br/assets/images/logo.png",
-            "image": "https://whi.dev.br/assets/images/logo.png",
-            "description": "Agência de desenvolvimento web e marketing digital em Salvador - Criação de sites, lojas virtuais e estratégias digitais personalizadas.",
-            "foundingDate": "2023",
-            "email": "contato@whi.dev.br",
-            "telephone": "+55-71-99276-8360",
-            "sameAs": [
-                "https://www.instagram.com/agenciawhi",
-                "https://www.linkedin.com/company/106948313"
-            ],
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Rua Ápio Patrocínio, 148 - Boa Vista de São Caetano",
-                "addressLocality": "Salvador",
-                "addressRegion": "BA",
-                "postalCode": "40386-050",
-                "addressCountry": "BR"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+55-71-9276-8360",
-                "contactType": "customer service",
-                "email": "contato@whi.dev.br",
-                "areaServed": "BR",
-                "availableLanguage": ["Portuguese", "English"]
-            },
-            "openingHoursSpecification": {
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "@id": "https://www.cantinacosanostra.com/#restaurant",
+        "name": "Cantina Cosa Nostra",
+        "description": "Cantina Cosa Nostra: tradição italiana em cada prato. Saboreie nossas massas frescas e receitas da nonna em ambiente familiar.",
+        "image": "https://www.cantinacosanostra.com/assets/images/header-logo/logo_header.svg",
+        "url": "https://www.cantinacosanostra.com",
+        "telephone": "+55 71 3240-3977",
+        "email": "atendimento@cantinacosanostra.com",
+        "priceRange": "$$",
+        "servesCuisine": ["Italian", "Pizza", "Pasta"],
+        
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua Bahia, 144 Pituba",
+            "addressLocality": "Salvador",
+            "addressRegion": "BA",
+            "postalCode": "41830-160",
+            "addressCountry": "BR"
+        },
+        
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-12.9750",
+            "longitude": "-38.4500"
+        },
+        
+        "openingHoursSpecification": [
+            {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday"
-                ],
-                "opens": "09:00",
-                "closes": "18:00"
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "12:00",
+                "closes": "16:30"
             },
-            "duns": "39.985.136/0001-33",
-            "slogan": "Web de Alta Inspiração",
-            "keywords": [
-                "Criação de sites",
-                "Lojas virtuais",
-                "Marketing digital",
-                "Agência WHI",
-                "Salvador",
-                "Desenvolvimento Web",
-                "Google Ads",
-                "Tráfego pago",
-                "SEO",
-                "Agência de Desenvolvimento Web em Salvador",
-                "WHI"
-            ]
-        }
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "18:00",
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday"],
+                "opens": "12:00",
+                "closes": "16:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday"],
+                "opens": "18:00",
+                "closes": "23:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday"],
+                "opens": "12:00",
+                "closes": "17:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday"],
+                "opens": "18:00",
+                "closes": "23:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday"],
+                "opens": "12:00",
+                "closes": "17:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday"],
+                "opens": "18:00",
+                "closes": "22:00"
+            }
+        ],
+        
+        "sameAs": [
+            "https://www.instagram.com/cantinacosanostra",
+            "https://www.facebook.com/cantinanostra"
+        ],
+        
+        "menu": "https://cantina-cosa-nostra.goomer.app/menu",
+        "acceptsReservations": "http://www.cantinacosanostra.com/#reservation",
+        
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "243",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        
+        "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "http://www.cantinacosanostra.com/#reservation",
+                "inLanguage": "pt-BR"
+            }
+        },
+        
+        "hasMenu": {
+            "@type": "Menu",
+            "name": "Menu Principal",
+            "description": "Cardápio completo da Cantina Cosa Nostra",
+            "url": "https://cantina-cosa-nostra.goomer.app/menu"
+        },
+        
+        "keywords": [
+            "restaurante italiano Salvador",
+            "comida italiana",
+            "pizzaria Salvador",
+            "massas artesanais",
+            "cantina italiana",
+            "pizza napolitana",
+            "jantar romântico",
+            "restaurante em família",
+            "culinária italiana autêntica",
+            "restaurante Pituba"
+        ]
+    }
     </script>
 </head>
 <body>
